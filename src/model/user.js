@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UserSchema = Schema({
+
+
+module.exports = function() {
+  var db = require('./../libs/db-conections')();
+  var Schema = require('mongoose').Schema;
+
+  var userSchema = Schema({
     nombre: String,
     fechNac: Date,
     sexo: String,
@@ -10,4 +16,5 @@ const UserSchema = Schema({
     semestre: String
   });
 
-module.exports = mongoose.model('users', UserSchema);
+  return db.model('users', userSchema);
+};

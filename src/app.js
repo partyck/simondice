@@ -2,7 +2,16 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
+const mongoose = require('mongoose');
+
 const app = express();
+
+//connection to db
+mongoose.connect('mongodb://localhost/simondice')
+  .then(db => console.log('db connected'))
+  .catch(err => console.log(err));
+
+//importing routes
 const indexRoutes = require('./routes/index');
 
 //settings 
@@ -16,6 +25,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 //routes
 app.use('/',indexRoutes);
+
+//starting the server
 app.listen(app.get('port'), () => {
     console.log('server on port ', app.get('port')); 
 });
