@@ -6,9 +6,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {       
-    //res.render('index', "No se encontro a nadie");
+    res.send("No se encontro a nadie");
 });
-
-
 
 module.exports = router;    
