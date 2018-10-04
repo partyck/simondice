@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 //connection to db
-mongoose.connect('mongodb://localhost/simondice',{ useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/simondice/fulldb',{ useNewUrlParser: true })
   .then(db => console.log('db connected'))
   .catch(err => console.log(err));
 
