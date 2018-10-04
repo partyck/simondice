@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => { 
-    var useMap = {};
+    var userMap = {};
     
     var registro = users.forEach(function(user) {
       userMap[user._id] = user;
