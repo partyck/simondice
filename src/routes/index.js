@@ -9,19 +9,20 @@ router.get('/', (req, res) => {
     res.render('index', { title: 'Simon dice'}); 
 });
 
-router.post('/', (req, res) => { 
-    
-    var registro = User.find({}, function(err, users) {
+router.post('/', (req, res) => {     
+    User.find({}, function(err, users) {
         if (err) throw err;
-        // object of all the users
+        
         console.log(users);
+        
+        if (users.length > 0) {
+            res.send("Se encontro a: " + users[0].getNombre());
+            return;
+        } else {
+            res.send("Sigue participando");
+            return;
+        }
     });
-    
-    if (registro.length > 0) {
-        res.send("Se encontro a: " + registro[0].nombre);
-    } else {
-        res.send("Sigue participando");
-    }
 });
 
 module.exports = router;    

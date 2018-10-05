@@ -8,13 +8,13 @@ const UserSchema = Schema({
     type: Number,
     default: 1
   }
-});
+}, 
+  { collection : 'usuarios' }
+);
 
 UserSchema.methods.getNombre = function() {
 return this.nombre;
 };
-
-/**module.exports = mongoose.model('users', UserSchema);*/
 
 var User = mongoose.model("User", UserSchema);
 module.exports = User;
