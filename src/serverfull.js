@@ -7,8 +7,8 @@ const mongoose = require('mongoose');
 const app = express();
 
 //connection to db
-mongoose.connect('mongodb://localhost/simondice/fulldb',{ useNewUrlParser: true })
-  .then(db => console.log('db connected'))
+mongoose.connect('mongodb://localhost:27017/fulldb',{ useNewUrlParser: true })
+  .then(db => console.log('db connected' + db))
   .catch(err => console.log(err));
 
 //importing routes

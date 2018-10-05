@@ -1,17 +1,20 @@
 const express = require('express');
+
+var User = require('../model/user');
+
 const router = express.Router();
 
-var user = require("./model/user");
 
 router.get('/', (req, res) => {
     res.render('index', { title: 'Simon dice'}); 
 });
 
 router.post('/', (req, res) => { 
-    var userMap = {};
     
-    var registro = users.forEach(function(user) {
-      userMap[user._id] = user;
+    var registro = User.find({}, function(err, users) {
+        if (err) throw err;
+        // object of all the users
+        console.log(users);
     });
     
     if (registro.length > 0) {
