@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  .container  
+    h1= title
+    button.btn.btn-primary(type='button' onClick='postIt();') Emparejar 
+    //- form#form(method='POST' action='/match')
+    //-   input(type="hidden" name="id" value="123")
+    //-   button.btn.btn-primary(type='submit') Encontrar pareja 
+    script(type='text/javascript' src='public/index.js')
