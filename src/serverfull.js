@@ -18,14 +18,6 @@ function add(){
       "nombre": "Daniel Rivers",
       "carrera": "Industrial",
       "semestre": "5"
-    },{
-      "nombre": "Andrea Vasquez",
-      "carrera": "Administracion de empresas",
-      "semestre": "2"
-    },{
-      "nombre": "hugo neri",
-      "carrera": "psicologia",
-      "semestre": "10"
     }];
     users.forEach( async function( pretender){
       var user = new User(pretender);
