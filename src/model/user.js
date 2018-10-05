@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 const UserSchema = Schema({
   nombre: String,
   carrera: String,
-  semestre: {
-    type: Integer,
-    default: 1
+  semestre: Number
   }
-});
+  );
+
+  
 
 module.exports = mongoose.model('users', UserSchema);
