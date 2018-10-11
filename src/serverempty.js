@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 //añadido por mi
-const User = require('./model/user');
+const User = require('./models/user');
 
 const app = express();
 

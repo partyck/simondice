@@ -3,7 +3,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
-const User = require('../src/model/user');
+const User = require('../src/models/user');
 
 const app = express();
 

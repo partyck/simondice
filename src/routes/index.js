@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../model/user');
+const User = require('../models/user');
 var love
 
 router.get('/', (req, res) => {
+    
     res.render('index', { title: 'Simon Dice' });
+    
 });
 
 router.post('/match', (req, res) => {

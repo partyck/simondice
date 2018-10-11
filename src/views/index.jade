@@ -2,9 +2,16 @@ extends layout
 
 block content
   .container  
-    h1= title
-    button.btn.btn-primary(type='button' onClick='postIt();') Encontrar pareja
-    //- form#form(method='POST' action='/match')
-    //-   input(type="hidden" name="id" value="123")
-    //-   button.btn.btn-primary(type='submit') Encontrar pareja ❤️
-    script(type='text/javascript' src='public/index.js')
+  .card.text-center.mt-5 usuario maria  
+    .card-body    
+      h1= title 
+      span.fa.fa-user 
+      .br
+      button.btn.btn-primary(type='button' onClick='postIt();') Encontrar pareja
+      //- form#form(method='POST' action='/match')
+      //-   input(type="hidden" name="id" value="123")
+      //-   button.btn.btn-primary(type='submit') Encontrar pareja ❤️
+      script(type='text/javascript' src='public/index.js')
+      
+      
+    
