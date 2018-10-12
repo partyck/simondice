@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 var love
 
-router.get('/', (req, res) => {
+router.get('/emparejar', (req, res) => {
     
     res.render('index', { title: 'Simon Dice' });
     

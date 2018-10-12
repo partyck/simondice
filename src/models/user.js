@@ -4,7 +4,12 @@ const Schema = mongoose.Schema;
 const UserSchema = Schema({
   nombre: String,
   carrera: String,
-  semestre: Number
+  semestre: Number,
+  default:{
+    type: Number,
+    default: 1
+  }
+  
   }
   );
 
