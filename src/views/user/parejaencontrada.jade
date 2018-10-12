@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      a.navbar-brand(href='#')
+        img.logo(src='/images/default.jpg', width='', height='60', alt='')
+      |   
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      |   
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.dropdown
+            a.h3#navbarDropdown.nav-link.dropdown-toggle.colorFuente(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+              | Mar&iacute;a
+            |         
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='#') Perfil
+              |           
+              a.dropdown-item(href='#') Ajustes
+              |           
+              .dropdown-divider
+              |           
+              a.dropdown-item(href='#') Salir
+        |     
+        h1.colorFuente.text-white.font-italic Sim&oacute;n Dice
+    .jumbotron.content
+      h1.display-4#resultadoemp &iexcl;Te emparejamos con exito!
+      |   
+      p.lead 
+      |    
+      hr.my-4
+      .container
+      h1.text-primary Encontraste a: #{nombreemp} &#128521;
+            
+        |     
+.col-sm
