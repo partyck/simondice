@@ -1,17 +1,50 @@
 extends layout
 
 block content
-  .container  
-  .card.text-center.mt-5 usuario maria  
-    .card-body    
-      h1= title 
-      span.fa.fa-user 
-      .br
-      button.btn.btn-primary(type='button' onClick='postIt();') Encontrar pareja
-      //- form#form(method='POST' action='/match')
-      //-   input(type="hidden" name="id" value="123")
-      //-   button.btn.btn-primary(type='submit') Encontrar pareja ❤️
-      script(type='text/javascript' src='public/index.js')
-      
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      a.navbar-brand(href='#')
+        img.logo(src='public/images/default.jpg', width='', height='60', alt='')
+      |   
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      |   
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.dropdown
+           
+            a#navbarDropdown.nav-link.dropdown-toggle.colorFuente(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+              span.fa.fa-user 
+              .br
+              | Mar&iacute;a
+            |  
+                 
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='#') Perfil
+              |           
+              a.dropdown-item(href='#') Ajustes
+              |           
+              .dropdown-divider
+              |           
+              a.dropdown-item(href='#') Salir
+        |     
+        h1.colorFuente Sim&oacute;n Dice
+    .jumbotron.content
+      h1.display-4 &iexcl;App Web  Sim&oacute;n Dice!
+      |   
+      p.lead Busque su pareja ideal en este sistema
+      |   
+      hr.my-4
+      .container
+      .row
+        .col-sm
+        |     
+        .col-sm
+          
+            button.btn.btn-primary(type='submit' onClick='postIt();') Buscar Pareja
+            script(type='text/javascript' src='public/index.js')
+        |     
+        .col-sm
+
+
       
     

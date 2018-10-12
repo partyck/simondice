@@ -1,0 +1,29 @@
+a {
+  color: #00B7FF;
+}
+.mastfoot {
+  color: rgba(255, 255, 255, .5);
+}
+
+body {
+  background-color: #fff;
+}
+body {
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  color: #000;
+}
+
+.jumbotron{
+	background-color: #fff;
+}
+/*FUENTE*/
+.colorFuente {
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+}
+.tituloFuente {
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+}
