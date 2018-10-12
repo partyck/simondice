@@ -25,17 +25,10 @@ block content
         |     
         h1.colorFuente.text-white.font-italic Sim&oacute;n Dice
     .jumbotron.content
-      h1.display-4 &iexcl;Haga clic en 'Crear Cita ❤' para encontrar el amor!
+      h1.display-4#resultadoemp &iexcl;Te emparejamos con &eacute;xito!
       |   
-      p.lead Ser&aacute; emparejado con la persona ideal &#128521;
-      |   
+      p.lead 
+      |    
       hr.my-4
       .container
-      .row
-        .col-sm
-        |     
-        .col-sm
-          form(action='/emparejar', target='_blank', method='POST')
-            button.btn-lg.btn-primary(type='submit') Crear Cita ❤
-        |     
-        .col-sm
+      h1.text-primary Encontraste a: #{nombreemp} &#128521;
