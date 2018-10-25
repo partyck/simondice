@@ -10,7 +10,10 @@ router.get('/emparejar', (req, res) => {
 
 router.post('/emparejar', (req, res) => {     
     User.find({}, function(err, users) {
-        if (err) throw err;
+        if (err) {
+            console.log("No se puedo realizar la operacion find()");
+            throw err;
+        }
         
         console.log(users);
         
