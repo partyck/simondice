@@ -27,3 +27,72 @@ body {
   font-family: "Times New Roman", Times, serif;
   color: white;
 }
+/*NAVBAR*/
+.colorNavBar{
+  background: linear-gradient(262deg,#aedefc,#fb929e);
+}
+/*CARUSEL*/
+.item {
+  display: block;
+  width: 100%;
+  height: 570px;
+}
+.item img {
+  height: 100%;
+  width: 100%;
+}
+.responsive {
+  width: 100%;
+  height: auto;
+}
+/*BOTON*/
+.btnColorR{
+  background-color: #fb929e;
+  border-color: #fb929e;
+  outline: none;
+color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 9px 22px; 
+  border-radius:100px; 
+  cursor: pointer;
+}
+.btnColorR:hover,
+.btnColorR:focus{
+  background-color: #aedefc;
+border-color: #aedefc;
+  transition-property: background;
+  transition-duration: .2s;
+  color: black;
+  font-size: 17px;
+  font-weight: 600;
+}
+.btnColorIS{
+  background-color: #005792;
+  border-color: #005792;
+  outline: none;
+color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 9px 22px; 
+  border-radius:100px; 
+  cursor: pointer;
+}
+.btnColorIS:hover,
+.btnColorIS:focus{
+  background-color: #FFDFDF;
+border-color: #FFDFDF;
+  transition-property: background;
+  transition-duration: .2s;
+  color: black;
+  font-size: 17px;
+  font-weight: 600;
+}
+/*DROPDOWN*/
+.aColor{
+  color: white;
+  font-weight: 500;
+}
+
