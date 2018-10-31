@@ -28,8 +28,10 @@ class graph {
       var colaLocal = _grafo[userID][1];
       var encontrado = false;
       while (!(colaLocal.isEmpty() || encontrado)) {
-          usuarioSolicitado = colaLocal.pop()[0];
+          idUsuarioSolicitado = colaLocal.pop()[0];
       }
-      return usuarioSolicitado;
+      return idUsuarioSolicitado;
   }
 }
+
+module.exports = graph;
