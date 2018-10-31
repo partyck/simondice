@@ -130,5 +130,30 @@ color: #fff;
   transition-property: background;
   transition-duration: .2s;
 }
-
-
+/*TEXT,BOTON CITA*/
+.btnCita{
+  color:black;
+  font-weight: 600;    
+  text-decoration: none;
+}
+.btnCita:hover,
+.btnCita:active{
+  color:black;
+  text-decoration: none;
+}
+.txtColor{
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+}
+.divBtnPadding{
+  padding-top: 3.5%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+.btnColorC{
+  background: #fff;
+}
+.btnBloqueC{
+  border-color: linear-gradient(300deg,#aedefc,#fb929e);
+}
