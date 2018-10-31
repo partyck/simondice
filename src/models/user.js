@@ -10,6 +10,10 @@ const UserSchema = Schema({
   }
 }, 
   { collection : 'usuarios' }
+  /**
+  * Es necesario modificar el nombre de la
+  * coleccion a users, o lo que decidan.
+  */
 );
 
 UserSchema.methods.getNombre = function() {
