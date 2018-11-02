@@ -2,12 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = Schema({
-  nombre: String,
-  carrera: String,
-  semestre: {
-    type: Number,
-    default: 1
-  }
+  name: String,
+  birthday: Date,
+  sex: String,
+  course: String,
+  semester: Number,
+  sexOrientation: String,
+  minAge: Number,
+  maxAge: Number,
+  email: String,
+  password: String
 }, 
   { collection : 'usuarios' }
   /**
