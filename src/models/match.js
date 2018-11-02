@@ -2,10 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const MatchSchema = Schema({
-  /**
-  * Falta implementar
-  *
-  */
+  idsolicitante: Number,
+  idsolicitado: Number
 }, 
   { collection : 'matches' }
 );
