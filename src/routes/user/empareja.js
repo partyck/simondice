@@ -1,12 +1,11 @@
 const express = require('express');
-
-var User = require('../../models/user');
-
-var registro = require('./registro');
+const User = require('../../models/user');
+const registro = require('./registro');
 
 const router = express.Router();
 
 router.get('/emparejar', (req, res) => {
+    console.log(registro.estado);
     res.render('user/empareja', { title: 'Simon dice: Emparejate'}); 
 });
 
@@ -19,14 +18,13 @@ router.post('/emparejar', (req, res) => {
         });    
      
         if (idUsuarioSolicitado != "") {
-            res.render('user/parejaencontrada', {
-                nombreemp: idUsuarioSolicitado});
+            res.render('user/parejaencontrada',
+                {nombreemp: idUsuarioSolicitado});
             return;
         } else {
             res.render('user/parejanoencontrada', {title: 'Lo sentimos'});
             return;
         }
     });
-});
 
 module.exports = router;

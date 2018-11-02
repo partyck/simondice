@@ -20,8 +20,7 @@ UserSchema.methods.getNombre = function() {
 };
 
 UserSchema.methods.getEdad = function() {
-    var edad = (new Date()).getTime() - fechanacimiento.getTime();
-    edad = (((edad / 60000) / 60 ) / (24*365));
+    var edad = (new Date()).getYear() - this.fechanacimiento.getYear();
     return edad;
 };
 

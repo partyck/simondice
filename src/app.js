@@ -3,11 +3,13 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
+const registroUsuarios = require('./routes/user/registro');
 
 const app = express();
 
 //connection to db
-mongoose.connect('mongodb://localhost:27017/simondicedb',{ useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/simondicedb',
+        { useNewUrlParser: true })
   .then(db => console.log('db connected'))
   .catch(err => console.log(err));
 
@@ -23,6 +25,7 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
+registroUsuarios.iniciarRegistro();
 
 //routes
 app.use('/',indexRoutes);
