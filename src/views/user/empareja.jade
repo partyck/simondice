@@ -1,41 +1,29 @@
-extends ../layout
+extends ./layoutUser
 
 block content
-  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-      a.navbar-brand(href='#')
-        img.logo(src='/assets/images/user-icon.png', width='', height='60', alt='')
-      |   
-      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-        span.navbar-toggler-icon
-      |   
-      #navbarSupportedContent.collapse.navbar-collapse
-        ul.navbar-nav.mr-auto
-          li.nav-item.dropdown
-            a.h3#navbarDropdown.nav-link.dropdown-toggle.colorFuente(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-              | Mar&iacute;a
-            |         
-            .dropdown-menu(aria-labelledby='navbarDropdown')
-              a.dropdown-item(href='#') Perfil
-              |           
-              a.dropdown-item(href='#') Ajustes
-              |           
-              .dropdown-divider
-              |           
-              a.dropdown-item(href='#') Salir
-        |     
-        h1.colorFuente.text-white.font-italic Sim&oacute;n Dice
-    .jumbotron.content
-      h1.display-4 &iexcl;Haga clic en 'Crear Cita ❤' para encontrar el amor!
-      |   
-      p.lead Ser&aacute; emparejado con la persona ideal &#128521;
-      |   
-      hr.my-4
-      .container
+  .divPadding
+    |     
+    .container-fluid(id='')
       .row
-        .col-sm
-        |     
-        .col-sm
+        .col-4(id='')
+          img.img-responsive.center-block.imgRedonda(id='', src='../images/love1.gif', alt='...')
+        |         
+        .col-1
+        |         
+        .col-7.center-block.divBloque
+          h3(align='center') &iexcl;Encuentra a tu pareja ideal!
+          |           
+          hr
+          |           
+          h5
+            | Si deseas entregar tu amor a otra persona, primero debes amarte a ti, buscar en tu coraz&oacute;n lo que deseas recibir
+          |           
+          div
+            br
+            |             if true
+            |               
+            .alert.alert-primary(role='alert')
+              | Se ha encontrado a la pareja ideal
+          |           
           form(action='/emparejar', target='_blank', method='POST')
-            button.btn-lg.btn-primary(type='submit') Crear Cita ❤
-        |     
-.col-sm
+            button.btn-lg.btn-primary.btnColorE.text-center(align='center', type='submit') Crear Cita &#x2764;
