@@ -11,36 +11,37 @@ block content
           h3(align='center') Mis Citas &#x2764;
           |           
           hr
-          |           
-          #accordion
-            .card
-              #headingOne.card-header
-                h5.mb-0
-                  button.btn.btn-link.btnCita(data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne') Ver Cita
-              |                 
-              #collapseOne.collapse.show(aria-labelledby='headingOne', data-parent='#accordion')
-                .card-body
-                  form(action='')
-                    .row
-                      .col-6
-                        label.txtColor(for='staticLugar') Lugar:
+          |         
+          each cita in dates  
+            #accordion  
+              .card
+                #headingOne.card-header
+                  h5.mb-0
+                    button.btn.btn-link.btnCita(data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne') Ver Cita
+                |                 
+                #collapseOne.collapse.show(aria-labelledby='headingOne', data-parent='#accordion')
+                  .card-body
+                    form(action='')
+                      .row
+                        .col-6
+                          label.txtColor(for='staticLugar') Lugar: 
+                          |                           
+                          input#staticLugar.form-control-plaintext(type='text', readonly='', value=cita.place)
+                        |                         
+                        .col-6
+                          label.txtColor(for='staticHora') Hora:
+                          |                           
+                          input#staticHora.form-control(type='time', value=cita.time, disabled='')
+                          |                           
+                          label.txtColor(for='staticFecha') Fecha:
+                          |                           
+                          input#staticFecha.form-control(type='date', value=cita.date, disabled='')
+                      |                       
+                      .container-fluid.divBtnPadding
+                        button.btn.btn-primary.btnColorR(type='button' href='/accept/'+cita.id) Aceptar
                         |                           
-                        input#staticLugar.form-control-plaintext(type='text', readonly='', value='poner Lugar')
-                      |                         
-                      .col-6
-                        label.txtColor(for='staticHora') Hora:
+                        button.btn.btn-primary.btnColorR(type='button') Rechazar
                         |                           
-                        input#staticHora.form-control(type='time', value='15:45:00', disabled='')
-                        |                           
-                        label.txtColor(for='staticFecha') Fecha:
-                        |                           
-                        input#staticFecha.form-control(type='date', value='2018-11-9', disabled='')
-                    |                       
-                    .container-fluid.divBtnPadding
-                      button.btn.btn-primary.btnColorR(type='button') Aceptar
-                      |                           
-                      button.btn.btn-primary.btnColorR(type='button') Rechazar
-                      |                           
-                      button.btn.btn-primary.btnColorR(type='button') Modificar
+                        button.btn.btn-primary.btnColorR(type='button') Modificar
         |         
         .col-3
