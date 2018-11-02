@@ -8,7 +8,7 @@ var estadoRegistro = "Registro sin iniciar";
 
 function cargarRegistro() {
     console.log(estadoRegistro);
-    User.find({}, function(err, users) {
+    User.find({}, async function(err, users) {
         if (err) {
             console.log("No se pudo realizar la operacion find() en 'users'");
             throw err;
@@ -16,48 +16,61 @@ function cargarRegistro() {
         console.log(users);
         for (var usuarioI in users) {
             grafoUsuarios.insertarElemento(users[usuarioI].id);
+        }
+        for (var usuarioI in users) {
             for (var usuarioJ in users) {
-                if (existePareja(usuarioI, usuarioJ)) {
-                    grafoUsuarios.conectar(usuarioI, usuarioJ);
+                if (users[usuarioI].id != users[usuarioJ].id) {
+                    var existePar = await existePareja(users[usuarioI].id,
+                            users[usuarioJ].id); 
+                    if (!existePar) {
+                        grafoUsuarios.conectar(users[usuarioI].id,
+                            users[usuarioJ].id);
+                        console.log("Se conecto: " + users[usuarioI].id + " con "
+                            + users[usuarioJ].id);
+                    }
                 }
             }
-            console.log("El usuario tiene " + users[usuarioI].getEdad());
         }
     });
     estadoRegistro = "Registro OK";
+    console.log(estadoRegistro);
 }
 
-function existePareja(idUserA, idUserB) {
-    Match.findOne(
-        { $or:
+async function existePareja(idUserA, idUserB) {
+    return new Promise(function(resolve, reject) { Match.findOne({
+        $or:
             [{$and: [
-                { "idUsuarioA" : idUserA},
-                { "idUsuarioB" : idUserB}
+                { idUsuarioA : idUserA},
+                { idUsuarioB : idUserB}
               ]
             },
             {$and: [
-                { "idUsuarioA" : idUserB},
-                { "idUsuarioB" : idUserA}
+                { idUsuarioA : idUserB},
+                { idUsuarioB : idUserA}
               ]
             }]
         }, function(err, pareja) {
             if (err) {
-                console.log("No se pudo realizar la operacion findOne() en 'matches'");
+                console.log("No se pudo realizar la operacion "
+                    + "findOne() en 'matches'");
                 throw err;
             }
             if (pareja == null) {                
-                console.log("No existe la pareja");
-                return false;
+                console.log("No existe la pareja " + idUserA 
+                    + " - " + idUserB);
+                resolve(false);
             } else {
-                console.log("Existe la pareja");
-                return true;
+                console.log("Existe la pareja " + idUserA 
+                    + " - " + idUserB);
+                resolve(true);
             }
         }
+    );}
     );
 }
 
 module.exports = {
-    obtenerGrafo: grafoUsuarios,
     iniciarRegistro: cargarRegistro,
-    estado: estadoRegistro
+    obtenerEstado: () => estadoRegistro,
+    obtenerPareja: (idUsuario) => grafoUsuarios.obtenerPareja(idUsuario),
 }

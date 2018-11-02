@@ -23,7 +23,7 @@ UserSchema.methods.getEdad = function() {
     var fechaactual = (new Date());
     var edad = fechaactual.getYear() - this.fechaNacimiento.getYear();
     const mesDiaActual = fechaactual.getMonth() * 10 + fechaactual.getDate();
-    const mesDiaUsuario = this.fechanacimiento.getMonth() * 10
+    const mesDiaUsuario = this.fechaNacimiento.getMonth() * 10
         + this.fechaNacimiento.getDate();
     if (mesDiaActual < mesDiaUsuario) {
         edad =- 1;

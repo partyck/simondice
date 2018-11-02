@@ -13,21 +13,25 @@ class graph {
     var cola = new PriorityQueue((a, b) => a[1] > b[1]);
     this._grafo.push([userID, cola]);
     console.log("Se inserto sastisfactoriamente el usuario con id: "
-            + (this._grafo[0])[0]);
+            + (this._grafo[this._grafo.length - 1])[0]);
   }
   
   conectar(idUsuarioA, idUsuarioB){
       if (idUsuarioA != idUsuarioB) {
             var valorCompatibilidad = 5;
             /*compatibilidad.aplicarFunciones(userID, idOtroUsuario);*/
-            this._grafo[idUsuarioA][1].push([idUsuarioB, valorCompatibilidad]);
-            this._grafo[idUsuarioB][1].push([idUsuarioA, valorCompatibilidad]);
+            var indiceA = this._obtenerIndicePorIdUsuario(idUsuarioA);
+            var indiceB = this._obtenerIndicePorIdUsuario(idUsuarioB);
+            this._grafo[indiceA][1].push([idUsuarioB, valorCompatibilidad]);
+            this._grafo[indiceB][1].push([idUsuarioA, valorCompatibilidad]);            
         }
   }
   
   obtenerPareja(idUsuarioSolicitante) {
       var idUsuarioSolicitado = "";
-      var colaLocal = _grafo[userID][1];
+      var indiceSolicitante = this._obtenerIndicePorIdUsuario(
+            idUsuarioSolicitante);
+      var colaLocal = this._grafo[indiceSolicitante][1];
       var encontrado = false;
       while (!(colaLocal.isEmpty() || encontrado)) {
           var parUsusarioValor = colaLocal.pop();
@@ -36,6 +40,10 @@ class graph {
           }
       }
       return idUsuarioSolicitado;
+  }
+  
+  _obtenerIndicePorIdUsuario(idUsuario) {
+      return this._grafo.findIndex(i => i[0] == idUsuario);
   }
 }
 
