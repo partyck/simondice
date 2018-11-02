@@ -5,7 +5,7 @@ const UserSchema = Schema({
   id: Number,
   nombre: String,
   sexo: String,
-  fechanacimiento: Date,
+  fechaNacimiento: Date,
   carrera: String,
   semestre: {
     type: Number,
@@ -20,7 +20,14 @@ UserSchema.methods.getNombre = function() {
 };
 
 UserSchema.methods.getEdad = function() {
-    var edad = (new Date()).getYear() - this.fechanacimiento.getYear();
+    var fechaactual = (new Date());
+    var edad = fechaactual.getYear() - this.fechaNacimiento.getYear();
+    const mesDiaActual = fechaactual.getMonth() * 10 + fechaactual.getDate();
+    const mesDiaUsuario = this.fechanacimiento.getMonth() * 10
+        + this.fechaNacimiento.getDate();
+    if (mesDiaActual < mesDiaUsuario) {
+        edad =- 1;
+    }
     return edad;
 };
 

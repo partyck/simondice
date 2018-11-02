@@ -11,18 +11,18 @@ class graph {
   insertarElemento(userID) {
     /** a = [otroUserId, compatibilidad con userID] */
     var cola = new PriorityQueue((a, b) => a[1] > b[1]);
-    for (var usuario = 0; usuario < this._grafo.length; usuario++) {
-        var idOtroUsuario = this._grafo[usuario][0];
-        if (idOtroUsuario != userID) {
-            var valorCompatibilidad = 5;
-            /*compatibilidad.aplicarFunciones(userID, idOtroUsuario);*/
-            cola.push([idOtroUsuario, valorCompatibilidad]);
-            this._grafo[usuario][1].push([userID, valorCompatibilidad]);
-        }
-    }
     this._grafo.push([userID, cola]);
     console.log("Se inserto sastisfactoriamente el usuario con id: "
             + (this._grafo[0])[0]);
+  }
+  
+  conectar(idUsuarioA, idUsuarioB){
+      if (idUsuarioA != idUsuarioB) {
+            var valorCompatibilidad = 5;
+            /*compatibilidad.aplicarFunciones(userID, idOtroUsuario);*/
+            this._grafo[idUsuarioA][1].push([idUsuarioB, valorCompatibilidad]);
+            this._grafo[idUsuarioB][1].push([idUsuarioA, valorCompatibilidad]);
+        }
   }
   
   obtenerPareja(idUsuarioSolicitante) {
@@ -30,7 +30,10 @@ class graph {
       var colaLocal = _grafo[userID][1];
       var encontrado = false;
       while (!(colaLocal.isEmpty() || encontrado)) {
-          idUsuarioSolicitado = colaLocal.pop()[0];
+          var parUsusarioValor = colaLocal.pop();
+          if (parUsusarioValor[1] > 0) {
+              idUsuarioSolicitado = parUsusarioValor[0];
+          }
       }
       return idUsuarioSolicitado;
   }
