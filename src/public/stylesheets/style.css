@@ -157,3 +157,24 @@ color: #fff;
 .btnBloqueC{
   border-color: linear-gradient(300deg,#aedefc,#fb929e);
 }
+/*CARD FORMULARIO*/
+.divBloqueCard{
+  margin-left: 25%;
+  margin-right: 25%;
+}
+.marginCard{
+  border: 2px solid transparent;
+  border-radius: .30rem;
+  -moz-border-image: -moz-linear-gradient(top, #aedefc 0%,#fb929e 100%);
+  -webkit-border-image: -webkit-linear-gradient(top, #aedefc 0%,#fb929e 100%);
+  border-image: linear-gradient(to bottombottom, #aedefc 0%,#fb929e 100%);
+  border-image-slice: 1;
+}
+.txtColorCard{
+  color:#005792;
+}
+.divBtnPaddingCard{
+  padding-top: 3.5%;
+  margin-left: 27%;
+  margin-right: 27%;
+}

@@ -18,11 +18,11 @@ router.post('/emparejar', (req, res) => {
         console.log(users);
         
         if (users.length > 0) {
-            res.render('user/parejaencontrada', {
+            res.render('user/empareja', {
                 nombreemp: users[0].getNombre()});
             return;
         } else {
-            res.render('user/parejanoencontrada', {title: 'Lo sentimos'});
+            res.render('user/empareja', {title: 'Lo sentimos'});
             return;
         }
     });
