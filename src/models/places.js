@@ -7,7 +7,7 @@ const placesSchema = Schema({
   { collection : 'umss' }
 );
 
-placesSchema.methods.getnombre = function() {
+placesSchema.methods.getlugar= function() {
   return this.lugar;
   };
 
