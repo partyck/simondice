@@ -17,6 +17,22 @@ html
     nav.navbar.navbar-expand-lg.navbar-light.bg-light.colorNavBar
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.mr-auto
+          li.nav-item.dropdown
+            a#colorNameUser.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+              | Usuario
+            |             
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item.(href='#') Perfil
+              |               
+              a.dropdown-item(href='#') Citas
+              |               
+              a.dropdown-item(href='#') Calendario
+              |               
+              a.dropdown-item(href='#') Configuración
+              |               
+              .dropdown-divider
+              |               
+              a.dropdown-item(href='#') Salir
         |         
-        img(src='./images/logo.PNG', alt='Simón Dice', height='70', width='120')
+        img(src='../images/logo.PNG', alt='Simón Dice', height='70', width='120')
 block content

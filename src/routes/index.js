@@ -3,7 +3,7 @@ const router = express.Router();
 const rutaEmpareja = require('./user/empareja');
 
 router.get('/', (req, res) => {
-    res.render('index', { title: 'Simon Dice'}); 
+    res.render('home', { title: 'Simon Dice'}); 
 });
 
 router.use('/', rutaEmpareja);
