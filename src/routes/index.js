@@ -15,7 +15,7 @@ router.get('/registrar', (req, res) => {
 router.post('/guardar',async(req,res) => {
     const user = new User(req.body);
     await user.save();
-    res.send('guardado');
+    res.render('home');
 })
 var rutaEmpareja = require('./user/empareja');
 
