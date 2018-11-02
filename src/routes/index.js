@@ -6,8 +6,8 @@ router.get('/', (req, res) => {
     res.render('index', { title: 'Simon Dice'}); 
 });
 
-var rutaEmpareja = require('./user/empareja');
+var rutagenerarcita = require('./user/generarcita');
 
-router.use('/', rutaEmpareja);
+router.use('/', rutagenerarcita);
 
 module.exports = router;    
