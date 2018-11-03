@@ -71,22 +71,18 @@ function contabilidadIndustrial(solicitante,solicitado){
          peso = 2;
          else
          peso=0;
-
-
          }
          return peso;
         }
 //esta funcion debuelve el peso que cuando el estudiante cumple los requerimientos de la app
 //con las caracteristicas de compatibilidad y las reglas
  function aplicarFunciones(usuarioSolicitante,usuarioSolicitado){
-        if(ControlarSexo(usuarioSolicitante,usuarioSolicitado)){
+        if(orientacionSexual(usuarioSolicitante,usuarioSolicitado)){
         peso = edad.CotrolarEdad()+semestre.ControlarSemestre()+Medicina_Odontologia()+Sistemas_Electronica()+
         Informatica_Sistemas()+Quimica_Biologia()+Derecho_Psicoligia(),Arquitectura_Civil()+Contabilidad_Industrial();
         }
         else
-        peso=0;
-        
-    
+        peso=0;     
     return peso;
     
 }
