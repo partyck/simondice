@@ -4,10 +4,10 @@ var semestre = require('./ControlSemestre');
 var User = require('../../models/user');
 
 var edad = require('../ControlEdad');
-function Medicina_Odontologia(Solicitante,Solicitado) {
+function medicinaOdontologia(solicitante,solicitado) {
      peso;
-     if(Solicitante.getCarrera()==Medicina || Solicitante.getCarrera()==Odontologia){
-         if(Solicitado.getCarrera()==Medicina || Solicitado.getCarrera()==Odontologia )
+     if(solicitante.getCarrera()==="Medicina" || solicitante.getCarrera()==="Odontologia"){
+         if(solicitado.getCarrera()==="Medicina" || solicitado.getCarrera()==="Odontologia" )
          peso = 2;      
          //semestre.Controlarsemestre(Solicitante,Solicitado);
          else
@@ -15,59 +15,59 @@ function Medicina_Odontologia(Solicitante,Solicitado) {
      }
      
 }
-function Sistemas_Electronica(Solicitante,Solicitado){
+function sistemasElectronica(solicitante,solicitado){
     peso;
-    DistinguirCarrera=ControlCarrera(SolicitanteCarrera,SolicitadoCarrera);
-     if(Solicitante.getCarrera()==Sistemas || Solicitante.getCarrera()==Electronica){
-         if(Solicitado.getCarrera()==Sistemas || Solicitado.getCarrera()==Electronica )
+    
+     if(solicitante.getCarrera()==="Sistemas" || solicitante.getCarrera()==="Electronica"){
+         if(solicitado.getCarrera()==="Sistemas" || solicitado.getCarrera()==="Electronica" )
          peso = 2;
          else
          peso=0;
          }
          return peso;
         }
-function Informatica_Sistemas(Solicitante,Solicitado){
+function informaticaSistemas(solicitante,solicitado){
     peso;
-     if(Solicitante.getCarrera()==Informatica || Solicitante.getCarrera()==Sistemas){
-         if(Solicitado.getCarrera()==Informatica || Solicitado.getCarrera()==Sistemas )
+     if(solicitante.getCarrera()==="Informatica" || solicitante.getCarrera()==="Sistemas"){
+         if(solicitado.getCarrera()==="Informatica" || solicitado.getCarrera()==="Sistemas" )
          peso = 2;
          else
          peso=0;
          }
          return peso;
         }
-function Quimica_Biologia(Solicitante,Solicitado){
+function quimicaBiologia(solicitante,solicitado){
     peso;
-     if(Solicitante.getCarrera()==Quimica || Solicitante.getCarrera()==Biologia){
-         if(Solicitado.getCarrera()==Quimica || Solicitado.getCarrera()==Biologia )
+     if(solicitante.getCarrera()==="Quimica" || solicitante.getCarrera()==="Biologia"){
+         if(solicitado.getCarrera()==="Quimica" || solicitado.getCarrera()==="Biologia" )
          peso = 2;
          else
          peso=0;
          }
          return peso;
         }
-function Derecho_Psicoligia(Solicitante,Solicitado){
+function derechoPsicoligia(solicitante,solicitado){
     peso=0;
-     if(Solicitante.getCarrera()==Derecho || Solicitante.getCarrera()==Psicologia){
-         if(Solicitado.getCarrera()==Derecho || Solicitado.getCarrera()==Psicologia )
+     if(solicitante.getCarrera()==="Derecho" || solicitante.getCarrera()==="Psicologia"){
+         if(solicitado.getCarrera()==="Derecho" || solicitado.getCarrera()==="Psicologia" )
          peso = 2;
          }
          return peso;
         }
-function Arquitectura_Civil(Solicitante,Solicitado){
+function arquitecturaCivil(solicitante,solicitado){
     peso;
-     if(Solicitante.getCarrera()==Arquitectura || Solicitante.getCarrera()==Civil){
-         if(Solicitado.getCarrera()==Arquitectura || Solicitado.getCarrera()==Civil )
+     if(solicitante.getCarrera()==="Arquitectura" || solicitante.getCarrera()==="Civil"){
+         if(solicitado.getCarrera()==="Arquitectura" || solicitado.getCarrera()==="Civil" )
          peso = 2;
          else
          peso=0;
          }
          return peso;
         }
-function Contabilidad_Industrial(Solicitante,Solicitado){
+function contabilidadIndustrial(solicitante,solicitado){
     peso;
-     if(Solicitante.getCarrera()==Contabilidad || Solicitante.getCarrera()==Industrial){
-         if(Solicitado.getCarrera()==Contabilidad || Solicitado.getCarrera()==Industrial )
+     if(solicitante.getCarrera()==="Contabilidad" || solicitante.getCarrera()==="Industrial"){
+         if(solicitado.getCarrera()==="Contabilidad" || solicitado.getCarrera()==="Industrial" )
          peso = 2;
          else
          peso=0;
@@ -78,8 +78,8 @@ function Contabilidad_Industrial(Solicitante,Solicitado){
         }
 //esta funcion debuelve el peso que cuando el estudiante cumple los requerimientos de la app
 //con las caracteristicas de compatibilidad y las reglas
- function CompatibilidadPesoMayor(Solicitante,Solicitado){
-        if(ControlarSexo(Solicitante,Solicitado)){
+ function aplicarFunciones(usuarioSolicitante,usuarioSolicitado){
+        if(ControlarSexo(usuarioSolicitante,usuarioSolicitado)){
         peso = edad.CotrolarEdad()+semestre.ControlarSemestre()+Medicina_Odontologia()+Sistemas_Electronica()+
         Informatica_Sistemas()+Quimica_Biologia()+Derecho_Psicoligia(),Arquitectura_Civil()+Contabilidad_Industrial();
         }

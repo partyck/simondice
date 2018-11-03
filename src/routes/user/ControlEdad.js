@@ -1,5 +1,5 @@
 //Esta fucion controla la edad de 6 semestre arriba
-function ControlarEdad(Solicitante,Solicitado){
+function controlaredad(Solicitante,Solicitado){
     if(Solicitante.edad>=21 && Solicitante.edad<=27){
         if(Solicitado.edad>=21 && Solicitado.edad<=27)
         return 2;
@@ -19,7 +19,7 @@ function ControlarEdad(Solicitante,Solicitado){
     }
 }
 //Esta funcion controla la edad de primer  semestre hasta quinto
-function ControlarSexo(Solicitante,Solicitado){
+function controlarsexo(Solicitante,Solicitado){
     
     if(Solicitante.sexo==masculino && Solicitado==Femenino){        
         return true;}
@@ -28,4 +28,8 @@ function ControlarSexo(Solicitante,Solicitado){
          return true;}
             else
         return false;    
+}
+function OrientacionSexual(Solicitante,solicitado){
+
+
 }

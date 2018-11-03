@@ -23,7 +23,7 @@ class graph {
   obtenerPareja(idUsuarioSolicitante) {
       var idUsuarioSolicitado = "";
       var usuarioEnGrafo = array1.find(function(element) {
-          return element[0] == ;
+          return element[0] ;
       });
       var colaLocal = _grafo[userID][1];
       var encontrado = false;
@@ -33,5 +33,4 @@ class graph {
       return idUsuarioSolicitado;
   }
 }
-
 module.exports = graph;

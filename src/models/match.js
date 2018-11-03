@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+//Esquema de las dos variables del solicitante y del solicitado
 const MatchSchema = Schema({
-  /**
-  * Falta implementar
-  *
-  */
+  Solicitante:String,
+  Solicitado:String
 }, 
   { collection : 'matches' }
 );

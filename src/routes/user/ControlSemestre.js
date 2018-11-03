@@ -1,4 +1,4 @@
-function ControlarSemestre(Solicitante,Solicitado){
+function controlarsemestre(Solicitante,Solicitado){
     //se esta asumiendo que existira un metodo getSemestre
     usario1=Solicitante.getSemestre();
     usuario2=Solicitado.getSemestre();

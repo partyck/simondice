@@ -27,6 +27,5 @@ router.post('/emparejar', (req, res) => {
             return;
         }
     });
-});
 
 module.exports = router;
