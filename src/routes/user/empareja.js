@@ -12,19 +12,18 @@ router.get('/emparejar', (req, res) => {
 });
 
 router.post('/emparejar', (req, res) => {
-    var idUsuarioSolicitado = "";
-    User.findOne({
+    var idUsuarioSolicitado = registroUsuarios.obtenerPareja(4);
+    /*User.findOne({
          where: {id: req.user.id}
        }).then(function(user) {
            idUsuarioSolicitado = registroUsuarios.obtenerPareja(user.id);
         });    
-    
+    */
         if (idUsuarioSolicitado != "") {
-            res.render('user/parejaencontrada',
-                {nombreemp: idUsuarioSolicitado});
+            res.render('user/empareja', {pEncontrado: 1});
             return;
         } else {
-            res.render('user/parejanoencontrada', {title: 'Lo sentimos'});
+            res.render('user/empareja', {pEncontrado: 0});
             return;
         }
     });
