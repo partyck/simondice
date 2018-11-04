@@ -17,7 +17,7 @@ exports.create = function(req, res){
     res.render('registrar');
 };
 exports.store = function(req, res){
-    var user = {
+    var user = new User({
         name: req.body.name,
         birthday: req.body.birthday,
         sex: req.body.sex,
