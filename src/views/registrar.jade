@@ -1,4 +1,4 @@
-extends ./layout
+extends layout
 
 block content
     .divPadding
@@ -16,7 +16,7 @@ block content
           |           
           br
           |           
-          form.needs-validation(novalidate='', action='/guardar',method='POST', enctype='multipart/form-data')
+          form.needs-validation(novalidate='', action='/user',method='POST', enctype='multipart/form-data')
             input(type='hidden', name='_token', value='{{ csrf_token() }}')
             |             
             .form-row
@@ -27,12 +27,12 @@ block content
                 |                 
                 hr
                 |                 
-                input#name.form-control(name='name', type='text', placeholder='Nombre Completo', pattern='^([A-ZÁÉÍÓÚa-zñáéíóúäëïöü]+[\s]*)+$', minlength='2', maxlength='100', required='')
+                input#name.form-control(name='name', type='text', placeholder='Nombre Completo', pattern='^([A-ZÁÉÍÓÚa-zñáéíóúäëïöü]+[\.]*)+$', minlength='10', maxlength='150', required='')
                 |                 
                 .invalid-feedback
                   | Introduzca el 
                   i Nombre Completo
-                  |  entre 2 y 100 letras
+                  |  entre 10 y 150 letras
               |               
               .col-md-2.mb-3
             |             
@@ -200,7 +200,7 @@ block content
               .col-md-2.mb-3
               |               
               .form-group.col-md-8.mb-3
-                input#password.form-control(name='password', type='password', placeholder='Contraseña', pattern='', required='')
+                input#password.form-control(name='password', type='password', placeholder='Contraseña',pattern='.{6,}', required='')
                 |                 
                 .invalid-feedback
                   | Introduzca una 

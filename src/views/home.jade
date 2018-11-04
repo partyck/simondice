@@ -7,7 +7,7 @@ block content
           img.d-block.w-100.responsive.img-fluid(src='../images/carousel/foto6.jpeg', alt='First slide', height='570')
           |             
           .carousel-caption.d-none.d-md-block
-            form.needs-validation(novalidate='', action='/registrar', method='GET', enctype='multipart/form-data')
+            form.needs-validation(novalidate='', action='/user/create', method='GET', enctype='multipart/form-data')
               input(type='hidden', name='_token', value='{{ csrf_token() }}')
               button.btn.btn-primary.btnColorR(type='submit') REG&Iacute;STRATE
               |               
