@@ -1,17 +1,18 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 
 const UserSchema = Schema({
-  name: {type: String, required: true},
-  birthday: {type: Date, required: true},
-  sex: {type: String, required: true},
-  course: {type: String, required: true},
-  semester: {type: Number, required: true},
-  sexOrientation: {type: String, required: true},
-  minAge: {type: Number, required: true},
-  maxAge: {type: Number, required: true},
-  email: {type: String, required: true},
-  password: {type: String, required: true},
+  name: {type: String, required: false},
+  birthday: {type: Date, required: false},
+  sex: {type: String, required: false},
+  course: {type: String, required: false},
+  semester: {type: Number, required: false},
+  sexOrientation: {type: String, required: false},
+  minAge: {type: Number, required: false},
+  maxAge: {type: Number, required: false},
+  email: {type: String, unique: true, required: false},
+  password: {type: String, required: false}
 }, 
   { collection : 'users' }
   /**
@@ -23,6 +24,8 @@ const UserSchema = Schema({
 UserSchema.methods.getNombre = function() {
 return this.nombre;
 };
+
+UserSchema.plugin(uniqueValidator);
 
 var User = mongoose.model("User", UserSchema);
 module.exports = User;

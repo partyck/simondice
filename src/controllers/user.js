@@ -1,4 +1,4 @@
-var User = require('../models/user');
+const User = require('../models/user');
 /*exports.setModel = function(modelo){
     User = modelo;
 };*/
@@ -17,7 +17,7 @@ exports.create = function(req, res){
     res.render('registrar');
 };
 exports.store = function(req, res){
-    var user = new User({
+    const user = new User({
         name: req.body.name,
         birthday: req.body.birthday,
         sex: req.body.sex,
@@ -28,12 +28,13 @@ exports.store = function(req, res){
         maxAge: req.body.maxAge,
         email: req.body.email,
         password: req.body.password
-     });
-     user.save(function(err){
+    });
+    user.save(function(err){
         if(err){
-           res.send('Error al intentar guardar el User.');
+            console.log(err);
+            res.render('registrar',{estado:true});
         }else{ 
-           res.redirect('home');
+            res.render('home');
         }
      });
 };
