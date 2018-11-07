@@ -1,38 +1,13 @@
-const express = require('express');
 
 var place = require('../../models/places');
 const Date = require('../../models/date');
-//var hora = require('./hora');
-
-const router = express.Router();
-//const mongoose = require('mongoose');
-var lugares;
+var lugarcita;
 var fecha;
 var hora;
-
-router.get('/emparejar', (req, res) => {
-    var places = [{
-        "lugar" : "bloque antiguo fcyt"
-    },{
-        "lugar" : "paseo autonomico"
-    },{
-        "lugar" : "edificio nuevo fcyt"
-    },{
-        "lugar" : "parqueo fcyt" 
-    },{
-        "lugar" : "puerta principal fcyt"
-    }];
-    places.forEach(async function(lugar){
-        var l = new place(lugar);
-        await l.save()
-    });
-    generarCita("6516","1616"); 
-});
-
  var buscarLugar = function(){     
      place.find({}, function(err, places) {
         if (err) {
-            console.log("No se puedo realizar la operacion find()");
+            console.log("No se pudo realizar la operacion find()");
             throw err;
         }
        if (places.length > 0) {
@@ -40,7 +15,7 @@ router.get('/emparejar', (req, res) => {
             var rand = Math.floor(Math.random() *resultCount);
              place.findOne().skip(rand).exec(function(err, result) {
               console.log(result.lugar);
-              lugares = result.lugar;
+              lugarcita = result.lugar;
               return;
             });
           });
@@ -52,34 +27,40 @@ router.get('/emparejar', (req, res) => {
     });
 };
 
-var generarCita = async function (idSolicitante, idSolicitado){
+var generarCita = async function (idApplicant, idRequested){
     buscarLugar();
     buscarFecha();
     buscarHora();
     const q = new Date({
-        "idsolicitante": idSolicitante,
-        "idsolicitado": idSolicitado,
-        "place": lugares,
+        "idApplicant": idApplicant,
+        "idRequested": idRequested,
+        "place": lugarcita,
         "date": fecha,
-        "time": hora
+        "time": hora +":00"
      });
     await q.save();
 };
 
-   var buscarFecha = function(){
-    fecha = "25/12/2018";
-    var hoy = new Date();
-    console.log(hoy);
+   var buscarFecha = function()
+   {
 
-};
+   var re = Date(); 
+   var rand = Math.floor(Math.random() * (29- 2)) +2;
+   var fecha = new Date(re);
+      fecha.setDate(rand); 
+    var dia = fecha.toJSON().slice(8,10).replace(/-/g,'/');
+    var mes = new Date().toJSON().slice(4,8).replace(/-/g,'/');
+    var año = new Date().toJSON().slice(0,4).replace(/-/g,'/');
+    return dia + mes +año ;
+   };
+   fecha = buscarFecha();
 
    var buscarHora =function (){
-    hora = "14:00";
-
-    var ho = new Date();
-
-
+   var fechaactual = Date();
+   var fecha = new Date(fechaactual);
+    var rand = Math.floor(Math.random() * (15- 8)) +8;
+     fecha.setHours(rand); 
+     var gethora = fecha.toJSON().slice(11,13);
+     return  gethora;
 };
-
-
-module.exports = router;
+   hora = buscarHora() ;
