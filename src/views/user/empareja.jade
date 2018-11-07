@@ -19,13 +19,14 @@ block content
             | Si deseas entregar tu amor a otra persona, primero debes amarte a ti, buscar en tu coraz&oacute;n lo que deseas recibir
           |           
           div
-            br            
-            if #{pEncontrado} == 1
-                .alert.alert-primary(role='alert')
-                  | Se ha encontrado a la pareja ideal
-            else if #{pEncontrado} == 0
-                .alert.alert-danger(role='alert')
-                  | No se ha encontrado a nadie. Sigue participando
+            br 
+            - var usrEncontrado = !{usuarioEncontrado};
+            if usrEncontrado
+              .alert.alert-primary(role='alert')
+                | Se ha encontrado a la pareja ideal            
+            else 
+               .alert.alert-danger(role='alert')
+                 | No se ha encontrado a nadie. Sigue participanpando            
           |           
           form(action='/emparejar', target='_blank', method='POST')
             button.btn-lg.btn-primary.btnColorE.text-center(align='center', type='submit') Crear Cita &#x2764;

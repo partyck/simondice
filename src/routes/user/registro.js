@@ -36,17 +36,17 @@ function cargarRegistro() {
     console.log(estadoRegistro);
 }
 
-async function existePareja(idUserA, idUserB) {
+async function existePareja(idA, idB) {
     return new Promise(function(resolve, reject) { Match.findOne({
         $or:
             [{$and: [
-                { idUsuarioA : idUserA},
-                { idUsuarioB : idUserB}
+                { idUserA : idA},
+                { idUserB : idB}
               ]
             },
             {$and: [
-                { idUsuarioA : idUserB},
-                { idUsuarioB : idUserA}
+                { idUserA : idB},
+                { idUserB : idA}
               ]
             }]
         }, function(err, pareja) {
@@ -56,12 +56,12 @@ async function existePareja(idUserA, idUserB) {
                 throw err;
             }
             if (pareja == null) {                
-                console.log("No existe la pareja " + idUserA 
-                    + " - " + idUserB);
+                console.log("No existe la pareja " + idA 
+                    + " - " + idB);
                 resolve(false);
             } else {
-                console.log("Existe la pareja " + idUserA 
-                    + " - " + idUserB);
+                console.log("Existe la pareja " + idA 
+                    + " - " + idB);
                 resolve(true);
             }
         }
