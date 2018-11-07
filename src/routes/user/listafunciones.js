@@ -3,10 +3,9 @@ var User = require('../../models/user');
 
 function medicinaOdontologia(solicitante,solicitado) {
     var peso;
-     if(solicitante.getCarrera()==="medicina" || solicitante.getCarrera()==="odontologia"){
-         if(solicitado.getCarrera()==="medicina" || solicitado.getCarrera()==="odontologia" )
+     if(solicitante.course==="Lic. Medicina" || solicitante.course==="Lic. Odontologia"){
+         if(solicitado.course==="Lic. Medicina" || solicitado.course==="Lic. Odontologia" )
          peso = 1;      
-         //semestre.Controlarsemestre(Solicitante,Solicitado);
          else
          peso=0;        
      }
@@ -15,71 +14,77 @@ function medicinaOdontologia(solicitante,solicitado) {
 function sistemasElectronica(solicitante,solicitado){
    var peso;
     
-     if(solicitante.getCarrera()==="sistemas" || solicitante.getCarrera()==="electronica"){
-         if(solicitado.getCarrera()==="sistemas" || solicitado.getCarrera()==="electronica" )
+     if(solicitante.course==="Ing. Sistemas" || solicitante.course==="Ing. Electronica"){
+         if(solicitado.course==="Ing. Sistemas" || solicitado.course==="Ing. Electronica" )
          peso = 1;
          else
          peso=0;
          }
          return peso;
-        }
+}
 function informaticaSistemas(solicitante,solicitado){
   var  peso;
-     if(solicitante.getCarrera()==="informatica" || solicitante.getCarrera()==="sistemas"){
-         if(solicitado.getCarrera()==="informatica" || solicitado.getCarrera()==="sistemas" )
+     if(solicitante.course==="Ing. Informatica" || solicitante.course==="Ing. Sistemas"){
+         if(solicitado.course==="Ing. Informatica" || solicitado.course==="Ing. Sistemas" )
          peso = 1;
          else
          peso=0;
          }
          return peso;
-        }
+}
 function quimicaBiologia(solicitante,solicitado){
     var peso;
-     if(solicitante.getCarrera()==="quimica" || solicitante.getCarrera()==="biologia"){
-         if(solicitado.getCarrera()==="quimica" || solicitado.getCarrera()==="biologia" )
+     if(solicitante.course==="Ing. Quimica" || solicitante.course==="Lic. Biologia"){
+         if(solicitado.course==="Ing. Quimica" || solicitado.course==="Lic. Biologia" )
          peso = 1;
          else
          peso=0;
          }
          return peso;
-        }
+}
 function derechoPsicoligia(solicitante,solicitado){
     var peso=0;
-     if(solicitante.getCarrera()==="derecho" || solicitante.getCarrera()==="psicologia"){
-         if(solicitado.getCarrera()==="derecho" || solicitado.getCarrera()==="psicologia" )
+     if(solicitante.course==="Lic. Derecho" || solicitante.course==="Lic. Psicologia"){
+         if(solicitado.course==="Lic. Derecho" || solicitado.course==="Lic. Psicologia" )
          peso = 1;
          }
          return peso;
-        }
+}
 function arquitecturaCivil(solicitante,solicitado){
     var peso;
-     if(solicitante.getCarrera()==="arquitectura" || solicitante.getCarrera()==="civil"){
-         if(solicitado.getCarrera()==="arquitectura" || solicitado.getCarrera()==="civil" )
+     if(solicitante.course==="Lic. Arquitectura" || solicitante.course==="Ing. Civil"){
+         if(solicitado.course==="Lic. Arquitectura" || solicitado.course==="Ing. Civil" )
          peso = 1;
          else
          peso=0;
          }
          return peso;
-        }
+}
 function contabilidadIndustrial(solicitante,solicitado){
     var peso;
-     if(solicitante.getCarrera()==="contabilidad" || solicitante.getCarrera()==="industrial"){
-         if(solicitado.getCarrera()==="contabilidad" || solicitado.getCarrera()==="industrial" )
+     if(solicitante.course==="Lic. Contabilidad" || solicitante.course==="Ing. Industrial"){
+         if(solicitado.course==="Lic. Contabilidad" || solicitado.course==="Ing. Industrial" )
          peso = 1;
          else
          peso=0;
          }
          return peso;
-        }
-//esta funcion debuelve el peso  cuando el estudiante cumple los requerimientos de la app
-//con las caracteristicas de compatibilidad y las reglas
- function aplicarFunciones(usuarioSolicitante,usuarioSolicitado){
-        
-        var peso = todasLasFuncionesPreferencia(usuarioSolicitante,usuarioSolicitado);
-        peso=peso*todasLasFuncionesRestriccion(usuarioSolicitante,usuarioSolicitado); 
+}
+ async function aplicarFunciones(idUsuarioSolicitante, idUsuarioSolicitado){
+     
+        var usuarioSolicitante = await obtenerUsuario(idUsuarioSolicitante);
+        var usuarioSolicitado = await obtenerUsuario(idUsuarioSolicitado);
+        var peso = 1;
+        peso =+ todasLasFuncionesPreferencia(usuarioSolicitante,usuarioSolicitado);
+        peso = peso*todasLasFuncionesRestriccion(usuarioSolicitante,usuarioSolicitado); 
        
     return peso;    
 }
+
+function obtenerUsuario(userId) {
+  return User.find({id: userId}).exec();
+}
+
 //esta funcion Retorna las preferencias por carrera y devuelve un peso 
 function todasLasFuncionesPreferencia (usuarioSolicitante,usuarioSolicitado){
 var peso=medicinaOdontologia(usuarioSolicitante,usuarioSolicitado)+sistemasElectronica(usuarioSolicitante,usuarioSolicitado)+
@@ -89,14 +94,13 @@ return peso;
 
 function todasLasFuncionesRestriccion(usuarioSolicitante,usuarioSolicitado){
 var peso=rangoEdad(usuarioSolicitante,usuarioSolicitado)*orientacionSexual(usuarioSolicitante,usuarioSolicitado);
-peso=peso*controlarSemestre(usuarioSolicitante,usuarioSolicitado);
 return peso;
 }
 
 function rangoEdad(usuarioSolicitante,usuarioSolicitado){
 var peso =0;
-if((usuarioSolicitante.minAge()<=usuarioSolicitado.getAge())&&(usuarioSolicitante.maxAge()>=usuarioSolicitado.getAge())){
-    if((usuarioSolicitado.minAge()<=usuarioSolicitante.getAge())&&(usuarioSolicitado.maxAge()>= usuarioSolicitante.getAge()))
+if((usuarioSolicitante.minAge<=usuarioSolicitado.getAge())&&(usuarioSolicitante.maxAge>=usuarioSolicitado.getAge())){
+    if((usuarioSolicitado.minAge<=usuarioSolicitante.getAge())&&(usuarioSolicitado.maxAge>= usuarioSolicitante.getAge()))
     peso=1;
 }
 return peso;
@@ -104,27 +108,19 @@ return peso;
 //funcion que controla la orientacion sexual
 function orientacionSexual(usuarioSolicitante,usuarioSolicitado){
     var peso=0
-    if(usuarioSolicitante.getSex()==="masculino" && usuarioSolicitado.getSex()==="Femenino"){        
+    if(usuarioSolicitante.sex==="Masculino" && usuarioSolicitado.sex==="Femenino") {        
         peso=1;}
         else
-        if(usuarioSolicitante.getSex()==="femenino" && usuarioSolicitado.getSex()==="masculino"){
+        if(usuarioSolicitante.sex==="Femenino" && usuarioSolicitado.sex==="Masculino") {
          peso=1;}
             else
-            if(usuarioSolicitante.getSex()==="homosexual",usuarioSolicitado.getSex()==="homosexual"){
+            if(usuarioSolicitante.sex==="Homosexual",usuarioSolicitado.sex==="Homosexual") {
                 peso=1;
             }
 
         return peso;
 }
-function controlarSemestre(solicitante,solicitado){
-    //se esta asumiendo que existira un metodo getSemestre
-    var peso=0;
-    usario1=solicitante.getSemester();
-    usuario2=solicitado.getSemester();
-    if(usuario2>=6 && usuario1>=6){
-        peso= 1;}
-    else {if(usuario2<6 && usuario1<6)
-        peso= 1;
-    }
-        return peso; 
+
+module.exports = {
+    aplicarFunciones: aplicarFunciones,
 }

@@ -1,7 +1,5 @@
 var PriorityQueue = require('./colaprioridad');
-/* var compatibilidad = require('./listafunciones');
-   todos los usos de var compatibilidad estan pendientes
-*/
+ var compatibilidad = require('./listafunciones');
 
 class graph {
   constructor() {
@@ -18,8 +16,7 @@ class graph {
   
   conectar(idUsuarioA, idUsuarioB){
       if (idUsuarioA != idUsuarioB) {
-            var valorCompatibilidad = 5;
-            /*compatibilidad.aplicarFunciones(userID, idOtroUsuario);*/
+            var valorCompatibilidad = compatibilidad.aplicarFunciones(idUsuarioA, idUsuarioB);
             var indiceA = this._obtenerIndicePorIdUsuario(idUsuarioA);
             var indiceB = this._obtenerIndicePorIdUsuario(idUsuarioB);
             this._grafo[indiceA][1].push([idUsuarioB, valorCompatibilidad]);
