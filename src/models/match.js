@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const MatchSchema = Schema({
-  idUsuarioA: Number,
-  idUsuarioB: Number
+  idUserA: Number,
+  idUserB: Number
 }, 
   { collection : 'matches' }
 );

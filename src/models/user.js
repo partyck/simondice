@@ -2,24 +2,26 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = Schema({
-  id: Number,
-  nombre: String,
-  sexo: String,
-  fechaNacimiento: Date,
-  carrera: String,
-  semestre: {
-    type: Number,
-    default: 1
-  }
-}, 
+  id: {type:Number, required:true},
+  name: {type: String, required: false},
+  birthdate: {type: Date, required: false},
+  sex: {type: String, required: false},
+  course: {type: String, required: false},
+  semester: {type: Number, required: false},
+  sexOrientation: {type: String, required: false},
+  minAge: {type: Number, required: false},
+  maxAge: {type: Number, required: false},
+  email: {type: String, unique: true, required: false},
+  password: {type: String, required: false}
+},
   { collection : 'users' }
 );
 
-UserSchema.methods.getNombre = function() {
+UserSchema.methods.getName = function() {
     return this.nombre;
 };
 
-UserSchema.methods.getEdad = function() {
+UserSchema.methods.getAge = function() {
     var fechaactual = (new Date());
     var edad = fechaactual.getYear() - this.fechaNacimiento.getYear();
     const mesDiaActual = fechaactual.getMonth() * 10 + fechaactual.getDate();
