@@ -14,10 +14,15 @@ router.get('/emparejar', (req, res) => {
 router.post('/emparejar', (req, res) => {
     var idUsuarioSolicitado = registroUsuarios.obtenerPareja(4);
     /*User.findOne({
+=======
+    var idUsuarioSolicitado = "";
+    User.findOne({
+>>>>>>> origin/funciones
          where: {id: req.user.id}
        }).then(function(user) {
            idUsuarioSolicitado = registroUsuarios.obtenerPareja(user.id);
         });    
+<<<<<<< HEAD
     */
     console.log("Se emparejo al usuario 4 con " + idUsuarioSolicitado);
         console.log("POST en /emparejar");

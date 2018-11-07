@@ -55,7 +55,7 @@ async function existePareja(idA, idB) {
                     + "findOne() en 'matches'");
                 throw err;
             }
-            if (pareja == null) {                
+            if (pareja == null) {
                 console.log("No existe la pareja " + idA 
                     + " - " + idB);
                 resolve(false);
