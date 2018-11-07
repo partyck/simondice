@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const DateSchema = Schema({
-  idsolicitante: Number,
-  idsolicitado: Number,
+  idApplicant: Number,
+  idRequested: Number,
   place: String,
   date: String,
   time: String,
