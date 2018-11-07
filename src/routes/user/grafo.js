@@ -1,5 +1,5 @@
 var PriorityQueue = require('./colaprioridad');
- var compatibilidad = require('./listafunciones');
+var compatibilidad = require('./listafunciones');
 
 class graph {
   constructor() {

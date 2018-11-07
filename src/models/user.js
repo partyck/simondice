@@ -22,11 +22,11 @@ UserSchema.methods.getName = function() {
 };
 
 UserSchema.methods.getAge = function() {
-    var fechaactual = (new Date());
-    var edad = fechaactual.getYear() - this.fechaNacimiento.getYear();
-    const mesDiaActual = fechaactual.getMonth() * 10 + fechaactual.getDate();
-    const mesDiaUsuario = this.fechaNacimiento.getMonth() * 10
-        + this.fechaNacimiento.getDate();
+    var fechaActualctual = (new Date());
+    var edad = fechaActual.getYear() - this.birthdate.getYear();
+    const mesDiaActual = fechaActual.getMonth() * 10 + birthdate.getDate();
+    const mesDiaUsuario = this.birthdate.getMonth() * 10
+        + this.birthdate.getDate();
     if (mesDiaActual < mesDiaUsuario) {
         edad =- 1;
     }

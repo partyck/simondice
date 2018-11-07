@@ -76,7 +76,7 @@ function contabilidadIndustrial(solicitante,solicitado){
         var usuarioSolicitado = await obtenerUsuario(idUsuarioSolicitado);
         var peso = 1;
         peso =+ todasLasFuncionesPreferencia(usuarioSolicitante,usuarioSolicitado);
-        peso =* todasLasFuncionesRestriccion(usuarioSolicitante,usuarioSolicitado); 
+        peso = peso * todasLasFuncionesRestriccion(usuarioSolicitante,usuarioSolicitado); 
        
     return peso;    
 }
@@ -99,8 +99,11 @@ return peso;
 
 function rangoEdad(usuarioSolicitante,usuarioSolicitado){
 var peso =0;
-if((usuarioSolicitante.minAge<=usuarioSolicitado.getAge())&&(usuarioSolicitante.maxAge>=usuarioSolicitado.getAge())){
-    if((usuarioSolicitado.minAge<=usuarioSolicitante.getAge())&&(usuarioSolicitado.maxAge>= usuarioSolicitante.getAge()))
+console.log(usuarioSolicitado.name);
+console.log(usuarioSolicitante.getAge());
+console.log(usuarioSolicitante.getAge());
+if((usuarioSolicitante.minAge<=usuarioSolicitado.getAge)&&(usuarioSolicitante.maxAge>=usuarioSolicitado.getAge)){
+    if((usuarioSolicitado.minAge<=usuarioSolicitante.getAge)&&(usuarioSolicitado.maxAge>= usuarioSolicitante.getAge))
     peso=1;
 }
 return peso;
@@ -114,7 +117,7 @@ function orientacionSexual(usuarioSolicitante,usuarioSolicitado){
         if(usuarioSolicitante.sex==="Femenino" && usuarioSolicitado.sex==="Masculino") {
          peso=1;}
             else
-            if(usuarioSolicitante.sex==="Homosexual",usuarioSolicitado.sex==="Homosexual") {
+            if(usuarioSolicitante.sex==="Homosexual" && usuarioSolicitado.sex==="Homosexual") {
                 peso=1;
             }
 
