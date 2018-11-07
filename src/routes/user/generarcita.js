@@ -1,19 +1,18 @@
-
-var place = require('../../models/places');
+const Place = require('../../models/places');
 const Date = require('../../models/date');
 var lugarcita;
 var fecha;
 var hora;
  var buscarLugar = function(){     
-     place.find({}, function(err, places) {
+     Place.find({}, function(err, places) {
         if (err) {
             console.log("No se pudo realizar la operacion find()");
             throw err;
         }
        if (places.length > 0) {
-         place.count().exec(function(err, resultCount) {
+         Place.count().exec(function(err, resultCount) {
             var rand = Math.floor(Math.random() *resultCount);
-             place.findOne().skip(rand).exec(function(err, result) {
+             Place.findOne().skip(rand).exec(function(err, result) {
               console.log(result.lugar);
               lugarcita = result.lugar;
               return;
