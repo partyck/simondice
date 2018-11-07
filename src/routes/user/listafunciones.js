@@ -76,7 +76,7 @@ function contabilidadIndustrial(solicitante,solicitado){
         var usuarioSolicitado = await obtenerUsuario(idUsuarioSolicitado);
         var peso = 1;
         peso =+ todasLasFuncionesPreferencia(usuarioSolicitante,usuarioSolicitado);
-        peso = peso*todasLasFuncionesRestriccion(usuarioSolicitante,usuarioSolicitado); 
+        peso =* todasLasFuncionesRestriccion(usuarioSolicitante,usuarioSolicitado); 
        
     return peso;    
 }
