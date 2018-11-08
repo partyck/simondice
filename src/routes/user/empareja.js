@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../../models/user');
+const Match = require('../../models/match');
 const registroUsuarios = require('./registro');
 
 const router = express.Router();
@@ -9,16 +10,23 @@ router.get('/emparejar', (req, res) => {
 });
 
 router.post('/emparejar', (req, res) => {
-    var idUsuarioSolicitado = registroUsuarios.obtenerPareja(4);
-    console.log("Se emparejo al usuario 4 con " + idUsuarioSolicitado);
-        console.log("POST en /emparejar");
-        if (idUsuarioSolicitado != "") {
-            res.render('user/empareja', {usrEncontrado: 1});
-            return;
-        } else {
-            res.render('user/empareja', {usrEncontrado: 0});  
-            return;
-        }
-    });
+    var idUsuarioSolicitante = 4;
+    var idUsuarioSolicitado = registroUsuarios.obtenerPareja(idUsuarioSolicitante);
+    if (idUsuarioSolicitado != "") {
+        console.log("Se emparejo al usuario "
+        + idUsuarioSolicitante + " con " + idUsuarioSolicitado);
+        var pareja = [{idUserA: idUsuarioSolicitante, idUserB: idUsuarioSolicitado}];
+        Match.insertMany(pareja, function(error, doc) {});
+    } else {
+        console.log("No se pudo emparejar al usuario " + idUsuarioSolicitante);
+    }
+    if (idUsuarioSolicitado != "") {
+        res.render('user/empareja', {usrEncontrado: 1});
+        return;
+    } else {
+        res.render('user/empareja', {usrEncontrado: 0});  
+        return;
+    }
+});
 
 module.exports = router;
