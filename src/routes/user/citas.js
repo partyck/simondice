@@ -14,7 +14,7 @@ router.get('/citas', async (req, res) => {
 });
 
 router.get('/generarcita', (req, res) => {
-    generar.generarCita(5, 4).then(date => {
+    generar.generarCita(1, 5).then(date => {
         let result = "resultado: " + date.place + "\n" +
             "fecha: " + date.time;
         console.log(result);
@@ -22,6 +22,24 @@ router.get('/generarcita', (req, res) => {
     }).catch(e => {
         res.send(e)
     });
+});
+
+router.get('/lugares', (req,res) => {
+    let lugares = [{
+        'place': 'Café Bakita'
+    },{
+        'place': 'Trencito'
+    },{
+        'place': 'Jardin de Arquitectura'
+    },{
+        'place': 'Puente de Economia'
+    },{
+        'place': 'Plazuela Sucre'
+    }];
+    lugares.forEach(lugar => {
+        new Place(lugar).save();
+    });
+    res.send(lugares);
 });
 
 router.get('/accept/:id', async (req, res) => {
