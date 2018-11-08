@@ -1,65 +1,52 @@
-const Place = require('../../models/places');
-const Date = require('../../models/date');
-var lugarcita;
-var fecha;
-var hora;
- var buscarLugar = function(){     
-     Place.find({}, function(err, places) {
-        if (err) {
-            console.log("No se pudo realizar la operacion find()");
-            throw err;
-        }
-       if (places.length > 0) {
-         Place.count().exec(function(err, resultCount) {
-            var rand = Math.floor(Math.random() *resultCount);
-             Place.findOne().skip(rand).exec(function(err, result) {
-              console.log(result.lugar);
-              lugarcita = result.lugar;
-              return;
-            });
-          });
-    } else {
-        res.send("no se encontro lugar");
-        return;
+const Place = require('../../models/place');
+const Appointment = require('../../models/appointment');
+
+exports.generarCita = (idApplicant, idRequested) => {
+    return buscarLugar().then(async lugar => {
+        let lugarDate = lugar.getLugar();
+        let fechaDate = buscarHora(buscarFecha());
+        const date = new Appointment({
+            "idApplicant": idApplicant,
+            "idRequested": idRequested,
+            "place": lugarDate,
+            "time": fechaDate,
+        });
+        await date.save();
+        return date;
+    }).then(response => response)
+};
+
+let buscarLugar = function () {
+    return Place.find()
+        .then(places => {
+            if (places.length > 0) {
+                let rand = Math.floor(Math.random() * places.length);
+                return Place.findOne().skip(rand).then(response => response);
+            } else {
+                throw "no hay lugar";
+            }
+        }).then(response => response)
+};
+
+let buscarFecha = function () {
+    let now = new Date();
+    let rand = Math.floor(Math.random() * (7 - 1)) + 1;
+    let date = now.getDate() + rand;
+    now.setDate(date)
+    let day = now.toDateString().slice(0, 3);
+    if (day == "Sun") {
+        date = now.getDate() + 1;
+        now.setDate(date)
     }
-
-    });
+    return now;
 };
 
-var generarCita = async function (idApplicant, idRequested){
-    buscarLugar();
-    buscarFecha();
-    buscarHora();
-    const q = new Date({
-        "idApplicant": idApplicant,
-        "idRequested": idRequested,
-        "place": lugarcita,
-        "date": fecha,
-        "time": hora +":00"
-     });
-    await q.save();
+
+let buscarHora = function (date) {
+    let rand = Math.floor(Math.random() * (20 - 8)) + 8;
+    console.log('nueva hora: ' + rand);
+    date.setHours(rand);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    return date;
 };
-
-   var buscarFecha = function()
-   {
-
-   var re = Date(); 
-   var rand = Math.floor(Math.random() * (29- 2)) +2;
-   var fecha = new Date(re);
-      fecha.setDate(rand); 
-    var dia = fecha.toJSON().slice(8,10).replace(/-/g,'/');
-    var mes = new Date().toJSON().slice(4,8).replace(/-/g,'/');
-    var año = new Date().toJSON().slice(0,4).replace(/-/g,'/');
-    return dia + mes +año ;
-   };
-   fecha = buscarFecha();
-
-   var buscarHora =function (){
-   var fechaactual = Date();
-   var fecha = new Date(fechaactual);
-    var rand = Math.floor(Math.random() * (15- 8)) +8;
-     fecha.setHours(rand); 
-     var gethora = fecha.toJSON().slice(11,13);
-     return  gethora;
-};
-   hora = buscarHora() ;
