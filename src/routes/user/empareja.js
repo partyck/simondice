@@ -5,18 +5,11 @@ const registroUsuarios = require('./registro');
 const router = express.Router();
 
 router.get('/emparejar', (req, res) => {
-   /* console.log(registroUsuarios.obtenerEstado());
-    console.log("Se emparejo al usuario 4 con "
-        + registroUsuarios.obtenerPareja(4));*/
     res.render('user/empareja', { title: 'Simon dice: Emparejate'}); 
 });
 
 router.post('/emparejar', (req, res) => {
     var idUsuarioSolicitado = registroUsuarios.obtenerPareja(4);
-    /*User.findOne({
-    var idUsuarioSolicitado = "";
-    User.findOne({
-    */
     console.log("Se emparejo al usuario 4 con " + idUsuarioSolicitado);
         console.log("POST en /emparejar");
         if (idUsuarioSolicitado != "") {

@@ -72,8 +72,8 @@ function contabilidadIndustrial(solicitante,solicitado){
 }
  async function aplicarFunciones(idUsuarioSolicitante, idUsuarioSolicitado){
      
-        var usuarioSolicitante = await obtenerUsuario(idUsuarioSolicitante);
-        var usuarioSolicitado = await obtenerUsuario(idUsuarioSolicitado);
+        var usuarioSolicitante = (await obtenerUsuario(idUsuarioSolicitante))[0];
+        var usuarioSolicitado = (await obtenerUsuario(idUsuarioSolicitado))[0];
         var peso = 1;
         peso =+ todasLasFuncionesPreferencia(usuarioSolicitante,usuarioSolicitado);
         peso = peso * todasLasFuncionesRestriccion(usuarioSolicitante,usuarioSolicitado); 
@@ -99,11 +99,8 @@ return peso;
 
 function rangoEdad(usuarioSolicitante,usuarioSolicitado){
 var peso =0;
-console.log(usuarioSolicitado.name);
-console.log(usuarioSolicitante.getAge());
-console.log(usuarioSolicitante.getAge());
-if((usuarioSolicitante.minAge<=usuarioSolicitado.getAge)&&(usuarioSolicitante.maxAge>=usuarioSolicitado.getAge)){
-    if((usuarioSolicitado.minAge<=usuarioSolicitante.getAge)&&(usuarioSolicitado.maxAge>= usuarioSolicitante.getAge))
+if((usuarioSolicitante.minAge<=usuarioSolicitado.getAge())&&(usuarioSolicitante.maxAge>=usuarioSolicitado.getAge())){
+    if((usuarioSolicitado.minAge<=usuarioSolicitante.getAge())&&(usuarioSolicitado.maxAge>= usuarioSolicitante.getAge()))
     peso=1;
 }
 return peso;
