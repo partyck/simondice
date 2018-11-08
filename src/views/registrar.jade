@@ -16,9 +16,6 @@ block content
           |           
           br
           | 
-          -if (estado)
-          .alert.alert-error(role='alert')
-              | Se ha encontrado a la pareja ideal
           form.needs-validation(novalidate='', action='/user',method='POST', enctype='multipart/form-data')
             input(type='hidden', name='_token', value='{{ csrf_token() }}')
             |             
