@@ -14,7 +14,7 @@ router.get('/citas', async (req, res) => {
 });
 
 router.get('/generarcita', (req, res) => {
-    generar.generarCita(5,4).then(date => {
+    generar.generarCita(5, 4).then(date => {
         let result = "resultado: " + date.place + "\n" +
             "fecha: " + date.time;
         console.log(result);
@@ -33,12 +33,15 @@ router.get('/accept/:id', async (req, res) => {
         } else {
             date.status1 = "accept";
         }
-        // date.status1 = "accept";
         await date.save();
         res.redirect('/citas');
     });
 });
 
-
+router.get('/refuse/:id', async (req, res) => {
+    let { id } = req.params;
+    await Appointment.remove({ _id: id });
+    res.redirect('/citas');
+});
 
 module.exports = router;
