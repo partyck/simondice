@@ -12,14 +12,19 @@ block content
           |           
           hr
           |         
-          each cita in dates  
+          each cita, index in dates  
             #accordion  
               .card
-                #headingOne.card-header
-                  h5.mb-0
-                    button.btn.btn-link.btnCita(data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne') Ver Cita
+                if cita.status1 == 'accept' && cita.status2 == 'accept'
+                  #headingOne.card-header(style='background: green')
+                    h5.mb-0
+                      button.btn.btn-link.btnCita(data-toggle='collapse', data-target='#collapse' + index, aria-expanded='true', aria-controls='collapse' + index) Ver Cita
+                else
+                  #headingOne.card-header
+                    h5.mb-0
+                      button.btn.btn-link.btnCita(data-toggle='collapse', data-target='#collapse' + index, aria-expanded='true', aria-controls='collapse' + index) Ver Cita
                 |                 
-                #collapseOne.collapse.show(aria-labelledby='headingOne', data-parent='#accordion')
+                .collapse.show(aria-labelledby='headingOne', data-parent='#accordion', id='collapse' + index)
                   .card-body
                     form(action='')
                       .row
@@ -31,14 +36,14 @@ block content
                         .col-6
                           label.txtColor(for='staticHora') Hora:
                           |                           
-                          input#staticHora.form-control(type='time', value=cita.time, disabled='')
+                          input#staticHora.form-control(type='time', value=cita.time.getHours()+':00', disabled='')
                           |                           
                           label.txtColor(for='staticFecha') Fecha:
                           |                           
-                          input#staticFecha.form-control(type='date', value=cita.date, disabled='')
+                          input#staticFecha.form-control(type='date', value=cita.time.toDateString(), disabled='')
                       |                       
                       .container-fluid.divBtnPadding
-                        button.btn.btn-primary.btnColorR(type='button' href='/accept/'+cita.id) Aceptar
+                        a.btn.btn-primary.btnColorR( href='/accept/'+cita.id) Aceptar
                         |                           
                         button.btn.btn-primary.btnColorR(type='button') Rechazar
                         |                           

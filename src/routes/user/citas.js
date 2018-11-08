@@ -6,7 +6,7 @@ const router = express.Router();
 const generar = require('./generarcita');
 
 router.get('/citas', async (req, res) => {
-    var dates = await Date.find();
+    var dates = await Appointment.find();
     console.log(dates);
     res.render('user/citas', {
         dates
@@ -14,7 +14,7 @@ router.get('/citas', async (req, res) => {
 });
 
 router.get('/generarcita', (req, res) => {
-    generar.generarCita().then(date => {
+    generar.generarCita(5,4).then(date => {
         let result = "resultado: " + date.place + "\n" +
             "fecha: " + date.time;
         console.log(result);
@@ -26,16 +26,17 @@ router.get('/generarcita', (req, res) => {
 
 router.get('/accept/:id', async (req, res) => {
     let { id } = req.params;
-    const date = await Appointment.findById(id);
-    console.log(date);
-    if (date.state1 == "accept") {
-        date.state2 = "accept";
-    } else {
-        date.state1 = "accept";
-    }
-    date.state1 = "accept";
-    await date.save();
-    res.redirect('/citas');
+    await Appointment.findById(id).then(async date => {
+        console.log(date);
+        if (date.status1 == "accept") {
+            date.status2 = "accept";
+        } else {
+            date.status1 = "accept";
+        }
+        // date.status1 = "accept";
+        await date.save();
+        res.redirect('/citas');
+    });
 });
 
 
