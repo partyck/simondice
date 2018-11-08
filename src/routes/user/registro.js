@@ -25,8 +25,6 @@ async function cargarRegistro() {
                     if (!existePar) {
                         await grafoUsuarios.conectar(users[usuarioI].id,
                             users[usuarioJ].id);
-                        console.log("Se conecto: " + users[usuarioI].id + " con "
-                            + users[usuarioJ].id);
                     }
                 }
             }

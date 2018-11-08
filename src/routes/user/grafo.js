@@ -17,11 +17,18 @@ class graph {
   async conectar(idUsuarioA, idUsuarioB){
       if (idUsuarioA != idUsuarioB) {
             var valorCompatibilidad = await compatibilidad.aplicarFunciones(idUsuarioA, idUsuarioB);
-            console.log("Valor de compatibilidad: " + valorCompatibilidad)
-            var indiceA = this._obtenerIndicePorIdUsuario(idUsuarioA);
-            var indiceB = this._obtenerIndicePorIdUsuario(idUsuarioB);
-            this._grafo[indiceA][1].push([idUsuarioB, valorCompatibilidad]);
-            this._grafo[indiceB][1].push([idUsuarioA, valorCompatibilidad]);            
+            console.log("Valor de compatibilidad: " + valorCompatibilidad);
+            if (valorCompatibilidad > 0) {                
+                var indiceA = this._obtenerIndicePorIdUsuario(idUsuarioA);
+                var indiceB = this._obtenerIndicePorIdUsuario(idUsuarioB);
+                this._grafo[indiceA][1].push([idUsuarioB, valorCompatibilidad]);
+                this._grafo[indiceB][1].push([idUsuarioA, valorCompatibilidad]); 
+                console.log("Se conecto: " + idUsuarioA + " con "
+                    + idUsuarioB);                
+            } else {
+                console.log("No se conecto: " + idUsuarioA + " con "
+                            + idUsuarioB);
+            }
         }
   }
   
