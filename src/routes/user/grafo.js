@@ -17,7 +17,7 @@ class graph {
   async conectar(idUsuarioA, idUsuarioB){
       if (idUsuarioA != idUsuarioB) {
             var valorCompatibilidad = await compatibilidad.aplicarFunciones(idUsuarioA, idUsuarioB);
-            console.log(valorCompatibilidad)
+            console.log("Valor de compatibilidad: " + valorCompatibilidad)
             var indiceA = this._obtenerIndicePorIdUsuario(idUsuarioA);
             var indiceB = this._obtenerIndicePorIdUsuario(idUsuarioB);
             this._grafo[indiceA][1].push([idUsuarioB, valorCompatibilidad]);
