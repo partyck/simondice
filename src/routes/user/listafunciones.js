@@ -110,20 +110,40 @@ if((usuarioSolicitante.minAge<=usuarioSolicitado.getAge())&&(usuarioSolicitante.
 }
 return peso;
 }
-//funcion que controla la orientacion sexual
 function orientacionSexual(usuarioSolicitante,usuarioSolicitado){
-    var peso=0
-    if(usuarioSolicitante.sex==="Masculino" && usuarioSolicitado.sex==="Femenino") {        
-        peso=1;}
-        else
-        if(usuarioSolicitante.sex==="Femenino" && usuarioSolicitado.sex==="Masculino") {
-         peso=1;}
-            else
-            if(usuarioSolicitante.sex==="Homosexual" && usuarioSolicitado.sex==="Homosexual") {
-                peso=1;
-            }
-
-        return peso;
+    var peso=0;
+    var preferenciaSolicitante=usuarioSolicitante.sexOrientation;
+    var preferenciaSolicitado=usuarioSolicitado.sexOrientation;
+    switch(preferenciaSolicitante){
+        case 'Heterosexual':
+        if(preferenciaSolicitado==="Heterosexual"||preferenciaSolicitado==="Bisexual"){
+                if(usuarioSolicitante.sex==="Masculino" && usuarioSolicitado.sex==="Femenino") {        
+                    peso=1;}
+                    else
+                    if(usuarioSolicitante.sex==="Femenino" && usuarioSolicitado.sex==="Masculino") {
+                    peso=1;}
+        }
+        break;
+        
+        case 'Homosexual':
+        if(preferenciaSolicitado==="Homosexual"||preferenciaSolicitado==="Bisexual"){
+                if(usuarioSolicitante.sex==="Masculino" && usuarioSolicitado.sex==="Masculino") {        
+                 peso=1;}
+                 else
+                 if(usuarioSolicitante.sex==="Femenino" && usuarioSolicitado.sex==="Femenino") {
+                     peso=1;}
+        }
+        break;
+        case 'Bisexual':
+        if(preferenciaSolicitado==="Bisexual"||preferenciaSolicitado==="Homosexual"||preferenciaSolicitado==="heterosexual"){
+                if(usuarioSolicitante.sex==="Masculino" && (usuarioSolicitado.sex==="Femenino"||usuarioSolicitado.sex==="Masculino")){
+                peso=1;}
+                else
+                if(usuarioSolicitante.sex==="Femenino" && (usuarioSolicitado.sex==="Femenino"||usuarioSolicitado.sex==="Masculino")){
+                    peso=1;}
+        }
+    }
+    return peso;    
 }
 
 module.exports = {

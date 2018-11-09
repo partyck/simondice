@@ -23,10 +23,12 @@ block content
             p
             if usrEncontrado == 1
               .alert.alert-success(role='alert')
-                | Se ha encontrado a la pareja ideal.   
+                | Te confirmamos que hemos encontrado al usuario mas ideal para t&iacute;.
             else if usrEncontrado == 0
                .alert.alert-dark(role='alert')
                  | No se ha encontrado a nadie. Sigue participando.
-          |           
-          form(action='/emparejar', target='_blank', method='POST')
-            button.btn-lg.btn-primary.btnColorE.text-center(align='center', type='submit') Encontrar Pareja &#x2764;
+            else
+                form(action='/emparejar', target='_blank', method='POST')
+                    button.btn-lg.btn-primary.btnColorE.text-center(align='center', type='submit') Encontrar Pareja &#x2764;
+   
+          
