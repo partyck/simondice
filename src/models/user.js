@@ -1,8 +1,15 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
+const AutoIncrement = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
 
+AutoIncrement.initialize(mongoose);
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
 const UserSchema = Schema({
-  id: {type:Number, required:true},
+  id: {type: Number},
   name: {type: String, required: false},
   birthdate: {type: Date, required: false},
   sex: {type: String, required: false},
@@ -32,6 +39,9 @@ UserSchema.methods.getAge = function() {
     }
     return edad;
 };
+
+UserSchema.plugin(uniqueValidator);
+UserSchema.plugin(AutoIncrement.plugin, {model: 'user', field: 'id'});
 
 var User = mongoose.model("User", UserSchema);
 module.exports = User;
