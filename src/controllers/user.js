@@ -17,12 +17,20 @@ exports.create = function(req, res){
     res.render('registrar');
 };
 exports.store = function(req, res){
+    var tipo = req.body.tipo_date;
+    var año;
+    if(tipo == "Anual"){
+        año = (req.body.semester) * 2;
+    }else{
+        año = req.body.semester;
+    }
+
     const user = new User({
         name: req.body.name,
-        birthday: req.body.birthday,
+        birthdate: req.body.birthday,
         sex: req.body.sex,
         course: req.body.course,
-        semester: req.body.semester,
+        semester: año,
         sexOrientation: req.body.sexOrientation,
         minAge: req.body.minAge,
         maxAge: req.body.maxAge,
@@ -32,9 +40,9 @@ exports.store = function(req, res){
     user.save(function(err){
         if(err){
             console.log(err);
-            res.render('registrar',{estado:true});
+            res.render('registrar',{estado:0});
         }else{ 
-            res.render('home');
+            res.render('home',{estado:1});
         }
      });
 };
