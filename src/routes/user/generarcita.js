@@ -38,6 +38,7 @@ let buscarFecha = function () {
         date = now.getDate() + 1;
         now.setDate(date)
     }
+    console.log('fecha: '+now);
     return now;
 };
 

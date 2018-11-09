@@ -36,11 +36,11 @@ block content
                         .col-6
                           label.txtColor(for='staticHora') Hora:
                           |                           
-                          input#staticHora.form-control(type='time', value=cita.time.getHours()+':00', disabled='')
+                          input#staticHora.form-control(type='time', value=cita.time.toISOString().slice(11,16),  disabled='')
                           |                           
                           label.txtColor(for='staticFecha') Fecha:
                           |                           
-                          input#staticFecha.form-control(type='date', value=cita.time.toDateString(), disabled='')
+                          input#staticFecha.form-control(type='date', value=cita.time.toISOString().slice(0, 10), disabled='')
                       |                       
                       .container-fluid.divBtnPadding
                         a.btn.btn-primary.btnColorR( href='/accept/'+cita.id) Aceptar
