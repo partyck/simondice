@@ -11,36 +11,42 @@ block content
           h3(align='center') Mis Citas &#x2764;
           |           
           hr
-          |           
-          #accordion
-            .card
-              #headingOne.card-header
-                h5.mb-0
-                  button.btn.btn-link.btnCita(data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne') Ver Cita
-              |                 
-              #collapseOne.collapse.show(aria-labelledby='headingOne', data-parent='#accordion')
-                .card-body
-                  form(action='')
-                    .row
-                      .col-6
-                        label.txtColor(for='staticLugar') Lugar:
+          |         
+          each cita, index in dates  
+            #accordion  
+              .card
+                if cita.status1 == 'accept' && cita.status2 == 'accept'
+                  #headingOne.card-header(style='background: #00ff80')
+                    h5.mb-0
+                      button.btn.btn-link.btnCita(data-toggle='collapse', data-target='#collapse' + index, aria-expanded='true', aria-controls='collapse' + index) Ver Cita
+                else
+                  #headingOne.card-header
+                    h5.mb-0
+                      button.btn.btn-link.btnCita(data-toggle='collapse', data-target='#collapse' + index, aria-expanded='true', aria-controls='collapse' + index) Ver Cita
+                |                 
+                .collapse.show(aria-labelledby='headingOne', data-parent='#accordion', id='collapse' + index)
+                  .card-body
+                    form(action='')
+                      .row
+                        .col-6
+                          label.txtColor(for='staticLugar') Lugar: 
+                          |                           
+                          input#staticLugar.form-control-plaintext(type='text', readonly='', value=cita.place)
+                        |                         
+                        .col-6
+                          label.txtColor(for='staticHora') Hora:
+                          |                           
+                          input#staticHora.form-control(type='time', value=cita.time.toISOString().slice(11,16),  disabled='')
+                          |                           
+                          label.txtColor(for='staticFecha') Fecha:
+                          |                           
+                          input#staticFecha.form-control(type='date', value=cita.time.toISOString().slice(0, 10), disabled='')
+                      |                       
+                      .container-fluid.divBtnPadding
+                        a.btn.btn-primary.btnColorR( href='/accept/'+cita.id) Aceptar
                         |                           
-                        input#staticLugar.form-control-plaintext(type='text', readonly='', value='poner Lugar')
-                      |                         
-                      .col-6
-                        label.txtColor(for='staticHora') Hora:
+                        a.btn.btn-primary.btnColorR(href='/refuse/'+cita.id) Rechazar
                         |                           
-                        input#staticHora.form-control(type='time', value='15:45:00', disabled='')
-                        |                           
-                        label.txtColor(for='staticFecha') Fecha:
-                        |                           
-                        input#staticFecha.form-control(type='date', value='2018-11-9', disabled='')
-                    |                       
-                    .container-fluid.divBtnPadding
-                      button.btn.btn-primary.btnColorR(type='button') Aceptar
-                      |                           
-                      button.btn.btn-primary.btnColorR(type='button') Rechazar
-                      |                           
-                      button.btn.btn-primary.btnColorR(type='button') Modificar
+                        button.btn.btn-primary.btnColorR(type='button') Modificar
         |         
         .col-3

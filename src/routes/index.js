@@ -1,7 +1,8 @@
-const express = require('express');
+const router = require('express').Router();
+const rutaEmpareja = require('./user/empareja');
+const rutaCitas = require('./user/citas');
 const User = require ('../models/user');
 const UserController = require('../controllers/user');
-const router = express.Router();
 
 router.get('/', (req, res) => {
     res.render('home', { title: 'Simón Dice'}); 
@@ -18,10 +19,7 @@ router.get('/user/:id', UserController.show);
 router.get('/user/:id/edit', UserController.edit);
 router.put('/user/:id', UserController.update);
 router.delete('/user/:id', UserController.destroy);
-
-
-var rutaEmpareja = require('./user/empareja');
-
 router.use('/', rutaEmpareja);
+router.use('/', rutaCitas);
 
 module.exports = router;    
