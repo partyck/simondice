@@ -71,4 +71,5 @@ module.exports = {
     iniciarRegistro: cargarRegistro,
     obtenerEstado: () => estadoRegistro,
     obtenerPareja: (idUsuario) => grafoUsuarios.obtenerPareja(idUsuario),
+    insertarIdUsuario: (idUsuario) => grafoUsuarios.insertarElemento(idUsuario),
 }

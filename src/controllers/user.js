@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const registroUsuarios = require('../routes/user/registro');
 /*exports.setModel = function(modelo){
     User = modelo;
 };*/
@@ -43,6 +44,7 @@ exports.store = function(req, res){
             res.render('registrar',{estado:0});
         }else{ 
             res.render('home',{estado:1});
+            registroUsuarios.insertarIdUsuario(user.id);
         }
      });
 };

@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../../models/user');
 const Match = require('../../models/match');
 const registroUsuarios = require('./registro');
+const generar = require('./generarcita');
 
 const router = express.Router();
 
@@ -17,6 +18,7 @@ router.post('/emparejar', (req, res) => {
         + idUsuarioSolicitante + " con " + idUsuarioSolicitado);
         var pareja = [{idUserA: idUsuarioSolicitante, idUserB: idUsuarioSolicitado}];
         Match.insertMany(pareja, function(error, doc) {});
+        generar.generarCita(idUsuarioSolicitante, idUsuarioSolicitado);
     } else {
         console.log("No se pudo emparejar al usuario " + idUsuarioSolicitante);
     }
