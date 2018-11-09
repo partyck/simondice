@@ -22,8 +22,8 @@ app.set('view engine', 'jade');
 //middleware
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(__dirname + '/public'));
+app.use(express.urlencoded({extended:false}));
 //routes
 app.use('/',indexRoutes);
 
