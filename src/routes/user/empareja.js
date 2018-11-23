@@ -10,9 +10,13 @@ router.get('/emparejar', (req, res) => {
     res.render('user/empareja', {usrEncontrado: -1}); 
 });
 
-router.post('/emparejar', (req, res) => {
+router.post('/emparejar', async (req, res) => {
     var idUsuarioSolicitante = 4;
     var idUsuarioSolicitado = registroUsuarios.obtenerPareja(idUsuarioSolicitante);
+    var encuentra = await registroUsuarios.existePareja(idUsuarioSolicitante, idUsuarioSolicitado);
+    if (encuentra){
+        idUsuarioSolicitado = "";
+    }
     if (idUsuarioSolicitado != "") {
         console.log("Se emparejo al usuario "
         + idUsuarioSolicitante + " con " + idUsuarioSolicitado);

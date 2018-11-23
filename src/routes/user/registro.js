@@ -72,4 +72,5 @@ module.exports = {
     obtenerEstado: () => estadoRegistro,
     obtenerPareja: (idUsuario) => grafoUsuarios.obtenerPareja(idUsuario),
     insertarIdUsuario: (idUsuario) => grafoUsuarios.insertarElemento(idUsuario),
+    existePareja : (idA, idB) => existePareja(idA, idB),
 }

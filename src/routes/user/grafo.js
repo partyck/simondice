@@ -42,6 +42,7 @@ class graph {
           var parUsusarioValor = colaLocal.pop();
           if (parUsusarioValor[1] > 0) {
               idUsuarioSolicitado = parUsusarioValor[0];
+              encontrado = true;
           }
       }
       return idUsuarioSolicitado;
