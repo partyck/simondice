@@ -45,7 +45,7 @@ function quimicaBiologia(solicitante,solicitado){
          return peso;
 }
   function derechoPsicoligia(solicitante,solicitado){
-    //var peso=0;
+    var peso=0;
      if(solicitante.course==="Lic. Derecho" || solicitante.course==="Lic. Psicologia"){
          if(solicitado.course==="Lic. Derecho" || solicitado.course==="Lic. Psicologia" )
          peso = 1;
