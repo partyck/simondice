@@ -6,7 +6,7 @@ const Grafo = require('./grafo');
 var grafoUsuarios = new Grafo();
 var estadoRegistro = "Registro sin iniciar";
 
-function cargarRegistro() {
+async function cargarRegistro() {
     console.log(estadoRegistro);
     User.find({}, async function(err, users) {
         if (err) {
@@ -23,10 +23,8 @@ function cargarRegistro() {
                     var existePar = await existePareja(users[usuarioI].id,
                             users[usuarioJ].id); 
                     if (!existePar) {
-                        grafoUsuarios.conectar(users[usuarioI].id,
+                        await grafoUsuarios.conectar(users[usuarioI].id,
                             users[usuarioJ].id);
-                        console.log("Se conecto: " + users[usuarioI].id + " con "
-                            + users[usuarioJ].id);
                     }
                 }
             }

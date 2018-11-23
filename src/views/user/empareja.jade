@@ -16,17 +16,19 @@ block content
           hr
           |           
           h5
-            | Si deseas entregar tu amor a otra persona, primero debes amarte a ti, buscar en tu coraz&oacute;n lo que deseas recibir
+            | Si deseas entregar tu amor a otra persona, primero debes amarte, buscar en tu coraz&oacute;n lo que deseas recibir.
           |           
           div
             br 
-            - var usrEncontrado = !{usuarioEncontrado};
-            if usrEncontrado
-              .alert.alert-primary(role='alert')
-                | Se ha encontrado a la pareja ideal            
-            else 
-               .alert.alert-danger(role='alert')
-                 | No se ha encontrado a nadie. Sigue participanpando
-          |           
-          form(action='/emparejar', target='_blank', method='POST')
-            button.btn-lg.btn-primary.btnColorE.text-center(align='center', type='submit') Crear Cita &#x2764;
+            p
+            if usrEncontrado == 1
+              .alert.alert-success(role='alert')
+                | Te confirmamos que hemos encontrado al usuario mas ideal para t&iacute;.
+            else if usrEncontrado == 0
+               .alert.alert-dark(role='alert')
+                 | No se ha encontrado a nadie. Sigue participando.
+            else
+                form(action='/emparejar', target='_blank', method='POST')
+                    button.btn-lg.btn-primary.btnColorE.text-center(align='center', type='submit') Encontrar Pareja &#x2764;
+   
+          
