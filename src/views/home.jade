@@ -2,27 +2,36 @@ extends ./layout
 
 block content
     #carouselExample4.carousel.slide(data-ride='carousel')
-      .carousel-inner
-        .carousel-item.active
+      .carousel-inner(id='carousel')
+        .carousel-item.active.imgR
           img.d-block.w-100.responsive.img-fluid(src='../images/carousel/foto6.jpeg', alt='First slide', height='570')
           |             
           .carousel-caption.d-none.d-md-block
-            button.btn.btn-primary.btnColorR(type='button') REG&Iacute;STRATE
-            |               
-            button.btn.btn-outline-primary.btnColorIS(type='button') INICIA SESI&Oacute;N
+            if estado == 1
+              .alert.alert-primary(role='alert')
+                | Te has registrado con exito!
+            form.needs-validation(novalidate='', action='/user/create', method='GET', enctype='multipart/form-data')
+              input(type='hidden', name='_token', value='{{ csrf_token() }}')
+              button.btn.btn-primary.btnColorR(type='submit') REG&Iacute;STRATE
+              |               
+              button.btn.btn-outline-primary.btnColorIS(type='button') INICIA SESI&Oacute;N
         |           
-        .carousel-item
+        .carousel-item.imgR
           img.d-block.w-100.responsive.img-fluid(src='../images/carousel/foto3.jpeg', alt='Second slide', height='570')
           |             
           .carousel-caption.d-none.d-md-block
-            button.btn.btn-primary.btnColorR(type='button') REG&Iacute;STRATE
-            |               
-            button.btn.btn-outline-primary.btnColorIS(type='button') INICIA SESI&Oacute;N
+            form.needs-validation(novalidate='', action='/user/create', method='GET', enctype='multipart/form-data')
+              input(type='hidden', name='_token', value='{{ csrf_token() }}')
+              button.btn.btn-primary.btnColorR(type='submit') REG&Iacute;STRATE
+              |               
+              button.btn.btn-outline-primary.btnColorIS(type='button') INICIA SESI&Oacute;N
         |           
-        .carousel-item
+        .carousel-item.imgR
           img.d-block.w-100.responsive.img-fluid(src='../images/carousel//foto1.jpg', alt='Third slide', height='570')
           |             
           .carousel-caption.d-none.d-md-block
-            button.btn.btn-primary.btnColorR(type='button') REG&Iacute;STRATE
-            |               
-            button.btn.btn-outline-primary.btnColorIS(type='button') INICIA SESI&Oacute;N
+            form.needs-validation(novalidate='', action='/user/create', method='GET', enctype='multipart/form-data')
+              input(type='hidden', name='_token', value='{{ csrf_token() }}')
+              button.btn.btn-primary.btnColorR(type='submit') REG&Iacute;STRATE
+              |               
+              button.btn.btn-outline-primary.btnColorIS(type='button') INICIA SESI&Oacute;N
