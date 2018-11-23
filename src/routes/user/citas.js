@@ -1,8 +1,6 @@
 const express = require('express');
 const Appointment = require('../../models/appointment');
-const Place = require('../../models/place');
 const router = express.Router();
-const generar = require('./generarcita');
 
 router.get('/citas', async (req, res) => {
     // let userId = req.user._id;
@@ -20,13 +18,15 @@ router.get('/citas', async (req, res) => {
 });
 
 router.get('/accept/:id', async (req, res) => {
+    // let userId = req.user._id;
+    let userId = '2';
     let { id } = req.params;
     await Appointment.findById(id).then(async date => {
-        console.log(date);
-        if (date.status1 == "accept") {
-            date.status2 = "accept";
-        } else {
+        if (userId == date.idApplicant){
             date.status1 = "accept";
+        }
+        if(userId == date.idRequested){
+            date.status2 = "accept";
         }
         await date.save();
         res.redirect('/citas');
