@@ -42,7 +42,6 @@ let buscarFecha = function () {
     return now;
 };
 
-
 let buscarHora = function (date) {
     let rand = Math.floor(Math.random() * (20 - 8)) + 8;
     console.log('nueva hora: ' + rand);
