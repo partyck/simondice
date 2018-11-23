@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
@@ -22,13 +24,14 @@ app.set('view engine', 'jade');
 
 //middleware
 app.use(logger('dev'));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({extended:false}));
 //routes
 app.use('/',indexRoutes);
-app.use(express.cookieParser());
-app.use(express.session({secret: 'abcd1234'}));
+//app.use(express.cookieParser());
+//app.use(express.session({secret: 'abcd1234'}));
 
 //starting the server
 app.listen(app.get('port'), () => {
