@@ -7,12 +7,12 @@ const AppointmentSchema = Schema({
   place: String,
   time: Date,
   status1: {
-    type: String,
-    default: "null"
+  type: String,
+  default: "null"
   },
   status2: {
-    type: String,
-    default: "null"
+  type: String,
+  default: "null"
   }
 } );
 

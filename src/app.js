@@ -9,7 +9,7 @@ const app = express();
 
 //connection to db
 mongoose.connect('mongodb://localhost:27017/simondicedb',
-        { useNewUrlParser: true })
+    { useNewUrlParser: true })
   .then(db => console.log('db connected'))
   .catch(err => console.log(err));
 
@@ -32,5 +32,5 @@ app.use('/',indexRoutes);
 
 //starting the server
 app.listen(app.get('port'), () => {
-    console.log('server on port ', app.get('port')); 
+  console.log('server on port ', app.get('port')); 
 });

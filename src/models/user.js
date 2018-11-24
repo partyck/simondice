@@ -25,19 +25,19 @@ const UserSchema = Schema({
 );
 
 UserSchema.methods.getName = function() {
-    return this.nombre;
+  return this.nombre;
 };
 
 UserSchema.methods.getAge = function() {
-    var fechaActual = (new Date());
-    var edad = fechaActual.getYear() - this.birthdate.getYear();
-    const mesDiaActual = fechaActual.getMonth() * 10 + this.birthdate.getDate();
-    const mesDiaUsuario = this.birthdate.getMonth() * 10
-        + this.birthdate.getDate();
-    if (mesDiaActual < mesDiaUsuario) {
-        edad =- 1;
-    }
-    return edad;
+  var fechaActual = (new Date());
+  var edad = fechaActual.getYear() - this.birthdate.getYear();
+  const mesDiaActual = fechaActual.getMonth() * 10 + this.birthdate.getDate();
+  const mesDiaUsuario = this.birthdate.getMonth() * 10
+    + this.birthdate.getDate();
+  if (mesDiaActual < mesDiaUsuario) {
+    edad =- 1;
+  }
+  return edad;
 };
 
 UserSchema.plugin(uniqueValidator);
