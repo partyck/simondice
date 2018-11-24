@@ -3,26 +3,26 @@ const registroUsuarios = require('../routes/user/registro');
 /*exports.setModel = function(modelo){
   User = modelo;
 };*/
-exports.index = function(req, res){
-  User.find({}, function(error, users){
-    if(error){
-       res.send('Ha surgido un error.');
-    }else{
-       res.render('user/empareja', {
-  users: users
-       });
+exports.index = function (req, res) {
+  User.find({}, function (error, users) {
+    if (error) {
+      res.send('Ha surgido un error.');
+    } else {
+      res.render('user/empareja', {
+        users: users
+      });
     }
-   })
+  })
 };
-exports.create = function(req, res){
+exports.create = function (req, res) {
   res.render('registrar');
 };
-exports.store = function(req, res){
+exports.store = function (req, res) {
   var tipo = req.body.tipo_date;
   var año;
-  if(tipo == "Anual"){
+  if (tipo == "Anual") {
     año = (req.body.semester) * 2;
-  }else{
+  } else {
     año = req.body.semester;
   }
 
@@ -38,25 +38,25 @@ exports.store = function(req, res){
     email: req.body.email,
     password: req.body.password
   });
-  user.save(function(err){
-    if(err){
+  user.save(function (err) {
+    if (err) {
       console.log(err);
-      res.render('registrar',{estado:0});
-    }else{ 
-      res.render('home',{estado:1});
+      res.render('registrar', { estado: 0 });
+    } else {
+      res.render('home', { estado: 1 });
       registroUsuarios.insertarIdUsuario(user.id);
     }
-   });
+  });
 };
-exports.show = function(req, res){
-   //
+exports.show = function (req, res) {
+  //
 };
-exports.edit = function(req, res){
-   //
+exports.edit = function (req, res) {
+  //
 };
-exports.update = function(req, res){
-   //
+exports.update = function (req, res) {
+  //
 };
-exports.destroy = function(req, res){
-   //
+exports.destroy = function (req, res) {
+  //
 };

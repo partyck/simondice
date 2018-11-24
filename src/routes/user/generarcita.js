@@ -20,10 +20,10 @@ let buscarLugar = function () {
   return Place.find()
     .then(places => {
       if (places.length > 0) {
-  let rand = Math.floor(Math.random() * places.length);
-  return Place.findOne().skip(rand).then(response => response);
+        let rand = Math.floor(Math.random() * places.length);
+        return Place.findOne().skip(rand).then(response => response);
       } else {
-  throw "no hay lugar";
+        throw "no hay lugar";
       }
     }).then(response => response)
 };
@@ -38,7 +38,7 @@ let buscarFecha = function () {
     date = now.getDate() + 1;
     now.setDate(date)
   }
-  console.log('fecha: '+now);
+  console.log('fecha: ' + now);
   return now;
 };
 

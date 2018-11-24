@@ -24,16 +24,16 @@ router.get('/generarcita', (req, res) => {
   });
 });
 
-router.get('/lugares', (req,res) => {
+router.get('/lugares', (req, res) => {
   let lugares = [{
     'place': 'Café Bakita'
-  },{
+  }, {
     'place': 'Trencito'
-  },{
+  }, {
     'place': 'Jardin de Arquitectura'
-  },{
+  }, {
     'place': 'Puente de Economia'
-  },{
+  }, {
     'place': 'Plazuela Sucre'
   }];
   lugares.forEach(lugar => {
