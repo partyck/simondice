@@ -1,7 +1,7 @@
 const express = require('express');
 const Appointment = require('../../models/appointment');
 const router = express.Router();
-let userId = '2';
+let userId = '4';
 
 router.get('/citas', async (req, res) => {
   // let userId = req.user._id;
@@ -13,7 +13,8 @@ router.get('/citas', async (req, res) => {
     function (err, dates) {
       console.log(dates);
       res.render('user/citas', {
-        dates
+        dates: dates,
+        userId: userId
       });
     });
 });
