@@ -6,8 +6,8 @@ const MatchSchema = Schema({
   * Falta implementar
   *
   */
-}, 
-  { collection : 'matches' }
+},
+  { collection: 'matches' }
 );
 
 var Match = mongoose.model("Match", MatchSchema);
