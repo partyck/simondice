@@ -22,14 +22,22 @@ const UserSchema = Schema({
   password: { type: String, required: false }
 },
   { collection: 'users' }
-  /**
-  * Es necesario modificar el nombre de la
-  * coleccion a users, o lo que decidan.
-  */
 );
 
-UserSchema.methods.getNombre = function () {
+UserSchema.methods.getName = function () {
   return this.nombre;
+};
+
+UserSchema.methods.getAge = function () {
+  var fechaActual = (new Date());
+  var edad = fechaActual.getYear() - this.birthdate.getYear();
+  const mesDiaActual = fechaActual.getMonth() * 10 + this.birthdate.getDate();
+  const mesDiaUsuario = this.birthdate.getMonth() * 10
+    + this.birthdate.getDate();
+  if (mesDiaActual < mesDiaUsuario) {
+    edad = - 1;
+  }
+  return edad;
 };
 
 UserSchema.plugin(uniqueValidator);

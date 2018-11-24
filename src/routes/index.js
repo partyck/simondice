@@ -1,3 +1,4 @@
+
 const router = require('express').Router();
 const rutaEmpareja = require('./user/empareja');
 const rutaCitas = require('./user/citas');
@@ -18,4 +19,4 @@ router.delete('/user/:id', UserController.destroy);
 router.use('/', rutaEmpareja);
 router.use('/', rutaCitas);
 
-module.exports = router;    
+module.exports = router;  

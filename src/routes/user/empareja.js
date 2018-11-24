@@ -1,32 +1,43 @@
 const express = require('express');
-
-var User = require('../../models/user');
+const User = require('../../models/user');
+const Match = require('../../models/match');
+const registroUsuarios = require('./registro');
+const generar = require('./generarcita');
 
 const router = express.Router();
 
 router.get('/emparejar', (req, res) => {
-  res.render('user/empareja', { title: 'Simon dice: Emparejate' });
+  res.render('user/empareja', { usrEncontrado: -1 });
 });
 
-router.post('/emparejar', (req, res) => {
-  User.find({}, function (err, users) {
-    if (err) {
-      console.log("No se puedo realizar la operacion find()");
-      throw err;
-    }
-
-    console.log(users);
-
-    if (users.length > 0) {
-      res.render('user/empareja', {
-        nombreemp: users[0].getNombre()
-      });
-      return;
-    } else {
-      res.render('user/empareja', { title: 'Lo sentimos' });
-      return;
-    }
-  });
+router.post('/emparejar', async (req, res) => {
+  var idUsuarioSolicitante = 4;
+  var idUsuarioSolicitado =
+    registroUsuarios.obtenerPareja(idUsuarioSolicitante);
+  var encuentra = await registroUsuarios.existePareja(idUsuarioSolicitante,
+    idUsuarioSolicitado);
+  if (encuentra) {
+    idUsuarioSolicitado = "";
+  }
+  if (idUsuarioSolicitado != "") {
+    console.log("Se emparejo al usuario "
+      + idUsuarioSolicitante + " con " + idUsuarioSolicitado);
+    var pareja = [{
+      idUserA: idUsuarioSolicitante,
+      idUserB: idUsuarioSolicitado
+    }];
+    Match.insertMany(pareja, function (error, doc) { });
+    generar.generarCita(idUsuarioSolicitante, idUsuarioSolicitado);
+  } else {
+    console.log("No se pudo emparejar al usuario " + idUsuarioSolicitante);
+  }
+  if (idUsuarioSolicitado != "") {
+    res.render('user/empareja', { usrEncontrado: 1 });
+    return;
+  } else {
+    res.render('user/empareja', { usrEncontrado: 0 });
+    return;
+  }
 });
 
 module.exports = router;

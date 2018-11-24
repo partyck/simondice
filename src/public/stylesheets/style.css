@@ -58,7 +58,7 @@ body {
 }
 @media(max-width: 768px){
   #carousel{
-    height: 100vh;
+  height: 100vh;
   }
 }
 /*BOTON*/
@@ -149,7 +149,7 @@ color: #fff;
 /*TEXT,BOTON CITA*/
 .btnCita{
   color:black;
-  font-weight: 600;    
+  font-weight: 600;  
   text-decoration: none;
 }
 .btnCita:hover,
