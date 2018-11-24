@@ -8,10 +8,6 @@ router.get('/', (req, res) => {
   res.render('home', { title: 'Simón Dice' });
 });
 
-/*router.get('/registrar', (req, res) => {
-    res.render('./registrar'); 
-});*/
-
 router.get('/user', UserController.index);
 router.get('/user/create', UserController.create);
 router.post('/user', UserController.store);

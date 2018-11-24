@@ -78,7 +78,7 @@ block content
               .col-md-2.mb-3
               |               
               .form-group.col-md-8.mb-3
-                input#course.form-control(name='course', type='text', placeholder='Carrera', pattern='^([A-ZÁÉÍÓÚa-zñáéíóúäëïöü]+[\s]*)+$', minlength='5', maxlength='100', required='')
+                input#course.form-control(name='course', type='text', placeholder='Carrera', pattern='^([A-ZÁÉÍÓÚa-zñáéíóúäëïöü. ]+[\s]*)+$', minlength='5', maxlength='100', required='')
                 |                 
                 .invalid-feedback
                   | Introduzca la 
@@ -136,9 +136,11 @@ block content
                 select#sexOrientation.form-control.custom-select(name='sexOrientation', required='')
                   option(disabled='', selected='', hidden='')
                   |                   
-                  option(value='Femenino') Femenino
+                  option(value='Femenino') Heterosexual
                   |                   
-                  option(value='Masculino') Masculino
+                  option(value='Masculino') Homosexual
+                  |                   
+                  option(value='Masculino') Bisexual
                 |                 
                 .invalid-feedback
                   | Seleccione una opci&oacute;n
