@@ -74,6 +74,19 @@ color: #fff;
   border-radius:100px; 
   cursor: pointer;
 }
+.btnColorD{
+  background-color: #d3cccd;
+  border-color: #d3cccd;
+  outline: none;
+color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 9px 22px; 
+  border-radius:100px;
+  pointer-events: none; 
+  display: inline-block;
+}
 .btnColorR:hover,
 .btnColorR:focus{
   background-color: #aedefc;
