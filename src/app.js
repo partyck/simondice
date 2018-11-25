@@ -6,11 +6,13 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
 const mongoose = require('mongoose');
+const registroUsuarios = require('./routes/user/registro');
 
 const app = express();
 
 //connection to db
-mongoose.connect('mongodb://localhost:27017/simondicedb',{ useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/simondicedb',
+    { useNewUrlParser: true })
   .then(db => console.log('db connected'))
   .catch(err => console.log(err));
 
@@ -27,7 +29,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:false}));
+registroUsuarios.iniciarRegistro();
 //routes
 app.use('/',indexRoutes);
 //app.use(express.cookieParser());
@@ -35,5 +39,5 @@ app.use('/',indexRoutes);
 
 //starting the server
 app.listen(app.get('port'), () => {
-    console.log('server on port ', app.get('port')); 
+  console.log('server on port ', app.get('port')); 
 });

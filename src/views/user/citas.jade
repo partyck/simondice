@@ -1,6 +1,7 @@
 extends ./layoutUser
 
 block content
+    a= userId
     .divPadding
     |     
     .container-fluid(id='')
@@ -43,7 +44,10 @@ block content
                           input#staticFecha.form-control(type='date', value=cita.time.toISOString().slice(0, 10), disabled='')
                       |                       
                       .container-fluid.divBtnPadding
-                        a.btn.btn-primary.btnColorR( href='/accept/'+cita.id) Aceptar
+                        if (userId == cita.idApplicant && cita.status1 == "accept") || (userId == cita.idRequested && cita.status2 == "accept")
+                          a.btn.btn-primary.btnColorD( href='/accept/'+cita.id) Aceptar
+                        else
+                          a.btn.btn-primary.btnColorR( href='/accept/'+cita.id) Aceptar
                         |                           
                         a.btn.btn-primary.btnColorR(href='/refuse/'+cita.id) Rechazar
                         |                           

@@ -11,8 +11,8 @@ exports.index = function(req, res){
         }
      })
 };
-exports.create = function(req, res){
-    res.render('registrar');
+exports.create = function (req, res) {
+  res.render('registrar');
 };
 exports.store = function(req, res){
     var tipo = req.body.tipo_date;
@@ -49,12 +49,12 @@ exports.login = function(req, res){
 exports.show = function(req, res){
    //
 };
-exports.edit = function(req, res){
-   //
+exports.edit = function (req, res) {
+  //
 };
-exports.update = function(req, res){
-   //
+exports.update = function (req, res) {
+  //
 };
-exports.destroy = function(req, res){
-   //
+exports.destroy = function (req, res) {
+  //
 };

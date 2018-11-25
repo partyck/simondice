@@ -58,7 +58,7 @@ body {
 }
 @media(max-width: 768px){
   #carousel{
-    height: 100vh;
+  height: 100vh;
   }
 }
 /*BOTON*/
@@ -73,6 +73,19 @@ color: #fff;
   padding: 9px 22px; 
   border-radius:100px; 
   cursor: pointer;
+}
+.btnColorD{
+  background-color: #d3cccd;
+  border-color: #d3cccd;
+  outline: none;
+color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 9px 22px; 
+  border-radius:100px;
+  pointer-events: none; 
+  display: inline-block;
 }
 .btnColorR:hover,
 .btnColorR:focus{
@@ -149,7 +162,7 @@ color: #fff;
 /*TEXT,BOTON CITA*/
 .btnCita{
   color:black;
-  font-weight: 600;    
+  font-weight: 600;  
   text-decoration: none;
 }
 .btnCita:hover,

@@ -20,10 +20,13 @@ block content
           |           
           div
             br
-            |             if true
-            |               
-            .alert.alert-primary(role='alert')
-              | Se ha encontrado a la pareja ideal
-          |           
-          form(action='/emparejar', target='_blank', method='POST')
-            button.btn-lg.btn-primary.btnColorE.text-center(align='center', type='submit') Crear Cita &#x2764;
+            p
+            if usrEncontrado == 1
+                .alert.alert-success(role='alert')
+                    | Te confirmamos que hemos encontrado al usuario m&aacutes ideal para t&iacute;.
+            else if usrEncontrado == 0
+                .alert.alert-dark(role='alert')
+                    | No se ha encontrado a nadie. Sigue participando.
+            else
+                form(action='/emparejar', target='_blank', method='POST')
+                    button.btn-lg.btn-primary.btnColorE.text-center(align='center', type='submit') Encontrar Pareja &#x2764;

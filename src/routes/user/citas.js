@@ -1,65 +1,43 @@
 const express = require('express');
 const Appointment = require('../../models/appointment');
-const Place = require('../../models/place');
 const router = express.Router();
-
-const generar = require('./generarcita');
+let userId = '4';
 
 router.get('/citas', async (req, res) => {
-    var dates = await Appointment.find();
-    console.log(dates);
-    res.render('user/citas', {
-        dates
+  // let userId = req.user._id;
+  await Appointment.find({
+    $or: [
+      { idApplicant: userId },
+      { idRequested: userId }]
+  },
+    function (err, dates) {
+      console.log(dates);
+      res.render('user/citas', {
+        dates: dates,
+        userId: userId
+      });
     });
-});
-
-router.get('/generarcita', (req, res) => {
-    generar.generarCita(1, 5).then(date => {
-        let result = "resultado: " + date.place + "\n" +
-            "fecha: " + date.time;
-        console.log(result);
-        res.send(result);
-    }).catch(e => {
-        res.send(e)
-    });
-});
-
-router.get('/lugares', (req,res) => {
-    let lugares = [{
-        'place': 'Café Bakita'
-    },{
-        'place': 'Trencito'
-    },{
-        'place': 'Jardin de Arquitectura'
-    },{
-        'place': 'Puente de Economia'
-    },{
-        'place': 'Plazuela Sucre'
-    }];
-    lugares.forEach(lugar => {
-        new Place(lugar).save();
-    });
-    res.send(lugares);
 });
 
 router.get('/accept/:id', async (req, res) => {
-    let { id } = req.params;
-    await Appointment.findById(id).then(async date => {
-        console.log(date);
-        if (date.status1 == "accept") {
-            date.status2 = "accept";
-        } else {
-            date.status1 = "accept";
-        }
-        await date.save();
-        res.redirect('/citas');
-    });
+  // let userId = req.user._id;
+  let { id } = req.params;
+  await Appointment.findById(id).then(async date => {
+    if (userId == date.idApplicant) {
+      date.status1 = "accept";
+    }
+    if (userId == date.idRequested) {
+      date.status2 = "accept";
+    }
+    await date.save();
+    res.redirect('/citas');
+  });
 });
 
 router.get('/refuse/:id', async (req, res) => {
-    let { id } = req.params;
-    await Appointment.remove({ _id: id });
-    res.redirect('/citas');
+  let { id } = req.params;
+  await Appointment.remove({ _id: id });
+  res.redirect('/citas');
 });
 
 module.exports = router;

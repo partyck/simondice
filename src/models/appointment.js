@@ -14,7 +14,7 @@ const AppointmentSchema = Schema({
     type: String,
     default: "null"
   }
-} );
+});
 
 let Appointment = mongoose.model("appointment", AppointmentSchema);
 module.exports = Appointment;

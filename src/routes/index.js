@@ -1,11 +1,12 @@
+
 const router = require('express').Router();
 const rutaEmpareja = require('./user/empareja');
 const rutaCitas = require('./user/citas');
-const User = require ('../models/user');
+const User = require('../models/user');
 const UserController = require('../controllers/user');
 
 router.get('/', (req, res) => {
-    res.render('home', { title: 'Simón Dice'}); 
+  res.render('home', { title: 'Simón Dice' });
 });
 
 router.get('/user', UserController.index);
@@ -19,4 +20,4 @@ router.post('/login', UserController.login);
 router.use('/', rutaEmpareja);
 router.use('/', rutaCitas);
 
-module.exports = router;    
+module.exports = router;  
