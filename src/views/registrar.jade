@@ -19,7 +19,7 @@ block content
           if estado == 0
               .alert.alert-error(role='alert')
                 | El correo electrónico ingresado ya existe, por favor intente con un correo diferente!
-          form.needs-validation(novalidate='', action='/user',method='POST')
+          form.needs-validation(novalidate='', action='/user',method='POST', enctype='multipart/form-data')
             input(type='hidden', name='_token', value='{{ csrf_token() }}')
             |             
             .form-row
@@ -136,11 +136,11 @@ block content
                 select#sexOrientation.form-control.custom-select(name='sexOrientation', required='')
                   option(disabled='', selected='', hidden='')
                   |                   
-                  option(value='Heterosexual') Heterosexual
+                  option(value='Femenino') Heterosexual
                   |                   
-                  option(value='Homosexual') Homosexual
+                  option(value='Masculino') Homosexual
                   |                   
-                  option(value='Bisexual') Bisexual
+                  option(value='Masculino') Bisexual
                 |                 
                 .invalid-feedback
                   | Seleccione una opci&oacute;n
