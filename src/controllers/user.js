@@ -1,8 +1,5 @@
 const User = require('../models/user');
-const registroUsuarios = require('../routes/user/registro');
-/*exports.setModel = function(modelo){
-  User = modelo;
-};*/
+
 exports.index = function (req, res) {
   User.find({}, function (error, users) {
     if (error) {
@@ -25,10 +22,9 @@ exports.store = function (req, res) {
   } else {
     año = req.body.semester;
   }
-
   const user = new User({
     name: req.body.name,
-    birthdate: req.body.birthday,
+    birthdate: req.body.birthdate,
     sex: req.body.sex,
     course: req.body.course,
     semester: año,
@@ -44,9 +40,11 @@ exports.store = function (req, res) {
       res.render('registrar', { estado: 0 });
     } else {
       res.render('home', { estado: 1 });
-      registroUsuarios.insertarIdUsuario(user.id);
     }
   });
+};
+exports.login = function (req, res) {
+
 };
 exports.show = function (req, res) {
   //
