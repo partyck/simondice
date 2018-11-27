@@ -20,7 +20,7 @@ passport.use('local-registro', new LocalStrategy({
   const user = await User.findOne({ 'email': email });
   console.log('user: ', user);
   if (user) {
-    return done(null, false, req.flash('registroMessage', 'The Email is already Taken.'));
+    return done(null, false, req.flash('errorMessage', 'El correo electrónico ingresado ya existe, por favor intente con un correo diferente!'));
   } else {
     console.log('req: ', req.body);
     var tipo = req.body.tipo_date;
@@ -42,7 +42,8 @@ passport.use('local-registro', new LocalStrategy({
     });
 
     newUser.email = email;
-    newUser.password = newUser.encryptPassword(password);
+    // newUser.password = newUser.encryptPassword(password);
+    newUser.password = password;
     console.log('new user: ',newUser);
     newUser.save(function (err) {
       done(err, newUser);
@@ -58,10 +59,11 @@ passport.use('local-login', new LocalStrategy({
 }, async (req, email, password, done) => {
   const user = await User.findOne({email: email});
   if(!user) {
-    return done(null, false, req.flash('login', 'El correo electrónico o la contraseña son inválidos.'));
+    return done(null, false, req.flash('errorMessage', 'El correo electrónico o la contraseña son inválidos.'));
   }
-  if(!user.comparePassword(password)) {
-    return done(null, false, req.flash('login', 'El correo electrónico o la contraseña son inválidos.'));
+  // if(!user.comparePassword(password)) {
+  if(user.password != password) {
+    return done(null, false, req.flash('errorMessage', 'El correo electrónico o la contraseña son inválidos.'));
   }
   return done(null, user);
 }));

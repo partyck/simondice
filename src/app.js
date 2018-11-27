@@ -18,9 +18,6 @@ mongoose.connect('mongodb://localhost:27017/simondicedb',
   .then(db => console.log('db connected'))
   .catch(err => console.log(err));
 
-//importing routes
-const indexRoutes = require('./routes/index');
-
 //settings 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -43,19 +40,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 registroUsuarios.iniciarRegistro();
 app.use((req, res, next) => {
-  console.log('req.flash: ', req.flash('login'));
-  app.locals.loginMessage = req.flash('loginMessage');
-  app.locals.registroMessage = req.flash('registroMessage');
-  app.locals.user = req.user;
-  console.log('locals: ', app.locals);
+  res.locals.errorMessage = req.flash('errorMessage');
+  res.locals.user = req.user;
   next();
 });
 
-
 //routes
-app.use('/', indexRoutes);
-//app.use(express.cookieParser());
-//app.use(express.session({secret: 'abcd1234'}));
+app.use('/', require('./routes/index'));
+app.use('/', require('./routes/user/empareja'));
+app.use('/', require('./routes/user/citas'));
 
 //starting the server
 app.listen(app.get('port'), () => {

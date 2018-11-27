@@ -1,17 +1,17 @@
 const express = require('express');
 const Appointment = require('../../models/appointment');
 const router = express.Router();
-let userId = '4';
+const UserController = require('../../controllers/user');
 
-router.get('/citas', async (req, res) => {
-  // let userId = req.user._id;
+router.get('/citas', UserController.isAuthenticated, async (req, res) => {
+  let userId = req.user.id;
   await Appointment.find({
     $or: [
       { idApplicant: userId },
       { idRequested: userId }]
   },
     function (err, dates) {
-      console.log(dates);
+      console.log('citas: ', dates);
       res.render('user/citas', {
         dates: dates,
         userId: userId
@@ -19,10 +19,13 @@ router.get('/citas', async (req, res) => {
     });
 });
 
-router.get('/accept/:id', async (req, res) => {
-  // let userId = req.user._id;
+router.get('/accept/:id', UserController.isAuthenticated, async (req, res) => {
+  let userId = req.user.id;
   let { id } = req.params;
+  console.log('userId: ', userId);
+  console.log('id de la cita: ', id);
   await Appointment.findById(id).then(async date => {
+    console.log('date: ', date);
     if (userId == date.idApplicant) {
       date.status1 = "accept";
     }
@@ -34,7 +37,7 @@ router.get('/accept/:id', async (req, res) => {
   });
 });
 
-router.get('/refuse/:id', async (req, res) => {
+router.get('/refuse/:id', UserController.isAuthenticated, async (req, res) => {
   let { id } = req.params;
   await Appointment.remove({ _id: id });
   res.redirect('/citas');

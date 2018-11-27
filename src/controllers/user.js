@@ -44,6 +44,16 @@ exports.store = function (req, res) {
   });
 };
 
+exports.isAuthenticated = function (req, res, next) {
+  // console.log("isAuthenticated: ");
+  // console.log(req.session);
+  if (req.isAuthenticated()) {
+    return next();
+  }
+
+  res.redirect('/')
+}
+
 exports.loginPost = function (req, res) {
 
 };

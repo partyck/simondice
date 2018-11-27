@@ -37,6 +37,8 @@ class graph {
     var idUsuarioSolicitado = "";
     var indiceSolicitante = this._obtenerIndicePorIdUsuario(
       idUsuarioSolicitante);
+    console.log('idUsuarioSolicitante: ', idUsuarioSolicitante);
+    console.log('this: ', this);
     var colaLocal = this._grafo[indiceSolicitante][1];
     var encontrado = false;
     while (!(colaLocal.isEmpty() || encontrado)) {
