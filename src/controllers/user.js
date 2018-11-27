@@ -49,7 +49,7 @@ exports.loginPost = function (req, res) {
 };
 
 exports.loginGet = function (req, res) {
-
+  res.render('login');
 };
 
 exports.show = function (req, res) {

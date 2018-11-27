@@ -16,8 +16,8 @@ block content
           |           
           br
           | 
-          if estado == 0
-              .alert.alert-error(role='alert')
+          if registroMessage
+              .alert.alert-danger(role='alert')
                 | El correo electrónico ingresado ya existe, por favor intente con un correo diferente!
           form.needs-validation(novalidate='', action='/user',method='POST')
             input(type='hidden', name='_token', value='{{ csrf_token() }}')

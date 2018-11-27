@@ -1,12 +1,14 @@
-'use strict';
-
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
 const mongoose = require('mongoose');
+const flash = require('connect-flash');
+const passport = require('passport');
 const registroUsuarios = require('./routes/user/registro');
+
+require('./passport/local-auth');
 
 const app = express();
 
@@ -31,7 +33,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
+app.use(session({
+  secret: 'mysecretsession',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 registroUsuarios.iniciarRegistro();
+app.use((req, res, next) => {
+  console.log('req.flash: ', req.flash('login'));
+  app.locals.loginMessage = req.flash('loginMessage');
+  app.locals.registroMessage = req.flash('registroMessage');
+  app.locals.user = req.user;
+  console.log('locals: ', app.locals);
+  next();
+});
+
+
 //routes
 app.use('/', indexRoutes);
 //app.use(express.cookieParser());
