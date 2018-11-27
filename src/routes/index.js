@@ -16,7 +16,8 @@ router.get('/user/:id', UserController.show);
 router.get('/user/:id/edit', UserController.edit);
 router.put('/user/:id', UserController.update);
 router.delete('/user/:id', UserController.destroy);
-router.post('/login', UserController.login);
+router.post('/login', UserController.loginPost);
+router.get('/login', UserController.loginGet);
 router.use('/', rutaEmpareja);
 router.use('/', rutaCitas);
 

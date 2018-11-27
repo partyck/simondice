@@ -43,9 +43,15 @@ exports.store = function (req, res) {
     }
   });
 };
-exports.login = function (req, res) {
+
+exports.loginPost = function (req, res) {
 
 };
+
+exports.loginGet = function (req, res) {
+
+};
+
 exports.show = function (req, res) {
   //
 };
