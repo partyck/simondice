@@ -8,9 +8,9 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const registroUsuarios = require('./routes/user/registro');
 
-require('./passport/local-auth');
-
+//initializations
 const app = express();
+require('./passport/local-auth');
 
 //connection to db
 mongoose.connect('mongodb://localhost:27017/simondicedb',
