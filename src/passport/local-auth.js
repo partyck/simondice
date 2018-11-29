@@ -1,7 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
-
+const registroGrafo = require('../routes/user/registro');
 
 passport.serializeUser((user, done) => {
   done(null, user._id);
@@ -46,6 +46,7 @@ passport.use('local-registro', new LocalStrategy({
     newUser.password = password;
     console.log('new user: ',newUser);
     newUser.save(function (err) {
+      registroGrafo.insertarIdUsuario(newUser.id);
       done(err, newUser);
     });
     
