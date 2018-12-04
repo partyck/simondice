@@ -42,8 +42,7 @@ passport.use('local-registro', new LocalStrategy({
     });
 
     newUser.email = email;
-    // newUser.password = newUser.encryptPassword(password);
-    newUser.password = password;
+    newUser.password = newUser.encryptPassword(password);
     console.log('new user: ',newUser);
     newUser.save(function (err) {
       registroGrafo.insertarIdUsuario(newUser.id);
@@ -62,8 +61,7 @@ passport.use('local-login', new LocalStrategy({
   if(!user) {
     return done(null, false, req.flash('errorMessage', 'El correo electrónico o la contraseña son inválidos.'));
   }
-  // if(!user.comparePassword(password)) {
-  if(user.password != password) {
+  if(!user.comparePassword(password)) {
     return done(null, false, req.flash('errorMessage', 'El correo electrónico o la contraseña son inválidos.'));
   }
   return done(null, user);
