@@ -169,8 +169,7 @@ function orientacionSexual(usuarioSolicitante, usuarioSolicitado) {
       break;
     case 'Bisexual':
       if (preferenciaSolicitado === "Bisexual"
-        || preferenciaSolicitado === "Homosexual"
-        || preferenciaSolicitado === "Heterosexual") {
+        || preferenciaSolicitado === "Homosexual") {
         if (usuarioSolicitante.sex === "Masculino"
           && (usuarioSolicitado.sex === "Femenino"
             || usuarioSolicitado.sex === "Masculino")) {
