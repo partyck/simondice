@@ -168,17 +168,23 @@ function orientacionSexual(usuarioSolicitante, usuarioSolicitado) {
       }
       break;
     case 'Bisexual':
-      if (preferenciaSolicitado === "Bisexual"
-        || preferenciaSolicitado === "Homosexual"
-        || preferenciaSolicitado === "Heterosexual") {
-        if (usuarioSolicitante.sex === "Masculino"
-          && (usuarioSolicitado.sex === "Femenino"
-            || usuarioSolicitado.sex === "Masculino")) {
+      if (usuarioSolicitante.sex === "Femenino" && usuarioSolicitado.sex === "Femenino") {
+        if (preferenciaSolicitado === "Bisexual" || preferenciaSolicitado === "Homosexual") {
+          peso = 0;
+        }
+      }
+      if (usuarioSolicitante.sex === "Femenino" && usuarioSolicitado.sex === "Masculino") {
+        if (preferenciaSolicitado === "Bisexual" || preferenciaSolicitado === "Heterosexual") {
           peso = 1;
         }
-        else if (usuarioSolicitante.sex === "Femenino"
-          && (usuarioSolicitado.sex === "Femenino"
-            || usuarioSolicitado.sex === "Masculino")) {
+      }
+      if (usuarioSolicitante.sex === "Masculino" && usuarioSolicitado.sex === "Femenino") {
+        if (preferenciaSolicitado === "Bisexual" || preferenciaSolicitado === "Heterosexual") {
+          peso = 1;
+        }
+      }
+      if (usuarioSolicitante.sex === "Masculino" && usuarioSolicitado.sex === "Masculino") {
+        if (preferenciaSolicitado === "Bisexual" || preferenciaSolicitado === "Homosexual") {
           peso = 1;
         }
       }
