@@ -142,7 +142,8 @@ function orientacionSexual(usuarioSolicitante, usuarioSolicitado) {
 
   switch (preferenciaSolicitante) {
     case 'Heterosexual':
-      if (preferenciaSolicitado === "Heterosexual") {
+      if (preferenciaSolicitado === "Heterosexual"
+        || preferenciaSolicitado === "Bisexual") {
         if (usuarioSolicitante.sex === "Masculino"
           && usuarioSolicitado.sex === "Femenino") {
           peso = 1;
@@ -168,7 +169,8 @@ function orientacionSexual(usuarioSolicitante, usuarioSolicitado) {
       break;
     case 'Bisexual':
       if (preferenciaSolicitado === "Bisexual"
-        || preferenciaSolicitado === "Homosexual") {
+        || preferenciaSolicitado === "Homosexual"
+        || preferenciaSolicitado === "Heterosexual") {
         if (usuarioSolicitante.sex === "Masculino"
           && (usuarioSolicitado.sex === "Femenino"
             || usuarioSolicitado.sex === "Masculino")) {
