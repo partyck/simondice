@@ -2,6 +2,8 @@ doctype html
 html
   head
     title Sim&oacute;n Dice
+    link(href='/images/favicon.ico', rel='shortcut icon')
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.5.0/css/all.css', integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU', crossorigin='anonymous')
     // Required meta tags
     meta(charset='utf-8')
     |     
@@ -21,13 +23,15 @@ html
             a#colorNameUser.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')= user.name
             |             
             .dropdown-menu(aria-labelledby='navbarDropdown')
-              a.dropdown-item(href='/emparejar') Perfil
+              a.dropdown-item(href='/emparejar') Perfil&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                i.fas.fa-user(align='left')
               |               
-              a.dropdown-item(href='/citas') Citas
+              a.dropdown-item(href='/citas') Citas&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                i.fas.fa-calendar-alt(align='left')
               |               
               .dropdown-divider
               |               
-              a.dropdown-item(href='/logout') Salir
-        |         
-        img(src='../images/logo.PNG', alt='Simón Dice', height='70', width='120')
+              a.dropdown-item(href='/logout') Salir&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                i.fas.fa-arrow-alt-circle-right()
+      img(src='../images/logo.PNG', alt='Simón Dice', height='70', width='120')
 block content

@@ -1,9 +1,11 @@
-var User = require('../../models/user');
+const User = require('../../models/user');
 
 function medicinaOdontologia(solicitante, solicitado) {
   var peso = 0;
-  if (solicitante.course === "Lic. Medicina" || solicitante.course === "Lic. Odontologia") {
-    if (solicitado.course === "Lic. Medicina" || solicitado.course === "Lic. Odontologia") {
+  if (solicitante.course === "Lic. Medicina"
+    || solicitante.course === "Lic. Odontologia") {
+    if (solicitado.course === "Lic. Medicina"
+      || solicitado.course === "Lic. Odontologia") {
       peso = 1;
     } else {
       peso = 0;
@@ -14,8 +16,10 @@ function medicinaOdontologia(solicitante, solicitado) {
 
 function sistemasElectronica(solicitante, solicitado) {
   var peso = 0;
-  if (solicitante.course === "Ing. Sistemas" || solicitante.course === "Ing. Electronica") {
-    if (solicitado.course === "Ing. Sistemas" || solicitado.course === "Ing. Electronica") {
+  if (solicitante.course === "Ing. Sistemas"
+    || solicitante.course === "Ing. Electronica") {
+    if (solicitado.course === "Ing. Sistemas"
+      || solicitado.course === "Ing. Electronica") {
       peso = 1;
     } else {
       peso = 0;
@@ -26,8 +30,10 @@ function sistemasElectronica(solicitante, solicitado) {
 
 function informaticaSistemas(solicitante, solicitado) {
   var peso = 0;
-  if (solicitante.course === "Ing. Informatica" || solicitante.course === "Ing. Sistemas") {
-    if (solicitado.course === "Ing. Informatica" || solicitado.course === "Ing. Sistemas") {
+  if (solicitante.course === "Ing. Informatica"
+    || solicitante.course === "Ing. Sistemas") {
+    if (solicitado.course === "Ing. Informatica"
+      || solicitado.course === "Ing. Sistemas") {
       peso = 1;
     } else {
       peso = 0;
@@ -188,6 +194,9 @@ function orientacionSexual(usuarioSolicitante, usuarioSolicitado) {
           peso = 1;
         }
       }
+      break;
+    default:
+      console.log("Orientacion sexual desconocida.");
   }
   return peso;
 }
