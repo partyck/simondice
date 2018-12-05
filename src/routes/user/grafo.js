@@ -1,5 +1,5 @@
-var PriorityQueue = require('./colaprioridad');
-var compatibilidad = require('./listafunciones');
+const PriorityQueue = require('./colaprioridad');
+const compatibilidad = require('./listafunciones');
 
 class graph {
   constructor() {
@@ -7,7 +7,7 @@ class graph {
   }
 
   insertarElemento(userID) {
-    /** a = [otroUserId, compatibilidad con userID] */
+    /** La variable a,b representa [otroUserId, compatibilidad con userID]. */
     var cola = new PriorityQueue((a, b) => a[1] > b[1]);
     this._grafo.push([userID, cola]);
     console.log("Se inserto sastisfactoriamente el usuario con id: "

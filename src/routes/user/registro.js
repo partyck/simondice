@@ -34,20 +34,36 @@ async function cargarRegistro() {
   console.log(estadoRegistro);
 }
 
-async function existePareja(idA, idB) {
+async function insertarIdUsuario(idUsuario) {
+  grafoUsuarios.insertarElemento(idUsuario);
+  await User.find({}, async function (err, users) {
+  for (var usuarioJ in users) {
+      if (idUsuario != users[usuarioJ].id) {
+        var existePar = await existePareja(idUsuario,
+          users[usuarioJ].id);
+        if (!existePar) {
+          await grafoUsuarios.conectar(idUsuario,
+            users[usuarioJ].id);
+        }
+      }
+    }
+  });
+}
+
+async function existePareja(idUsuario1, idUsuario2) {
   return new Promise(function (resolve, reject) {
     Match.findOne({
       $or:
         [{
           $and: [
-            { idUserA: idA },
-            { idUserB: idB }
+            { idUserA: idUsuario1 },
+            { idUserB: idUsuario2 }
           ]
         },
         {
           $and: [
-            { idUserA: idB },
-            { idUserB: idA }
+            { idUserA: idUsuario2 },
+            { idUserB: idUsuario1 }
           ]
         }]
     }, function (err, pareja) {
@@ -57,12 +73,12 @@ async function existePareja(idA, idB) {
         throw err;
       }
       if (pareja == null) {
-        console.log("No existe la pareja " + idA
-          + " - " + idB);
+        console.log("No existe la pareja " + idUsuario1
+          + " - " + idUsuario2);
         resolve(false);
       } else {
-        console.log("Existe la pareja " + idA
-          + " - " + idB);
+        console.log("Existe la pareja " + idUsuario1
+          + " - " + idUsuario2);
         resolve(true);
       }
     }
@@ -75,6 +91,6 @@ module.exports = {
   iniciarRegistro: cargarRegistro,
   obtenerEstado: () => estadoRegistro,
   obtenerPareja: (idUsuario) => grafoUsuarios.obtenerPareja(idUsuario),
-  insertarIdUsuario: (idUsuario) => grafoUsuarios.insertarElemento(idUsuario),
-  existePareja: (idA, idB) => existePareja(idA, idB),
+  insertarIdUsuario: (idUsuario) => insertarIdUsuario(idUsuario),
+  existePareja: (idUsuario1, idUsuario2) => existePareja(idUsuario1, idUsuario2),
 }

@@ -22,7 +22,7 @@ router.post('/emparejar', UserController.isAuthenticated, async (req, res) => {
   }
   if (idUsuarioSolicitado != "") {
     console.log("Se emparejo al usuario "
-      + idUsuarioSolicitante + " con " + idUsuarioSolicitado);
+        + idUsuarioSolicitante + " con " + idUsuarioSolicitado);
     var pareja = [{
       idUserA: idUsuarioSolicitante,
       idUserB: idUsuarioSolicitado
