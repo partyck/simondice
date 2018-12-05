@@ -72,7 +72,40 @@ block content
               |               
               .col-md-2.mb-4
             |  
-            |                                 
+            |  
+            .form-row
+              .col-md-2.mb-4
+              |               
+              .col-md-2.mb-4
+                label.txtColor(for='sex_pref') Orientación Sexual:
+              |               
+              .form-group.col-md-6.mb-4
+                select#sexOrientation.form-control.custom-select(name='sexOrientation', required='')
+                  option(disabled='', selected='', hidden='')
+                  |                   
+                  option(value='Heterosexual') Heterosexual
+                  |                   
+                  option(value='Homosexual') Homosexual
+                  |                   
+                  option(value='Bisexual') Bisexual
+                |                 
+                .invalid-feedback
+                  | Seleccione una opci&oacute;n
+              |               
+              .col-md-2.mb-4
+            |   
+            .form-row
+              .col-md-2.mb-3
+              |               
+              .form-group.col-md-8.mb-3
+                label.txtColor.txtColorCard(for='') NFORMACIÓN ACADÉMICA:
+                |                 
+                hr
+              |   
+              |               
+              .col-md-2.mb-3
+            |  
+            |                                            
             .form-row
               .col-md-2.mb-3
               |               
@@ -117,7 +150,7 @@ block content
               .col-md-2.mb-3
               |               
               .form-group.col-md-8.mb-3
-                label.txtColor.txtColorCard(for='') PREFERENCIAS:
+                label.txtColor.txtColorCard(for='') BUSCO A UNA PERSONA CON CARACTERÍSTICAS:
                 |                 
                 hr
               |   
@@ -126,32 +159,10 @@ block content
             |  
             |             
             .form-row
-              .col-md-2.mb-4
-              |               
-              .col-md-2.mb-4
-                label.txtColor(for='sex_pref') Sexo:
-              |               
-              .form-group.col-md-6.mb-4
-                select#sexOrientation.form-control.custom-select(name='sexOrientation', required='')
-                  option(disabled='', selected='', hidden='')
-                  |                   
-                  option(value='Heterosexual') Heterosexual
-                  |                   
-                  option(value='Homosexual') Homosexual
-                  |                   
-                  option(value='Bisexual') Bisexual
-                |                 
-                .invalid-feedback
-                  | Seleccione una opci&oacute;n
-              |               
-              .col-md-2.mb-4
-            |   
-            |             
-            .form-row
               .col-md-2.mb-3
               |               
               .form-group.col-md-8.mb-3
-                label.txtColor(for='') Edad:
+                label.txtColor(for='') Rango de Edad:
               |   
               |               
               .col-md-2.mb-3
@@ -167,7 +178,7 @@ block content
                   | Seleccione una opci&oacute;n
               |               
               .col-md-2.mb-4.block-center
-                label.txtColor(for='', align='center') a:
+                label.txtColor(for='', align='center') &nbsp a:
               |               
               .form-group.col-md-3.mb-4
                 input#maxAge.form-control(type='number', name='maxAge', placeholder='', min='18', max='60', required='')
