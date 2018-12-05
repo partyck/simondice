@@ -2,6 +2,7 @@ doctype html
 html
   head
     title Sim&oacute;n Dice
+    link(href='/images/favicon.ico', rel='shortcut icon')
     // Required meta tags
     meta(charset='utf-8')
     |     
@@ -15,9 +16,11 @@ html
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')    
     script(src='/javascripts/validation.js')
   body
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light.colorNavBar
+    header.navbar.navbar-expand-lg.navbar-light.bg-light.colorNavBar
+      a.navbar-brand(href="")
+        svg.d-block(height='40', width='40')
+          title Simón Dice
       #navbarSupportedContent.collapse.navbar-collapse
-        ul.navbar-nav.mr-auto
-        |         
-        img(src='/images/logo.PNG', alt='Simón Dice', height='70', width='120')
+        ul.navbar-nav.mr-auto         
+      img(src='/images/logo.PNG', alt='Simón Dice', height='70', width='120')
 block content

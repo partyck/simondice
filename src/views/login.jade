@@ -7,6 +7,7 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     // Title Page
     title Sim&oacute;n Dice
+    link(href='/images/favicon.ico', rel='shortcut icon')
     // Bootstrap CSS
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')    
     link(rel='stylesheet', href='/stylesheets/style.css')
@@ -57,7 +58,10 @@ html(lang='en')
               |                             
               .col-md-2.mb-3
             |      
-            .container-fluid.divBtnPaddingCard
-              a.btn.btn-primary.btnColorIS(href='/') Cancelar
-              |                             
-              button.btn.btn-primary.btnColorR(type='submit') Registrar
+            .container-fluid.divBtnPadding
+              .row
+                .col-md-4.col-lg-2
+                  a.btn.btn-primary.btnColorIS(href='/') Cancelar
+                .col-md-1.col-lg-1
+                .col-md-2.mb-3                             
+                  button.btn.btn-primary.btnColorR(type='submit') Iniciar Sesión
