@@ -25,15 +25,17 @@ html(lang='en')
           h5.card-title(align='center') Inicio de Sesi&oacute;n
           |                     
           hr
-          |                     
-          form.needs-validation(novalidate='', action='', method='POST', enctype='multipart/form-data')
+          |     
+          if errorMessage != ""
+              .alert.alert-danger(role='alert')= errorMessage
+          form.needs-validation(novalidate='', action='/login', method='POST')
             input(type='hidden', name='_token', value='{{ csrf_token() }}')
             |                         
             .form-row
               .col-md-2.mb-3
               |                             
               .form-group.col-md-8.mb-3
-                input#cor_user.form-control(name='cor_user', type='email', placeholder='Correo Electrónico', pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$', required='')
+                input#email.form-control(name='email', type='email', placeholder='Correo Electrónico', pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$', required='')
                 |                                 
                 .invalid-feedback
                   | Introduzca una direcci&oacute;n de 
@@ -46,7 +48,7 @@ html(lang='en')
               .col-md-2.mb-3
               |                             
               .form-group.col-md-8.mb-3
-                input#pass_user.form-control(name='pass_user', type='password', placeholder='Contraseña', pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$', required='')
+                input#password.form-control(name='password', type='password', placeholder='Contraseña', pattern='.{4,}', required='')
                 |                                 
                 .invalid-feedback
                   | Introduzca una 
@@ -54,22 +56,8 @@ html(lang='en')
                   |  v&aacute;lida
               |                             
               .col-md-2.mb-3
-            |  
-            |                         
-            .form-row
-              .col-md-2.mb-3
-              |                             
-              .form-group.col-md-8.mb-3
-                input#cor_user.form-control(name='cor_user', type='email', placeholder='Correo Electrónico', pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$', required='')
-                |                                 
-                .invalid-feedback
-                  | Introduzca una direcci&oacute;n de 
-                  i Correo Electr&oacute;nico
-                  |  v&aacute;lida
-              |                             
-              .col-md-2.mb-3
-            |                         
+            |      
             .container-fluid.divBtnPaddingCard
-              button.btn.btn-primary.btnColorIS(type='button') Cancelar
+              a.btn.btn-primary.btnColorIS(href='/') Cancelar
               |                             
               button.btn.btn-primary.btnColorR(type='submit') Registrar

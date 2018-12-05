@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const AutoIncrement = require('mongoose-auto-increment');
+const bcrypt = require('bcrypt-nodejs');
 const Schema = mongoose.Schema;
 
 AutoIncrement.initialize(mongoose);
@@ -33,11 +34,19 @@ UserSchema.methods.getAge = function () {
   var edad = fechaActual.getYear() - this.birthdate.getYear();
   const mesDiaActual = fechaActual.getMonth() * 10 + this.birthdate.getDate();
   const mesDiaUsuario = this.birthdate.getMonth() * 10
-    + this.birthdate.getDate();
+      + this.birthdate.getDate();
   if (mesDiaActual < mesDiaUsuario) {
     edad = - 1;
   }
   return edad;
+};
+
+UserSchema.methods.encryptPassword = (password) => {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+};
+
+UserSchema.methods.comparePassword= function (password) {
+  return bcrypt.compareSync(password, this.password);
 };
 
 UserSchema.plugin(uniqueValidator);

@@ -3,15 +3,16 @@ const User = require('../../models/user');
 const Match = require('../../models/match');
 const registroUsuarios = require('./registro');
 const generar = require('./generarcita');
+const UserController = require('../../controllers/user');
 
 const router = express.Router();
 
-router.get('/emparejar', (req, res) => {
+router.get('/emparejar', UserController.isAuthenticated, (req, res) => {
   res.render('user/empareja', { usrEncontrado: -1 });
 });
 
-router.post('/emparejar', async (req, res) => {
-  var idUsuarioSolicitante = 4;
+router.post('/emparejar', UserController.isAuthenticated, async (req, res) => {
+  var idUsuarioSolicitante = req.user.id;
   var idUsuarioSolicitado =
     registroUsuarios.obtenerPareja(idUsuarioSolicitante);
   var encuentra = await registroUsuarios.existePareja(idUsuarioSolicitante,
@@ -21,7 +22,7 @@ router.post('/emparejar', async (req, res) => {
   }
   if (idUsuarioSolicitado != "") {
     console.log("Se emparejo al usuario "
-      + idUsuarioSolicitante + " con " + idUsuarioSolicitado);
+        + idUsuarioSolicitante + " con " + idUsuarioSolicitado);
     var pareja = [{
       idUserA: idUsuarioSolicitante,
       idUserB: idUsuarioSolicitado

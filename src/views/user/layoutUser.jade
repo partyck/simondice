@@ -18,21 +18,16 @@ html
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.mr-auto
           li.nav-item.dropdown
-            a#colorNameUser.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-              | Usuario
+            a#colorNameUser.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')= user.name
             |             
             .dropdown-menu(aria-labelledby='navbarDropdown')
-              a.dropdown-item(href='#') Perfil
+              a.dropdown-item(href='/emparejar') Perfil
               |               
-              a.dropdown-item(href='#') Citas
-              |               
-              a.dropdown-item(href='#') Calendario
-              |               
-              a.dropdown-item(href='#') Configuración
+              a.dropdown-item(href='/citas') Citas
               |               
               .dropdown-divider
               |               
-              a.dropdown-item(href='#') Salir
+              a.dropdown-item(href='/logout') Salir
         |         
         img(src='../images/logo.PNG', alt='Simón Dice', height='70', width='120')
 block content

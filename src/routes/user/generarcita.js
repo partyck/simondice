@@ -20,8 +20,8 @@ let buscarLugar = function () {
   return Place.find()
     .then(places => {
       if (places.length > 0) {
-        let rand = Math.floor(Math.random() * places.length);
-        return Place.findOne().skip(rand).then(response => response);
+        let randomNumber = Math.floor(Math.random() * places.length);
+        return Place.findOne().skip(randomNumber).then(response => response);
       } else {
         throw "no hay lugar";
       }
@@ -30,8 +30,8 @@ let buscarLugar = function () {
 
 let buscarFecha = function () {
   let now = new Date();
-  let rand = Math.floor(Math.random() * (7 - 1)) + 1;
-  let date = now.getDate() + rand;
+  let randomNumber = Math.floor(Math.random() * (7 - 1)) + 1;
+  let date = now.getDate() + randomNumber;
   now.setDate(date)
   let day = now.toDateString().slice(0, 3);
   if (day == "Sun") {
@@ -43,9 +43,9 @@ let buscarFecha = function () {
 };
 
 let buscarHora = function (date) {
-  let rand = Math.floor(Math.random() * (20 - 8)) + 8;
-  console.log('nueva hora: ' + rand);
-  date.setHours(rand);
+  let randomNumber = Math.floor(Math.random() * (20 - 8)) + 8;
+  console.log('nueva hora: ' + randomNumber);
+  date.setHours(randomNumber);
   date.setMinutes(0);
   date.setSeconds(0);
   return date;
