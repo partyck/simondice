@@ -44,6 +44,8 @@ async function insertarIdUsuario(idUsuario) {
         if (!existePar) {
           await grafoUsuarios.conectar(idUsuario,
             users[usuarioJ].id);
+          await grafoUsuarios.conectar(users[usuarioJ].id,
+              idUsuario);
         }
       }
     }
