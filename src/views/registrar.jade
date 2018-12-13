@@ -95,6 +95,8 @@ block content
               .col-md-2.mb-4
             |   
             .form-row
+            - var idFac = "this.faculty"
+            h1= idFac
               .col-md-2.mb-3
               |               
               .form-group.col-md-8.mb-3
@@ -113,7 +115,7 @@ block content
                 label.txtColor(for='faculty') Facultad:
               |               
               .form-group.col-md-6.mb-4
-                select#faculty.form-control.custom-select(name='faculty', required='')
+                select#faculty.form-control.custom-select(name='faculty', required='', onchange="facultySelected()")
                   option(disabled='', selected='', hidden='') Escoge una Facultad
                   each faculty in facultys                     
                     option(value=faculty._id)= faculty.name    
@@ -130,7 +132,7 @@ block content
                 label.txtColor(for='career') Carrera:
               |               
               .form-group.col-md-6.mb-4
-                select#career.form-control.custom-select(name='name', required='')
+                select#career.form-control.custom-select(name='name', required='', disabled)
                   option(disabled='', selected='', hidden='') Escoge una Carrera    
                   each career in careers        
                     option(value=career._id)= career.name
@@ -139,7 +141,9 @@ block content
                   | Seleccione una opci&oacute;n
               |               
               .col-md-2.mb-4
-            |                
+            |           
+            - var idFac = this.faculty
+            h1= idFac     
             .form-row
               .col-md-2.mb-4
               |               
@@ -252,3 +256,4 @@ block content
               button.btn.btn-primary.btnColorR(type='submit') Registrar
     |     
     .divPadding
+    script(src="/javascripts/registrar.js")
