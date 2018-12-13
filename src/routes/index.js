@@ -8,7 +8,7 @@ router.get('/emparejar', (req, res) => {
     res.render('index', { title: 'Simon Dice' });
     
 });
-//esto es para provar
+//esto es para provar SI HAY MEJORAS
 router.post('/match', (req, res) => {
     var value = req.body;
     match(value,res);
