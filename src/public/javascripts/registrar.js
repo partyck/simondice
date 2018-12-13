@@ -4,8 +4,8 @@ function facultySelected(){
   var career = document.getElementById("career");
   career.disabled=false;
 
-  var careers = ;
-  console.log(careers);
+  // var careers = ;
+  // console.log(careers);
   
 }
 
