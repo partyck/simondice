@@ -95,8 +95,6 @@ block content
               .col-md-2.mb-4
             |   
             .form-row
-            - var idFac = "this.faculty"
-            h1= idFac
               .col-md-2.mb-3
               |               
               .form-group.col-md-8.mb-3
@@ -132,18 +130,13 @@ block content
                 label.txtColor(for='career') Carrera:
               |               
               .form-group.col-md-6.mb-4
-                select#career.form-control.custom-select(name='name', required='', disabled)
+                select#career.form-control.custom-select(name='career', required='', disabled)
                   option(disabled='', selected='', hidden='') Escoge una Carrera    
-                  each career in careers        
-                    option(value=career._id)= career.name
-                |                 
                 .invalid-feedback
                   | Seleccione una opci&oacute;n
               |               
               .col-md-2.mb-4
             |           
-            - var idFac = this.faculty
-            h1= idFac     
             .form-row
               .col-md-2.mb-4
               |               
@@ -256,4 +249,7 @@ block content
               button.btn.btn-primary.btnColorR(type='submit') Registrar
     |     
     .divPadding
+    - local_data = JSON.stringify(careers)
+    input(type='hidden', value=local_data)#myLocalDataObj
     script(src="/javascripts/registrar.js")
+    
