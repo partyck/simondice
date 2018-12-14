@@ -15,27 +15,43 @@ class MapaPreferencias {
     * - Para agregar, hariamos, por ejemplo:
     * this._mapa[preferencia][preferenciaA + preferenciaB] = valor;
     */
-   if(preferenciaA.getid() === preferenciaB.getid()
-      || preferenciaB.getid() === preferenciaA.getid() )
-    {
-      
-
-    }else{
-      this._mapa[preferrencia][preferenciaA+preferenciaB]=valor
+   if(existeRegla(tipoPreferencia, preferenciaA, preferenciaB)) {
+      console.log("existe la preferencia");
+    } else {
+      this._mapa[tipoPreferencia][preferenciaA+preferenciaB] = valor;
     }
+
+    /*
+    prefeerencia = podria ser deporte,comidas
+    preferenciaA= ajedrez,preferenciaB=natacion
+    valor=puntuacion que le asignara el usuario
+    */ 
 
     }
   }
   
   obtenerValorRegla(tipoPreferencia, preferenciaA, preferenciaB) {
+    var valor = 0;    
+    if(existeRegla(tipoPreferencia, preferenciaA, preferenciaB)){
+    valor=preferencia.getValor();
+    }
+    return valor;
     
   }
   
   existeRegla(tipoPreferencia, preferenciaA, preferenciaB) {
+    /* otra forma de poder verificar la regla seria verificando el valor que no sea null*/
+    if(preferenciaA.getid() === preferenciaB.getid()
+      || preferenciaB.getid() === preferenciaA.getid()) {
+    return true;
+    } else {
+    return false;
+    }
     
   }
   
   eliminarRegla(tipoPreferencia, preferenciaA, preferenciaB) {
+
     
   }
   
@@ -45,6 +61,16 @@ class MapaPreferencias {
   * _funcionPrivada() en vez de funcionPublica().
   */
   
+}
+_verificarPreferencias(tipoPreferencia, preferenciaA, preferenciaB) {
+  
+  if(preferenciaA.getid() === preferenciaB.getid()
+    || preferenciaB.getid() === preferenciaA.getid()) {
+    return true;
+  } else {
+    return false;
+  }
+
 }
 
 module.exports = MapaPreferencias;
