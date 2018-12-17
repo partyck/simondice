@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const UserController = require('../controllers/user');
 const passport = require('passport');
-const Faculty = require('../models/faculty');
-const Career = require('../models/career');
 
 router.get('/', (req, res) => {
   res.render('home', { title: 'Simón Dice' });
