@@ -1,7 +1,7 @@
 const PriorityQueue = require('./colaprioridad');
 const compatibilidad = require('./listafunciones');
 
-class graph {
+class Grafo {
   constructor() {
     this._grafo = [];
   }
@@ -56,4 +56,4 @@ class graph {
   }
 }
 
-module.exports = graph;
+module.exports = Grafo;

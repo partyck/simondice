@@ -32,11 +32,11 @@ UserSchema.methods.getName = function () {
 UserSchema.methods.getAge = function () {
   var fechaActual = (new Date());
   var edad = fechaActual.getYear() - this.birthdate.getYear();
-  const mesDiaActual = fechaActual.getMonth() * 10 + this.birthdate.getDate();
-  const mesDiaUsuario = this.birthdate.getMonth() * 10
+  const mesDiaActual = fechaActual.getMonth() * 100 + fechaActual.getDate();
+  const mesDiaUsuario = this.birthdate.getMonth() * 100
       + this.birthdate.getDate();
   if (mesDiaActual < mesDiaUsuario) {
-    edad = - 1;
+    edad -= 1;
   }
   return edad;
 };
