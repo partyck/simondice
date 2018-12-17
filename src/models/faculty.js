@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const facultySchema = Schema({
   name: String
-
 },
   { collection: 'facultys' }
 );
