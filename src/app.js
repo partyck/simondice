@@ -49,6 +49,12 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/index'));
 app.use('/', require('./routes/user/empareja'));
 app.use('/', require('./routes/user/citas'));
+app.use('/', require('./routes/user/preferencia'));
+
+app.get("/preferences",function(req,res){
+  res.render("user/preferencias");
+});
+
 
 //starting the server
 app.listen(app.get('port'), () => {

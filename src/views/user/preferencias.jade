@@ -1,0 +1,102 @@
+
+extends ./layoutUser
+
+block content 
+
+  .container
+    h2 Preferencias
+   
+    .dropdown
+      button#menu1.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+        | Comidas
+        for Comidas in comidas
+          h1 #{Comidas.nombre}
+      span.caret
+      ul.dropdown-menu(role='menu', aria-labelledby='menu1')
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') '#{datos}' 
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') pique
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') asado
+        li.divider(role='presentation')
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') chicharron       
+      //button.btn.btn-primary(type='button') Add 
+      form(action='/preferencia', method='POST')
+        button.btn-lg.btn-primary.btnColorE.text( type='submit') Add &#x2764;
+      button.btn.btn-secondary(type='button') New      
+    br 
+    br  
+    .dropdown
+      button#menu2.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+        | Deportes
+        span.caret
+      ul.dropdown-menu(role='menu', aria-labelledby='menu2')
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') Ajedres
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') natacion
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') esgrima
+        li.divider(role='presentation')
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') karate
+      button.btn.btn-primary(type='button') Add
+      button.btn.btn-secondary(type='button') New
+    br
+    br
+    .dropdown
+      button#menu3.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+        | Musicas
+        span.caret
+      ul.dropdown-menu(role='menu', aria-labelledby='menu1')
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') balada
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') cumbia
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') rock
+        li.divider(role='presentation')
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') Metal
+      button.btn.btn-primary(type='button') Add
+      button.btn.btn-secondary(type='button') New
+    br
+    br       
+    .dropdown
+      button#menu4.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+        | Peliculas
+        span.caret
+      ul.dropdown-menu(role='menu', aria-labelledby='menu1')
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') coco
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') chappy
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') rambo
+        li.divider(role='presentation')
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') chucky
+      button.btn.btn-primary(type='button') Add
+      button.btn.btn-secondary(type='button') New
+    br
+    br
+    .dropdown
+      button#menu5.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+        | Jobbies
+        span.caret
+      ul.dropdown-menu(role='menu', aria-labelledby='menu5')
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') TocarGuitarra
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') Cantar
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') bailar
+        li.divider(role='presentation')
+        li(role='presentation')
+          a(role='menuitem', tabindex='-1', href='#') videojuegos
+      button.btn.btn-primary(type='button') Add
+      button.btn.btn-secondary(type='button') New
+   
+
