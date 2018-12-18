@@ -27,7 +27,7 @@ block content
                 .form-group.col-4
                   select#career1.form-control.custom-select(name='career1', required='')
                     option(disabled='', selected='', hidden='') Escoja una Carrera
-                    //each career in careers
+                    each career in careers
                       option(value=career._id)= career.name
                   |                 
                   .invalid-feedback
@@ -39,7 +39,7 @@ block content
                 .form-group.col-4
                   select#career2.form-control.custom-select(name='career2', required='')
                     option(disabled='', selected='', hidden='') Escoja una Carrera
-                    //each career in careers
+                    each career in careers
                       option(value=career._id)= career.name
                   |                 
                   .invalid-feedback

@@ -33,6 +33,8 @@ exports.isAuthenticated = function (req, res, next) {
 }
 
 //administrator
-exports.carreraIU = function (req, res) {
-  res.render('administrator/carrera');
+exports.carreraIU = async function (req, res) {
+  careers = await Career.find();
+  res.render('administrator/carrera',{ 
+    careers: careers});
 };
