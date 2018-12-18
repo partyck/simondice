@@ -40,8 +40,7 @@ class MapaPreferencias {
   }
   
   existeRegla(tipoPreferencia, preferenciaA, preferenciaB) {
-    if((Ing. Sistemas && Ing. Electronica) ) 
-         || (Ing. Electronica && Ing. Sistemas) {
+    if((Ing. Sistemas && Ing. Electronica)  || (Ing. Electronica && Ing. Sistemas)) {
           if (this.obtenerValorRegla(tipoPreferencia, preferenciaA, preferenciaB) >= 0){
             return true;            
           }else {
