@@ -1,4 +1,5 @@
 const User = require('../models/user');
+//const Career = require('../models/career');
 
 exports.index = function (req, res) {
   User.find({}, function (error, users) {
@@ -25,3 +26,8 @@ exports.isAuthenticated = function (req, res, next) {
   }
   res.redirect('/')
 }
+
+//administrator
+exports.carreraIU = function (req, res) {
+  res.render('administrator/carrera');
+};
