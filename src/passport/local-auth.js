@@ -34,7 +34,7 @@ passport.use('local-registro', new LocalStrategy({
       name: req.body.name,
       birthdate: req.body.birthdate,
       sex: req.body.sex,
-      course: req.body.course,
+      course: req.body.career,
       semester: año,
       sexOrientation: req.body.sexOrientation,
       minAge: req.body.minAge,
