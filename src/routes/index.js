@@ -29,18 +29,4 @@ router.get('/logout', (req, res, next) => {
   res.redirect('/');
 });
 
-router.get('/admin', async function (req, res) {
-  let careers = await Career.find();
-  let rules = await AcademicRule.find();
-  res.render('administrator/carrera', {
-    careers: careers, rules: rules
-  });
-});
-
-router.post('/createRule', async function (req, res) {
-  var newRule = new AcademicRule(req.body);
-  await newRule.save();
-  res.redirect('/admin');
-});
-
 module.exports = router;  
