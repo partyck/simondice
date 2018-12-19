@@ -208,6 +208,20 @@ function orientacionSexual(usuarioSolicitante, usuarioSolicitado) {
   }
   return peso;
 }
+function compatibilidadGustos(usuarioSolicitante, usuarioSolicitado) {
+  var peso = 0;
+  var gustoSolicitante = usuarioSolicitante.like;
+  var gustoSolicitado = usuarioSolicitado.like;
+  if(gustoSolicitante === gustoSolicitado) {
+    if(gustoSolicitado === gustoSolicitante) {
+       peso = 10;
+    }else{
+       peso = 0;
+    }
+
+  }
+  return peso;
+}
 
 module.exports = {
   aplicarFunciones: aplicarFunciones,
