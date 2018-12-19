@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
 router.get('/user', UserController.index);
 router.get('/user/create', UserController.create);
 router.get('/login', UserController.loginGet);
+router.get('/admin', UserController.carreraIU);
 
 router.post('/user', passport.authenticate('local-registro', {
   successRedirect: '/emparejar',
