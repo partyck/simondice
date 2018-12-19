@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const preferenceUserSchema = Schema({
-  idUser: { type: String},
+  idUser: { type: Number},
   idPreference: { type: String},
 },
   { collection: 'preferencesUsers' }

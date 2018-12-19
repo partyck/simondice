@@ -191,6 +191,9 @@ color: #fff;
   margin-left: 25%;
   margin-right: 25%;
 }
+.divBloqueCardP{
+  margin-left: 2%;
+}
 .marginCard{
   border: 2px solid transparent;
   border-radius: .30rem;

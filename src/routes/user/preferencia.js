@@ -26,10 +26,15 @@ router.post('/preferencia', UserController.isAuthenticated, async (req, res) => 
   });
 });
 
-/*router.get('/refuse/:id', UserController.isAuthenticated, async (req, res) => {
-  let { id } = req.params;
-  await Appointment.remove({ _id: id });
-  res.redirect('/citas');
-});*/
+router.post('/anadir/preferencia', UserController.isAuthenticated, async (req, res) => {
+  let preference = new Preference({
+    name: req.body.preferenceN,
+    idCategory: req.body.preferenceCat
+  });
+  preference.save(function(err){
+    console.log(err);
+    res.render('user/preferencia');
+  });
+});
 
 module.exports = router;
