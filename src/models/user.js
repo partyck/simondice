@@ -14,6 +14,7 @@ const UserSchema = Schema({
   name: { type: String, required: false },
   birthdate: { type: Date, required: false },
   sex: { type: String, required: false },
+  likes: [{type: String , required:false }],
   course: { type: String, required: false },
   semester: { type: Number, required: false },
   sexOrientation: { type: String, required: false },
