@@ -11,7 +11,7 @@ block content
           |           
           hr
           .divPadding
-            form.needs-validation(novalidate='', action='',method='POST')
+            form.needs-validation(novalidate='', action='/createRule',method='POST')
               .form-row
                 .col-md-1.mb-3
                 |               
@@ -25,25 +25,28 @@ block content
                 .col-2
                 |                              
                 .form-group.col-4
-                  select#career1.form-control.custom-select(name='career1', required='')
+                  select#career1.form-control.custom-select(name='idCareer1', required='', onchange='career1Selected()')
                     option(disabled='', selected='', hidden='') Escoja una Carrera
                     each career in careers
-                      option(value=career._id)= career.name
+                      option(value=career._id, careerName = career.name)= career.name
                   |                 
                   .invalid-feedback
-                    | Seleccione una opci&oacute;n
+                    | Seleccione una opci&oacute;
+                  input#career1name(type='hidden', name='career1')
                 |               
                 .col-1
                   label.txtColor ----
                 |               
                 .form-group.col-4
-                  select#career2.form-control.custom-select(name='career2', required='')
+                  select#career2.form-control.custom-select(name='idCareer2', required='', onchange='career2Selected()')
                     option(disabled='', selected='', hidden='') Escoja una Carrera
                     each career in careers
-                      option(value=career._id)= career.name
+                      option(value=career._id, careerName = career.name)= career.name
                   |                 
                   .invalid-feedback
                     | Seleccione una opci&oacute;n
+                  input#career2name(type='hidden', name='career2')
+                  
               |  
               |  
               .form-row
@@ -57,6 +60,7 @@ block content
                   .invalid-feedback
                     | Seleccione un valor
                 .col-2
+                p#range 
               | 
               .container-fluid.divBtnPaddingCard
                 button.btn.btn-primary.btnColorIS(type='reset') Reiniciar
@@ -88,28 +92,16 @@ block content
                 th(scope='col') Acción
               |   
             tbody
-              tr
-                th(scope='row') 1
-                |       
-                td Ing. Informatica
-                |       
-                td Ing. Comercial
-                |       
-                td 5
-                |       
-                td 
-                  i.fas.fa-trash-alt(align='center')
-              |     
-              tr
-                th(scope='row') 2
-                |       
-                td Comunicacion
-                |       
-                td Ing. Civil
-                |       
-                td 4
-                |       
-                td 
-                  i.fas.fa-trash-alt(align='center')  
-
-          
+              each regla, index in rules 
+                tr
+                  th(scope='row')= index+1
+                  |       
+                  td= regla.career1
+                  |       
+                  td= regla.career2
+                  |       
+                  td= regla.value
+                  |       
+                  td 
+                    i.fas.fa-trash-alt(align='center')  
+      script(src="/javascripts/carrera.js")
