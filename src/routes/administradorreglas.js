@@ -4,7 +4,7 @@ const AcademicRule = require('../models/academicRule');
 var mapRules = new Map(['carrera']);
 
 async function cargarMapa() {
-  AcademicRule.find(function (err, rules) {
+  await AcademicRule.find(async function (err, rules) {
     if (err) {
       throw err;
     }
@@ -20,13 +20,13 @@ function insertarRegla(career1, career2, value) {
   mapRules.insertarRegla('carrera', career1, career2, value);
 }
 
-async function eliminarRegla(id){
-  await AcademicRule.findById(id, function(err, rule){
+async function eliminarRegla(id) {
+  await AcademicRule.findById(id, function(err, rule) {
     mapRules.eliminarRegla('carrera', rule.idCareer1, rule.idCareer2);
   });
 }
 
-function obtenerValorRegla(career1,career2){
+function obtenerValorRegla(career1, career2) {
   return mapRules.obtenerValorRegla('carrera', career1, career2);
 }
 
