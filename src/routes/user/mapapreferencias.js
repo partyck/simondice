@@ -6,6 +6,7 @@ class MapaPreferencias {
     }
   }
   
+  /** tipoPreferencia recibe, por ejemplo "Carrera". */
   insertarRegla(tipoPreferencia, preferenciaA, preferenciaB, valor) {
    if (this._existeRegla(tipoPreferencia, preferenciaA, preferenciaB)) {
       console.log("La regla ya existe");
