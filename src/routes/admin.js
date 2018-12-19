@@ -14,12 +14,18 @@ router.get('/admin', async function (req, res) {
 
 router.post('/createRule', async function (req, res) {
   var newRule = new AcademicRule(req.body);
+  if (rulesAdministrator.existeRegla(newRule.idCareer1, newRule.idCareer2)) {
+    console.log("La regla" + newRule.idCareer1 + newRule.idCareer2
+          + "ya existe");
+    res.redirect('/admin');
+  } else {
   await newRule.save(function () {
     rulesAdministrator.insertarRegla(
       newRule.idCareer1, newRule.idCareer2, newRule.value
     );
     res.redirect('/admin');
   });
+  }
 });
 
 router.get('/deleteRule/:id', async (req, res) => {

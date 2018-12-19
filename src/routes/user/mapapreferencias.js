@@ -8,7 +8,7 @@ class MapaPreferencias {
 
   /** tipoPreferencia recibe, por ejemplo "Carrera". */
   insertarRegla(tipoPreferencia, preferenciaA, preferenciaB, valor) {
-    if (this._existeRegla(tipoPreferencia, preferenciaA, preferenciaB)) {
+    if (this.existeRegla(tipoPreferencia, preferenciaA, preferenciaB)) {
       console.log("La regla ya existe");
     } else {
       if (!(this._preferenciaEstaDefinida(tipoPreferencia, preferenciaA))) {
@@ -19,8 +19,10 @@ class MapaPreferencias {
       }
       this._mapa[tipoPreferencia][preferenciaA][preferenciaB] = valor;
       this._mapa[tipoPreferencia][preferenciaB][preferenciaA] = valor;
-      console.log("regla ->" + this._mapa[tipoPreferencia][preferenciaA][preferenciaB]);
-      console.log("regla ->" + this._mapa[tipoPreferencia][preferenciaB][preferenciaA]);
+      console.log("regla ->"
+          + this._mapa[tipoPreferencia][preferenciaA][preferenciaB]);
+      console.log("regla ->"
+          + this._mapa[tipoPreferencia][preferenciaB][preferenciaA]);
     }
   }
 
@@ -34,15 +36,13 @@ class MapaPreferencias {
 
   obtenerValorRegla(tipoPreferencia, preferenciaA, preferenciaB) {
     var valor = 0;
-    if (this._existeRegla(tipoPreferencia, preferenciaA, preferenciaB)) {
-      console.log("obtener ->" + this._mapa[tipoPreferencia][preferenciaA][preferenciaB]);
-      console.log("obtener ->" + this._mapa[tipoPreferencia][preferenciaB][preferenciaA]);
+    if (this.existeRegla(tipoPreferencia, preferenciaA, preferenciaB)) {
       return this._mapa[tipoPreferencia][preferenciaA][preferenciaB];
     }
     return valor;
   }
 
-  _existeRegla(tipoPreferencia, preferenciaA, preferenciaB) {
+  existeRegla(tipoPreferencia, preferenciaA, preferenciaB) {
     if (this._preferenciaEstaDefinida(tipoPreferencia, preferenciaA)
         && this._preferenciaEstaDefinida(tipoPreferencia, preferenciaB)) {
       if (this._mapa[tipoPreferencia][preferenciaA][preferenciaB]) {

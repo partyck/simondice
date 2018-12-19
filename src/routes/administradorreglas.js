@@ -30,9 +30,14 @@ function obtenerValorRegla(career1, career2) {
   return mapRules.obtenerValorRegla('carrera', career1, career2);
 }
 
+function existeRegla(preferenciaA, preferenciaB) {
+  return mapRules.existeRegla('carrera', preferenciaA, preferenciaB);
+}
+
 module.exports = {
   cargarMapa: cargarMapa,
   insertarRegla: insertarRegla,
   obtenerValorRegla: obtenerValorRegla,
-  eliminarRegla: eliminarRegla
+  eliminarRegla: eliminarRegla,
+  existeRegla: existeRegla
 };
