@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const preferencesCategorySchema = Schema({
+const preferenceCategorySchema = Schema({
   name: { type: String},
 },
-  { collection: 'preferenceCategory' }
+  { collection: 'preferencesCategories' }
 );
 
-var Preferences = mongoose.model("PreferenceCategory", preferencesCategorySchema);
-module.exports = Preferences;
+var preferenceCategory = mongoose.model("PreferencesCategories", preferenceCategorySchema);
+module.exports = preferenceCategory;

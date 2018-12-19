@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const preferencesSchema = Schema({
+const preferenceSchema = Schema({
   name: { type: String},
-  idCategory: {type: String}
+  idCategory:{type: String},
 },
-  { collection: 'preference' }
+  { collection: 'preferences' }
 );
 
-var preferences = mongoose.model("Preferences", preferencesSchema);
-module.exports = preferences;
+var preference = mongoose.model("Preferences", preferenceSchema);
+module.exports = preference;

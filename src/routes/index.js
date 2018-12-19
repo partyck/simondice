@@ -10,6 +10,7 @@ router.get('/user', UserController.index);
 router.get('/user/create', UserController.create);
 router.get('/login', UserController.loginGet);
 router.get('/admin', UserController.carreraIU);
+//router.get('/preferencia', UserController.preference);
 
 router.post('/user', passport.authenticate('local-registro', {
   successRedirect: '/emparejar',
