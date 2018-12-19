@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const Faculty = require('../models/faculty');
+const Career = require('../models/career');
 
 exports.index = function (req, res) {
   User.find({}, function (error, users) {
@@ -11,8 +13,12 @@ exports.index = function (req, res) {
     }
   })
 };
-exports.create = function (req, res) {
-  res.render('registrar');
+exports.create = async function (req, res) {
+  facultys = await Faculty.find();
+  careers = await Career.find();
+  res.render('registrar', {
+    facultys: facultys, 
+    careers: careers});
 };
 
 exports.loginGet = function (req, res) {
@@ -25,3 +31,10 @@ exports.isAuthenticated = function (req, res, next) {
   }
   res.redirect('/')
 }
+
+//administrator
+exports.carreraIU = async function (req, res) {
+  careers = await Career.find();
+  res.render('administrator/carrera',{ 
+    careers: careers});
+};
