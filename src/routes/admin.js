@@ -3,6 +3,7 @@ const router = express.Router();
 const Career = require('../models/career');
 const AcademicRule = require('../models/academicRule');
 const rulesAdministrator = require('../routes/administradorreglas');
+const registroUsuarios = require('./user/registro');
 
 router.get('/admin', async function (req, res) {
   let careers = await Career.find();
@@ -25,6 +26,7 @@ router.post('/createRule', async function (req, res) {
       );
       res.redirect('/admin');
     });
+    registroUsuarios.iniciarRegistro();
   }
 });
 
@@ -33,7 +35,7 @@ router.get('/deleteRule/:id', async (req, res) => {
   rulesAdministrator.eliminarRegla(id,
     res.redirect('/admin')
   );
-
+  registroUsuarios.iniciarRegistro();
 });
 
 module.exports = router;
