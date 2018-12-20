@@ -24,8 +24,8 @@ router.post('/emparejar', UserController.isAuthenticated, async (req, res) => {
     console.log("Se emparejo al usuario "
         + idUsuarioSolicitante + " con " + idUsuarioSolicitado);
     var pareja = [{
-      idUserA: idUsuarioSolicitante,
-      idUserB: idUsuarioSolicitado
+        idUserA: idUsuarioSolicitante,
+        idUserB: idUsuarioSolicitado
     }];
     Match.insertMany(pareja, function (error, doc) { });
     generar.generarCita(idUsuarioSolicitante, idUsuarioSolicitado);
