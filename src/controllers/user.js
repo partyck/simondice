@@ -31,16 +31,3 @@ exports.isAuthenticated = function (req, res, next) {
   }
   res.redirect('/')
 }
-
-exports.preference = async function (req, res) {
-  careers = await Career.find();
-  res.render('user/preferencias', { 
-    careers: careers});
-};
-
-//administrator
-exports.carreraIU = async function (req, res) {
-  careers = await Career.find();
-  res.render('administrator/carrera',{ 
-    careers: careers});
-};
