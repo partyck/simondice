@@ -1,14 +1,15 @@
 const Map = require('./user/mapapreferencias');
 const AcademicRule = require('../models/academicRule');
 
-var mapRules = new Map(['carrera']);
+var mapRules;
 
 async function cargarMapa() {
+  mapRules = new Map(['carrera']);
   await AcademicRule.find(async function (err, rules) {
     if (err) {
       throw err;
     }
-    rules.forEach(async rule  => {
+    rules.forEach(async rule => {
       await mapRules.insertarRegla(
         'carrera', rule.idCareer1,
         rule.idCareer2, rule.value);
@@ -21,8 +22,10 @@ function insertarRegla(career1, career2, value) {
 }
 
 async function eliminarRegla(id) {
-  await AcademicRule.findById(id, function(err, rule) {
-    mapRules.eliminarRegla('carrera', rule.idCareer1, rule.idCareer2);
+  await AcademicRule.findById(id, function (err, rule) {
+    mapRules.eliminarRegla('carrera', rule.idCareer1, rule.idCareer2, async function () {
+      await AcademicRule.deleteOne({ _id: id });
+    });
   });
 }
 

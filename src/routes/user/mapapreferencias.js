@@ -20,9 +20,9 @@ class MapaPreferencias {
       this._mapa[tipoPreferencia][preferenciaA][preferenciaB] = valor;
       this._mapa[tipoPreferencia][preferenciaB][preferenciaA] = valor;
       console.log("regla ->"
-          + this._mapa[tipoPreferencia][preferenciaA][preferenciaB]);
+        + this._mapa[tipoPreferencia][preferenciaA][preferenciaB]);
       console.log("regla ->"
-          + this._mapa[tipoPreferencia][preferenciaB][preferenciaA]);
+        + this._mapa[tipoPreferencia][preferenciaB][preferenciaA]);
     }
   }
 
@@ -44,7 +44,7 @@ class MapaPreferencias {
 
   existeRegla(tipoPreferencia, preferenciaA, preferenciaB) {
     if (this._preferenciaEstaDefinida(tipoPreferencia, preferenciaA)
-        && this._preferenciaEstaDefinida(tipoPreferencia, preferenciaB)) {
+      && this._preferenciaEstaDefinida(tipoPreferencia, preferenciaB)) {
       if (this._mapa[tipoPreferencia][preferenciaA][preferenciaB]) {
         return true;
       } else {
@@ -55,10 +55,11 @@ class MapaPreferencias {
     }
   }
 
-  eliminarRegla(tipoPreferencia, preferenciaA, preferenciaB) {
+  eliminarRegla(tipoPreferencia, preferenciaA, preferenciaB, next) {
     this._mapa[tipoPreferencia][preferenciaA][preferenciaB] = undefined;
     this._mapa[tipoPreferencia][preferenciaB][preferenciaA] = undefined;
     console.log('regla: ', preferenciaA, ', ', preferenciaB, 'ELIMINADA');
+    next();
   }
 
 }
