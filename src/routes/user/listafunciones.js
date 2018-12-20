@@ -4,9 +4,7 @@ const reglasAdmin = require('../administradorreglas');
 async function aplicarFunciones(idUsuarioSolicitante, idUsuarioSolicitado) {
   var usuarioSolicitante = (await obtenerUsuario(idUsuarioSolicitante))[0];
   var usuarioSolicitado = (await obtenerUsuario(idUsuarioSolicitado))[0];
-  var peso = 1;
-  peso = peso + todasLasFuncionesPreferencia(usuarioSolicitante,
-      usuarioSolicitado);
+  var peso = 1;  
   peso = peso * todasLasFuncionesRestriccion(usuarioSolicitante,
       usuarioSolicitado);
   return peso;
@@ -22,6 +20,7 @@ function todasLasFuncionesPreferencia(usuarioSolicitante, usuarioSolicitado) {
               usuarioSolicitado.course);
   return peso;
 }
+
 
 function todasLasFuncionesRestriccion(usuarioSolicitante, usuarioSolicitado) {
   var peso = rangoEdad(usuarioSolicitante, usuarioSolicitado)
@@ -105,6 +104,22 @@ function orientacionSexual(usuarioSolicitante, usuarioSolicitado) {
       break;
     default:
       console.log("Orientacion sexual desconocida.");
+  }
+  return peso;
+}
+function compatibilidadGustos(usuarioSolicitante, usuarioSolicitado) {
+  var peso = 0;
+  var usuarioSolicitante = await ;
+  var usuarioSolicitado =[];
+  var gustoSolicitante = usuarioSolicitante.like;
+  var gustoSolicitado = usuarioSolicitado.like;
+  if(gustoSolicitante === gustoSolicitado) {
+    if(gustoSolicitado === gustoSolicitante) {
+       peso = 10;
+    }else{
+       peso = 0;
+    }
+
   }
   return peso;
 }
