@@ -14,7 +14,7 @@ router.get('/emparejar', UserController.isAuthenticated, (req, res) => {
 router.post('/emparejar', UserController.isAuthenticated, async (req, res) => {
   var idUsuarioSolicitante = req.user.id;
   var idUsuarioSolicitado =
-    registroUsuarios.obtenerPareja(idUsuarioSolicitante);
+        registroUsuarios.obtenerPareja(idUsuarioSolicitante);
   var encuentra = await registroUsuarios.existePareja(idUsuarioSolicitante,
     idUsuarioSolicitado);
   if (encuentra) {

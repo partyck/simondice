@@ -11,13 +11,13 @@ class Grafo {
     var cola = new PriorityQueue((a, b) => a[1] > b[1]);
     this._grafo.push([userID, cola]);
     console.log("Se inserto sastisfactoriamente el usuario con id: "
-      + (this._grafo[this._grafo.length - 1])[0]);
+        + (this._grafo[this._grafo.length - 1])[0]);
   }
 
   async conectar(idUsuarioA, idUsuarioB) {
     if (idUsuarioA != idUsuarioB) {
       var valorCompatibilidad =
-        await compatibilidad.aplicarFunciones(idUsuarioA, idUsuarioB);
+          await compatibilidad.aplicarFunciones(idUsuarioA, idUsuarioB);
       console.log("Valor de compatibilidad: " + valorCompatibilidad);
       if (valorCompatibilidad > 0) {
         var indiceA = this._obtenerIndicePorIdUsuario(idUsuarioA);
@@ -25,18 +25,18 @@ class Grafo {
         this._grafo[indiceA][1].push([idUsuarioB, valorCompatibilidad]);
         this._grafo[indiceB][1].push([idUsuarioA, valorCompatibilidad]);
         console.log("Se conecto: " + idUsuarioA + " con "
-          + idUsuarioB);
+            + idUsuarioB);
       } else {
         console.log("No se conecto: " + idUsuarioA + " con "
-          + idUsuarioB);
+            + idUsuarioB);
       }
     }
   }
 
   obtenerPareja(idUsuarioSolicitante) {
     var idUsuarioSolicitado = "";
-    var indiceSolicitante = this._obtenerIndicePorIdUsuario(
-      idUsuarioSolicitante);
+    var indiceSolicitante =
+        this._obtenerIndicePorIdUsuario(idUsuarioSolicitante);
     console.log('idUsuarioSolicitante: ', idUsuarioSolicitante);
     var colaLocal = this._grafo[indiceSolicitante][1];
     var encontrado = false;

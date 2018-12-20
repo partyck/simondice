@@ -44,7 +44,7 @@ class MapaPreferencias {
 
   existeRegla(tipoPreferencia, preferenciaA, preferenciaB) {
     if (this._preferenciaEstaDefinida(tipoPreferencia, preferenciaA)
-      && this._preferenciaEstaDefinida(tipoPreferencia, preferenciaB)) {
+        && this._preferenciaEstaDefinida(tipoPreferencia, preferenciaB)) {
       if (this._mapa[tipoPreferencia][preferenciaA][preferenciaB]) {
         return true;
       } else {

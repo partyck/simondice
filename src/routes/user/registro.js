@@ -3,10 +3,11 @@ const User = require('../../models/user');
 const Match = require('../../models/match');
 const Grafo = require('./grafo');
 
-var grafoUsuarios = new Grafo();
+var grafoUsuarios;
 var estadoRegistro = "Registro sin iniciar";
 
 async function cargarRegistro() {
+  grafoUsuarios = new Grafo();
   console.log(estadoRegistro);
   User.find({}, async function (err, users) {
     if (err) {
