@@ -3,7 +3,7 @@ extends ./layoutUser
 block content
   .divPadding
     .row
-      .col-6
+      .col-8
         .divBloqueCardP.block-center
           .card.marginCard
             .card-body
@@ -53,7 +53,7 @@ block content
                   button.btn.btn-primary.btnColorR(type='submit') Añadir 
                   button.btn.btn-primary.btnColorIS(type='button', data-toggle='modal', data-target='#myModal') Nuevo&nbsp&nbsp
                     i.fas.fa-plus-circle(align='left')
-      .col-6
+      .col-4
         table.table.table-responsive
           thead
             tr
@@ -70,7 +70,8 @@ block content
                       td(scope='row')= pref.name
                       |       
                       td
-                        i.fas.fa-trash-alt(align='center')                      
+                        a(href='/preferencias/'+userP._id)
+                          i.fas.fa-trash-alt(align='center')                      
   #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalCenterTitle', aria-hidden='true')                            
     form.needs-validation.modal-dialog.modal-dialog-centered(role='document',novalidate='', action='/preferencia',method='POST')
       .modal-content
