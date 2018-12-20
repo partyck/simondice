@@ -51,6 +51,7 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/index'));
 app.use('/', require('./routes/user/empareja'));
 app.use('/', require('./routes/user/citas'));
+app.use('/', require('./routes/user/preferencia'));
 app.use('/', require('./routes/admin'));
 
 //starting the server
