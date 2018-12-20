@@ -17,10 +17,11 @@ router.post('/emparejar', UserController.isAuthenticated, async (req, res) => {
         registroUsuarios.obtenerPareja(idUsuarioSolicitante);
   var encuentra = await registroUsuarios.existePareja(idUsuarioSolicitante,
     idUsuarioSolicitado);
+  console.log(idUsuarioSolicitado);
   if (encuentra) {
     idUsuarioSolicitado = "";
   }
-  if (idUsuarioSolicitado != "") {
+  if (idUsuarioSolicitado !== "") {
     console.log("Se emparejo al usuario "
         + idUsuarioSolicitante + " con " + idUsuarioSolicitado);
     var pareja = [{
@@ -32,7 +33,7 @@ router.post('/emparejar', UserController.isAuthenticated, async (req, res) => {
   } else {
     console.log("No se pudo emparejar al usuario " + idUsuarioSolicitante);
   }
-  if (idUsuarioSolicitado != "") {
+  if (idUsuarioSolicitado !== "") {
     res.render('user/empareja', { usrEncontrado: 1 });
     return;
   } else {
