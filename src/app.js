@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const passport = require('passport');
 const registroUsuarios = require('./routes/user/registro');
-const administradorReglas = require('./routes/administradorreglas');
 
 //initializations
 const app = express();
@@ -39,7 +38,6 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-administradorReglas.cargarMapa();
 registroUsuarios.iniciarRegistro();
 app.use((req, res, next) => {
   res.locals.errorMessage = req.flash('errorMessage');
@@ -51,8 +49,6 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/index'));
 app.use('/', require('./routes/user/empareja'));
 app.use('/', require('./routes/user/citas'));
-app.use('/', require('./routes/user/preferencia'));
-app.use('/', require('./routes/admin'));
 
 //starting the server
 app.listen(app.get('port'), () => {

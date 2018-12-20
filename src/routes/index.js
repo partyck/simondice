@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const UserController = require('../controllers/user');
 const passport = require('passport');
-const Career = require('../models/career');
-const AcademicRule = require('../models/academicRule');
 
 router.get('/', (req, res) => {
   res.render('home', { title: 'Simón Dice' });
@@ -11,6 +9,7 @@ router.get('/', (req, res) => {
 router.get('/user', UserController.index);
 router.get('/user/create', UserController.create);
 router.get('/login', UserController.loginGet);
+router.get('/admin', UserController.carreraIU);
 
 router.post('/user', passport.authenticate('local-registro', {
   successRedirect: '/emparejar',
