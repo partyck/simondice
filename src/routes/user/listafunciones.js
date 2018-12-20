@@ -1,5 +1,6 @@
 const User = require('../../models/user');
-const reglasAdmin = require('../administradorreglas');
+
+
 
 async function aplicarFunciones(idUsuarioSolicitante, idUsuarioSolicitado) {
   var usuarioSolicitante = (await obtenerUsuario(idUsuarioSolicitante))[0];
@@ -15,11 +16,6 @@ function obtenerUsuario(userId) {
 }
 
 //esta funcion Retorna las preferencias por carrera y devuelve un peso 
-function todasLasFuncionesPreferencia(usuarioSolicitante, usuarioSolicitado) {
-  var peso = 0 + reglasAdmin.obtenerValorRegla(usuarioSolicitante.course,
-              usuarioSolicitado.course);
-  return peso;
-}
 
 
 function todasLasFuncionesRestriccion(usuarioSolicitante, usuarioSolicitado) {
