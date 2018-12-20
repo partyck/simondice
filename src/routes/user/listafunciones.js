@@ -1,100 +1,5 @@
 const User = require('../../models/user');
-
-function medicinaOdontologia(solicitante, solicitado) {
-  var peso = 0;
-  if (solicitante.course === "Lic. Medicina"
-      || solicitante.course === "Lic. Odontologia") {
-    if (solicitado.course === "Lic. Medicina"
-        || solicitado.course === "Lic. Odontologia") {
-      peso = 1;
-    } else {
-      peso = 0;
-    }
-  }
-  return peso;
-}
-
-function sistemasElectronica(solicitante, solicitado) {
-  var peso = 0;
-  if (solicitante.course === "Ing. Sistemas"
-      || solicitante.course === "Ing. Electronica") {
-    if (solicitado.course === "Ing. Sistemas"
-        || solicitado.course === "Ing. Electronica") {
-      peso = 1;
-    } else {
-      peso = 0;
-    }
-  }
-  return peso;
-}
-
-function informaticaSistemas(solicitante, solicitado) {
-  var peso = 0;
-  if (solicitante.course === "Ing. Informatica"
-      || solicitante.course === "Ing. Sistemas") {
-    if (solicitado.course === "Ing. Informatica"
-        || solicitado.course === "Ing. Sistemas") {
-      peso = 1;
-    } else {
-      peso = 0;
-    }
-  }
-  return peso;
-}
-
-function quimicaBiologia(solicitante, solicitado) {
-  var peso = 0;
-  if (solicitante.course === "Ing. Quimica"
-      || solicitante.course === "Lic. Biologia") {
-    if (solicitado.course === "Ing. Quimica"
-        || solicitado.course === "Lic. Biologia") {
-      peso = 1;
-    } else {
-      peso = 0;
-    }
-  }
-  return peso;
-}
-
-function derechoPsicoligia(solicitante, solicitado) {
-  var peso = 0;
-  if (solicitante.course === "Lic. Derecho"
-      || solicitante.course === "Lic. Psicologia") {
-    if (solicitado.course === "Lic. Derecho"
-        || solicitado.course === "Lic. Psicologia") {
-      peso = 1;
-    }
-  }
-  return peso;
-}
-
-function arquitecturaCivil(solicitante, solicitado) {
-  var peso = 0;
-  if (solicitante.course === "Lic. Arquitectura"
-      || solicitante.course === "Ing. Civil") {
-    if (solicitado.course === "Lic. Arquitectura"
-        || solicitado.course === "Ing. Civil") {
-      peso = 1;
-    } else {
-      peso = 0;
-    }
-  }
-  return peso;
-}
-
-function contabilidadIndustrial(solicitante, solicitado) {
-  var peso = 0;
-  if (solicitante.course === "Lic. Contabilidad"
-      || solicitante.course === "Ing. Industrial") {
-    if (solicitado.course === "Lic. Contabilidad"
-        || solicitado.course === "Ing. Industrial") {
-      peso = 1;
-    } else {
-      peso = 0;
-    }
-  }
-  return peso;
-}
+const reglasAdmin = require('../administradorreglas');
 
 async function aplicarFunciones(idUsuarioSolicitante, idUsuarioSolicitado) {
   var usuarioSolicitante = (await obtenerUsuario(idUsuarioSolicitante))[0];
@@ -113,13 +18,8 @@ function obtenerUsuario(userId) {
 
 //esta funcion Retorna las preferencias por carrera y devuelve un peso 
 function todasLasFuncionesPreferencia(usuarioSolicitante, usuarioSolicitado) {
-  var peso = medicinaOdontologia(usuarioSolicitante, usuarioSolicitado)
-      + sistemasElectronica(usuarioSolicitante, usuarioSolicitado)
-      + informaticaSistemas(usuarioSolicitante, usuarioSolicitado)
-      + quimicaBiologia(usuarioSolicitante, usuarioSolicitado)
-      + derechoPsicoligia(usuarioSolicitante, usuarioSolicitado)
-      + arquitecturaCivil(usuarioSolicitante, usuarioSolicitado)
-      + contabilidadIndustrial(usuarioSolicitante, usuarioSolicitado);
+  var peso = 0 + reglasAdmin.obtenerValorRegla(usuarioSolicitante.course,
+              usuarioSolicitado.course);
   return peso;
 }
 
