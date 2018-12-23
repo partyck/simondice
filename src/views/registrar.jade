@@ -98,7 +98,7 @@ block content
               .col-md-2.mb-3
               |               
               .form-group.col-md-8.mb-3
-                label.txtColor.txtColorCard(for='') NFORMACIÓN ACADÉMICA:
+                label.txtColor.txtColorCard(for='') INFORMACIÓN ACADÉMICA:
                 |                 
                 hr
               |   
@@ -107,18 +107,36 @@ block content
             |  
             |                                            
             .form-row
-              .col-md-2.mb-3
+              .col-md-2.mb-4
               |               
-              .form-group.col-md-8.mb-3
-                input#course.form-control(name='course', type='text', placeholder='Carrera', pattern='^([A-ZÁÉÍÓÚa-zñáéíóúäëïöü. ]+[\s]*)+$', minlength='5', maxlength='100', required='')
+              .col-md-2.mb-4
+                label.txtColor(for='faculty') Facultad:
+              |               
+              .form-group.col-md-6.mb-4
+                select#faculty.form-control.custom-select(name='faculty', required='', onchange="facultySelected()")
+                  option(disabled='', selected='', hidden='') Escoge una Facultad
+                  each faculty in facultys                     
+                    option(value=faculty._id)= faculty.name    
                 |                 
                 .invalid-feedback
-                  | Introduzca la 
-                  i Carrera
-                  |  entre 5 y 100 letras
+                  | Seleccione una opci&oacute;n
               |               
-              .col-md-2.mb-3
-            |             
+              .col-md-2.mb-4
+            |   
+            .form-row
+              .col-md-2.mb-4
+              |               
+              .col-md-2.mb-4
+                label.txtColor(for='career') Carrera:
+              |               
+              .form-group.col-md-6.mb-4
+                select#career.form-control.custom-select(name='career', required='', disabled)
+                  option(disabled='', selected='', hidden='') Escoge una Carrera    
+                .invalid-feedback
+                  | Seleccione una opci&oacute;n
+              |               
+              .col-md-2.mb-4
+            |           
             .form-row
               .col-md-2.mb-4
               |               
@@ -231,3 +249,7 @@ block content
               button.btn.btn-primary.btnColorR(type='submit') Registrar
     |     
     .divPadding
+    - local_data = JSON.stringify(careers)
+    input(type='hidden', value=local_data)#myLocalDataObj
+    script(src="/javascripts/registrar.js")
+    
